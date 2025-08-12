@@ -1,0 +1,15 @@
+.root-layout {
+  display: grid;
+  grid-template-areas:
+    "nav nav nav"
+    "main main main"
+    "main main main"
+    "main main main"
+    "footer footer footer";
+  grid-auto-rows: auto;
+  border: 1px solid red;
+}
+
+.main-layout {
+  grid-area: main;
+}

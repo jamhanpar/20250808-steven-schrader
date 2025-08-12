@@ -1,26 +1,95 @@
 @import "tailwindcss";
+@import "./app.css";
+@import "./reset.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Colors */
+  --jp-color-background: #7a9ebd;
+  --jp-color-foreground: #fafbfc;
+  --jp-color-primary: #3a5a7a;
+  --jp-color-secondary: #bcdff1;
+  --jp-color-hover: #b3d0ea;
+  --jp-color-accent: #f9d923;
+  /* --jp-color-text: #1a2633; */
+  --jp-color-text: #fafbfc;
+  --jp-color-border: #5a7fa3;
+  --jp-color-error: #e57373;
+  --jp-color-success: #4caf50;
+  --jp-color-warning: #ffb300;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Typography */
+  --jp-font-family-base: "Inter", Arial, sans-serif;
+  --jp-font-size-base: 16px;
+  --jp-font-size-heading: 2rem;
+  --jp-font-weight-normal: 400;
+  --jp-font-weight-bold: 700;
+  --jp-line-height-base: 1.5;
+
+  /* Spacing */
+  --jp-spacing-xs: 4px;
+  --jp-spacing-sm: 8px;
+  --jp-spacing-md: 16px;
+  --jp-spacing-lg: 32px;
+  --jp-spacing-xl: 64px;
+
+  /* Border Radius */
+  --jp-radius-sm: 4px;
+  --jp-radius-md: 8px;
+  --jp-radius-lg: 16px;
+
+  /* Breakpoints */
+  --jp-breakpoint-sm: 480px;
+  --jp-breakpoint-md: 768px;
+  --jp-breakpoint-lg: 1024px;
+
+  /* Shadows */
+  --jp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --jp-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --jp-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Colors */
+    --jp-color-background: #1a2633;
+    --jp-color-foreground: #22344a;
+    --jp-color-primary: #bcdff1;
+    --jp-color-secondary: #3a5a7a;
+    --jp-color-accent: #f9d923;
+    --jp-color-text: #f5f7fa;
+    --jp-color-border: #3a5a7a;
+    --jp-color-error: #ef9a9a;
+    --jp-color-success: #81c784;
+    --jp-color-warning: #ffd54f;
+
+    /* Shadows */
+    --jp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --jp-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.35);
+    --jp-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.45);
   }
 }
 
+@theme inline {
+  /* Colors */
+  --color-background: var(--jp-color-background);
+  --color-foreground: var(--jp-color-foreground);
+  --color-surface: var(--jp-color-surface);
+  --color-primary: var(--jp-color-text);
+  --color-hover: var(--jp-color-hover);
+  --color-primary: var(--jp-color-primary);
+  --color-secondary: var(--jp-color-secondary);
+  --color-accent: var(--jp-color-accent);
+  --color-error: var(--jp-color-error);
+  --color-success: var(--jp-color-success);
+  --color-warning: var(--jp-color-warning);
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--jp-color-background);
+  color: var(--jp-color-foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
