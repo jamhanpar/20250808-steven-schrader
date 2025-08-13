@@ -5,6 +5,7 @@ import clsx from "clsx";
 import "./Nav.css";
 import Link from "next/link";
 import navLinks from "./nav.json";
+import { usePathname } from "next/navigation";
 
 interface NavProps {
   classname?: string;
@@ -12,6 +13,7 @@ interface NavProps {
 
 const Nav: React.FC<NavProps> = ({ classname }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header
@@ -25,7 +27,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <span className="text-4xl font-bold text-primary hover:text-primary-hover transition-colors drop-shadow-lg">
+            <span className="text-4xl font-bold text-primary hover:text-primary-hover drop-shadow-lg">
               Steven Schrader
             </span>
           </Link>
@@ -36,7 +38,10 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover"
+              className={clsx(
+                "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
+                pathname === link.href && "text-accent border-b-2 border-accent"
+              )}
             >
               {link.name}
             </Link>
@@ -92,7 +97,10 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-accent text-2xl font-semibold px-6 py-4 rounded-md transition-colors text-center w-full z-10 hover:text-accent-hover"
+                className={clsx(
+                  "text-accent text-2xl font-semibold px-6 py-4 rounded-md transition-colors text-center w-full z-10 hover:text-accent-hover",
+                  pathname === link.href && "nav-active-mobile"
+                )}
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent closing when clicking a link
                   setMenuOpen(false);

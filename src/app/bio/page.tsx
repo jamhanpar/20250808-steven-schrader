@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function BioPage() {
   return (
-    <div className="flex flex-col items-center">
+    <>
       <Section>
         <Mosaic
           images={["/images/steve-schrader-bio.png"]}
@@ -12,7 +12,7 @@ export default function BioPage() {
           gap={8}
         />
       </Section>
-      <section className="w-full max-w-4xl flex flex-col md:flex-row gap-10 items-center md:items-start">
+      <Section>
         {/* Left: Profile and creative image grid */}
         <div className="flex flex-col gap-6 items-center md:w-1/2">
           {/* Main profile image */}
@@ -60,17 +60,23 @@ export default function BioPage() {
         <div className="md:w-1/2 flex flex-col gap-4">
           <h1 className="text-4xl font-bold text-primary mb-2">About Me</h1>
           <p className="text-lg text-foreground leading-relaxed">
-            Hi! I&apos;m Steven Schrader, a passionate developer and designer. I
-            love building unique digital experiences and exploring creative
-            solutions to complex problems. My journey in tech has been driven by
-            curiosity, collaboration, and a desire to make a positive impact.
+            Steven Schrader was born in New York in 1935. He has been a dress
+            salesman, a social worker, and a junior high and high school
+            teacher. For ten years he was director of Teachers & Writers
+            Collaborative, an arts organization that sends writers and other
+            artists into schools and he is now the co-chair. He was the
+            publisher of Cane Hill Press, which specialized in fiction. His work
+            has been included in several anthologies and broadcast on National
+            Public Radio’s Selected Shorts. He lives on New York’s Upper West
+            Side, a strong presence in his stories, with his wife, Lucy
+            Kostelanetz, a documentary film maker.
           </p>
           <p className="text-md text-muted-foreground">
             Outside of coding, you&apos;ll find me experimenting with
             photography, hiking, and learning new things every day.
           </p>
         </div>
-      </section>
-    </div>
+      </Section>
+    </>
   );
 }
