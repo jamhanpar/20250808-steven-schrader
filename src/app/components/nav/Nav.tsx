@@ -13,13 +13,14 @@ interface NavProps {
 
 const Nav: React.FC<NavProps> = ({ classname }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean | null>(null);
   const pathname = usePathname();
 
   return (
     <header
       className={clsx(
         "nav",
-        "flex justify-center w-full sticky top-0 left-0 z-50 bg-background h-fit",
+        "flex justify-center w-full bg-background h-fit",
         classname
       )}
     >
@@ -32,6 +33,67 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             </span>
           </Link>
         </div>
+        {/* Desktop Nav w/ Dropdowns */}
+        {/* <div className="hidden md:flex md:gap-8 space-x-8">
+          {navLinks.map((link) =>
+            link.children ? (
+              <div
+                key={link.name}
+                className="relative group"
+                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseLeave={() => setDropdownOpen(null)}
+              >
+                <button
+                  className={clsx(
+                    "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover flex items-center",
+                    pathname === link.href &&
+                      "text-accent border-b-2 border-accent"
+                  )}
+                >
+                  {link.name}
+                  <svg
+                    className="ml-2 w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-md z-20 overflow-hidden">
+                    {link.children.map((child: any) => (
+                      <Link
+                        key={child.name}
+                        href={child.href}
+                        className="block px-4 py-2 text-primary hover:bg-white hover:text-accent"
+                      >
+                        {child.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={clsx(
+                  "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
+                  pathname === link.href &&
+                    "text-accent border-b-2 border-accent"
+                )}
+              >
+                {link.name}
+              </Link>
+            )
+          )}
+        </div> */}
         {/* Desktop Nav */}
         <div className="hidden md:flex md:gap-8 space-x-8">
           {navLinks.map((link) => (

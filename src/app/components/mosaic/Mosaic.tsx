@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface MosaicProps {
   images: string[];
@@ -14,20 +15,16 @@ const Mosaic: React.FC<MosaicProps> = ({ images, columns = 4, gap = 8 }) => {
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: gap,
       }}
-      className="mosaic-grid"
+      className="mosaic-grid w-full"
     >
       {images.map((src, idx) => (
-        <div key={idx} className="mosaic-item">
-          <img
+        <div key={idx} className="mosaic-item w-full">
+          <Image
             src={src}
             alt={`Mosaic ${idx}`}
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-              borderRadius: 8,
-              objectFit: "cover",
-            }}
+            width={400}
+            height={300}
+            className="w-full h-auto object-cover"
           />
         </div>
       ))}

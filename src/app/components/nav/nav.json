@@ -1,7 +1,14 @@
 [
   { "name": "Home", "href": "/" },
-  { "name": "Bio", "href": "/bio" },
+  {
+    "name": "Books",
+    "href": "/books",
+    "children": [
+      { "name": "Fiction", "href": "/books/fiction" },
+      { "name": "Non-Fiction", "href": "/books/non-fiction" }
+    ]
+  },
   { "name": "About", "href": "/about" },
-  { "name": "Events", "href": "/events" },
-  { "name": "Publications", "href": "/publications" }
+  { "name": "Music", "href": "/music" },
+  { "name": "Contact", "href": "/contact" }
 ]
