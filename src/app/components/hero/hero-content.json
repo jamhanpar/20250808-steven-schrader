@@ -1,0 +1,17 @@
+{
+  "featured-book": {
+    "title": "New And Selected Writing, The Other Steve Schrader by Steven Schrader",
+    "subtitle": "Steven Schrader is a passionate writer known for his captivating stories and unique voice. With a talent for weaving words into memorable narratives, Steven invites readers to explore new perspectives and discover the power of imagination through his work.",
+    "ctaText": "Buy on Amazon",
+    "ctaHref": "#works",
+    "imageSrc": "/images/book-new-and-selected-writing.png"
+  },
+  "bio": {
+    "title": "Steven Schrader's Bio",
+    "subtitle": "Steven Schrader is a passionate writer known for his captivating stories and unique voice. With a talent for weaving words into memorable narratives, Steven invites readers to explore new perspectives and discover the power of imagination through his work.",
+    "ctaText": "Read My Works",
+    "ctaHref": "#works",
+    "imageSrc": "/images/steve-schrader-profile.jpg",
+    "imageAlt": "Picture of Steven Schrader"
+  }
+}

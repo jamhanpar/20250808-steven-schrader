@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import clsx from "clsx";
-import "./Nav.scss"; // Assuming you have a Nav.scss for styles
+import "./Nav.css";
 import Link from "next/link";
 import navLinks from "./nav.json";
 
@@ -25,7 +25,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <span className="text-4xl font-bold text-text">
+            <span className="text-4xl font-bold text-primary">
               Steven Schrader
             </span>
           </Link>
@@ -36,7 +36,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-lg font-medium transition-colors text-text hover:text-hover"
+              className="text-lg font-medium transition-colors text-primary hover:text-white"
             >
               {link.name}
             </Link>
@@ -81,7 +81,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         <div className="fixed inset-0 z-50 md:hidden">
           {/* Blurred overlay */}
           <div
-            className="absolute inset-0 bg-[var(--jp-color-surface)]/60 backdrop-blur-sm transition-all duration-300"
+            className="absolute inset-0 bg-[var(--jp-color-surface)]/60 backdrop-blur-md transition-all duration-300"
             onClick={() => setMenuOpen(false)}
           />
           {/* Menu links */}

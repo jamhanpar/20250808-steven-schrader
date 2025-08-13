@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import "./Footer.scss";
+import "./Footer.css";
 
 interface FooterProps {
   classname?: string;

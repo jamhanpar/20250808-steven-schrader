@@ -23,10 +23,10 @@ const TestimonialGroup: React.FC<TestimonialGroupProps> = ({
         {testimonials.map((t, idx) => (
           <div
             key={idx}
-            className="bg-white p-6 rounded shadow hover:shadow-lg transition"
+            className="flex flex-col gap-4 bg-white p-6 rounded shadow hover:shadow-lg transition"
           >
             <p className="text-gray-700 italic mb-4">“{t.message}”</p>
-            <div className="text-center">
+            <div className="flex flex-col gap-2 text-center">
               <span className="font-semibold">{t.name}</span>
               {t.title && (
                 <span className="block text-sm text-gray-500">{t.title}</span>

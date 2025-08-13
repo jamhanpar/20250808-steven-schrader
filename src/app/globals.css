@@ -10,7 +10,6 @@
   --jp-color-secondary: #bcdff1;
   --jp-color-hover: #b3d0ea;
   --jp-color-accent: #f9d923;
-  /* --jp-color-text: #1a2633; */
   --jp-color-text: #fafbfc;
   --jp-color-border: #5a7fa3;
   --jp-color-error: #e57373;
@@ -50,13 +49,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Colors */
+    /* Text Colors */
     --jp-color-background: #1a2633;
     --jp-color-foreground: #22344a;
     --jp-color-primary: #bcdff1;
     --jp-color-secondary: #3a5a7a;
     --jp-color-accent: #f9d923;
     --jp-color-text: #f5f7fa;
+    --jp-color-hover: #b3d0ea;
     --jp-color-border: #3a5a7a;
     --jp-color-error: #ef9a9a;
     --jp-color-success: #81c784;
@@ -74,7 +74,6 @@
   --color-background: var(--jp-color-background);
   --color-foreground: var(--jp-color-foreground);
   --color-surface: var(--jp-color-surface);
-  --color-primary: var(--jp-color-text);
   --color-hover: var(--jp-color-hover);
   --color-primary: var(--jp-color-primary);
   --color-secondary: var(--jp-color-secondary);
