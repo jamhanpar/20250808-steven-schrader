@@ -7,7 +7,6 @@
     "main main main"
     "footer footer footer";
   grid-auto-rows: auto;
-  border: 1px solid red;
 }
 
 .main-layout {

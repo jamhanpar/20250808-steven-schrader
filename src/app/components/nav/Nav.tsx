@@ -4,13 +4,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import "./Nav.scss"; // Assuming you have a Nav.scss for styles
 import Link from "next/link";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Events", href: "/events" },
-  { name: "Publications", href: "/publications" },
-];
+import navLinks from "./nav.json";
 
 interface NavProps {
   classname?: string;
@@ -31,10 +25,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <span
-              className="text-xl font-bold text-text"
-              // style={{ color: "var(--jp-color-text)" }}
-            >
+            <span className="text-4xl font-bold text-text">
               Steven Schrader
             </span>
           </Link>
@@ -45,7 +36,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             <Link
               key={link.name}
               href={link.href}
-              className="font-medium transition-colors text-text hover:text-hover"
+              className="text-lg font-medium transition-colors text-text hover:text-hover"
             >
               {link.name}
             </Link>

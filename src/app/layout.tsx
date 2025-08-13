@@ -35,7 +35,7 @@ export default function RootLayout({
           <main
             className={clsx(
               "main-layout",
-              "border border-green-500 flex-1 flex flex-col items-center w-full"
+              "flex-1 flex flex-col items-center w-full"
             )}
           >
             {children}

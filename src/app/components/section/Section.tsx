@@ -9,7 +9,7 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({ children, classname }) => (
   <section
     className={clsx(
-      `bg-background w-full flex justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8`,
+      `bg-background w-full flex justify-center max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8`,
       classname
     )}
   >

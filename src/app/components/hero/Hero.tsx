@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Hero: React.FC = () => {
   return (
-    <section className="w-full flex flex-col md:flex-row items-center justify-center text-center md:text-left overflow-hidden bg-background gap-10 md:gap-20">
+    <div className="w-full flex flex-col md:flex-row items-center justify-center text-center md:text-left overflow-hidden bg-background gap-10 py-8 md:gap-20">
       {/* Modern gradient background shapes */}
       <div className="absolute inset-0 -z-10 flex justify-center items-center pointer-events-none">
         <div className="w-[600px] h-[600px] bg-gradient-to-tr from-[var(--jp-color-primary)]/30 via-[var(--jp-color-accent)]/20 to-[var(--jp-color-secondary)]/30 rounded-full blur-3xl opacity-70 animate-pulse" />
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
           priority
         />
       </div>
-    </section>
+    </div>
   );
 };
 
