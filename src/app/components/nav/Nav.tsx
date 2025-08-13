@@ -19,8 +19,8 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
     <header
       className={clsx(
         "nav",
-        classname,
-        "flex justify-center w-full sticky top-0 left-0 z-50 bg-background h-fit"
+        "flex justify-center w-full sticky top-0 left-0 z-50 bg-background h-fit",
+        classname
       )}
     >
       <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">

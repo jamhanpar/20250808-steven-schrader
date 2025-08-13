@@ -44,7 +44,7 @@ export default function Hero({
             alt={imageAlt || "please provide an alt text for this image"}
             width={1000}
             height={1000}
-            className="object-cover h-full w-full md:h-5/6 md:w-auto border-4 border-primary/80 transition-transform duration-500"
+            className="rounded object-cover h-full w-full md:h-5/6 md:w-auto border-4 border-primary/80 transition-transform duration-500"
             quality={100}
             priority
           />

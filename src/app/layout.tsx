@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
-          <Nav />
+          <Nav classname="bg-accent" />
           <main
             className={clsx(
               "main-layout",
