@@ -25,7 +25,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <span className="text-4xl font-bold text-primary">
+            <span className="text-4xl font-bold text-primary hover:text-primary-hover transition-colors drop-shadow-lg">
               Steven Schrader
             </span>
           </Link>
@@ -36,7 +36,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-lg font-medium transition-colors text-primary hover:text-white"
+              className="text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover"
             >
               {link.name}
             </Link>
@@ -46,8 +46,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
-            style={{ color: "var(--jp-color-text)" }}
+            className="text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
             aria-label="Toggle menu"
           >
             <svg
@@ -93,18 +92,11 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-2xl font-semibold px-6 py-4 rounded-md transition-colors text-center w-full z-10"
-                style={{ color: "var(--jp-color-text)" }}
+                className="text-accent text-2xl font-semibold px-6 py-4 rounded-md transition-colors text-center w-full z-10 hover:text-accent-hover"
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent closing when clicking a link
                   setMenuOpen(false);
                 }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.style.color = "var(--jp-color-primary)")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.style.color = "var(--jp-color-text)")
-                }
               >
                 {link.name}
               </Link>

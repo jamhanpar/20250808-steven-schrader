@@ -4,17 +4,21 @@
 
 :root {
   /* Colors */
-  --jp-color-background: #7a9ebd;
-  --jp-color-foreground: #fafbfc;
-  --jp-color-primary: #3a5a7a;
-  --jp-color-secondary: #bcdff1;
-  --jp-color-hover: #b3d0ea;
-  --jp-color-accent: #f9d923;
-  --jp-color-text: #fafbfc;
-  --jp-color-border: #5a7fa3;
-  --jp-color-error: #e57373;
-  --jp-color-success: #4caf50;
-  --jp-color-warning: #ffb300;
+  --jp-color-black: #303331;
+  --jp-color-white: #fafbfc;
+  --jp-color-lightest: #d3e3f1;
+  --jp-color-light: #a7c4db;
+  --jp-color-base: #7a9ebd;
+  --jp-color-dark: #567a99;
+  --jp-color-darkest: #35516a;
+  --jp-color-accent: #e37044;
+
+  --jp-color-background: var(--jp-color-base);
+  --jp-color-primary: var(--jp-color-white);
+  --jp-color-primary-hover: var(--jp-color-black);
+  --jp-color-secondary: var(--jp-color-lightest);
+  --jp-color-secondary-hover: var(--jp-color-base);
+  --jp-color-accent-hover: #f7a77e;
 
   /* Typography */
   --jp-font-family-base: "Inter", Arial, sans-serif;
@@ -49,18 +53,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Text Colors */
-    --jp-color-background: #1a2633;
-    --jp-color-foreground: #22344a;
-    --jp-color-primary: #bcdff1;
-    --jp-color-secondary: #3a5a7a;
-    --jp-color-accent: #f9d923;
-    --jp-color-text: #f5f7fa;
-    --jp-color-hover: #b3d0ea;
-    --jp-color-border: #3a5a7a;
-    --jp-color-error: #ef9a9a;
-    --jp-color-success: #81c784;
-    --jp-color-warning: #ffd54f;
+    /* Colors */
+    --jp-color-background: var(--jp-color-black);
+    --jp-color-primary: var(--jp-color-lightest);
+    --jp-color-primary-hover: var(--jp-color-light);
+    --jp-color-secondary: var(--jp-color-light);
+    --jp-color-secondary-hover: var(--jp-color-base);
 
     /* Shadows */
     --jp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
@@ -71,16 +69,16 @@
 
 @theme inline {
   /* Colors */
+  --color-white: var(--jp-color-white);
+  --color-black: var(--jp-color-black);
+
   --color-background: var(--jp-color-background);
-  --color-foreground: var(--jp-color-foreground);
-  --color-surface: var(--jp-color-surface);
-  --color-hover: var(--jp-color-hover);
   --color-primary: var(--jp-color-primary);
+  --color-primary-hover: var(--jp-color-primary-hover);
   --color-secondary: var(--jp-color-secondary);
+  --color-secondary-hover: var(--jp-color-secondary-hover);
   --color-accent: var(--jp-color-accent);
-  --color-error: var(--jp-color-error);
-  --color-success: var(--jp-color-success);
-  --color-warning: var(--jp-color-warning);
+  --color-accent-hover: var(--jp-color-accent-hover);
 
   /* Typography */
   --font-sans: var(--font-geist-sans);

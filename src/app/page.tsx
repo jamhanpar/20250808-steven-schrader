@@ -13,10 +13,7 @@ export default function Home() {
         <Hero {...featuredBook} />
       </Section>
       <Section>
-        <TestimonialGroup
-          testimonials={testimonials}
-          heading="What People Say"
-        />
+        <TestimonialGroup testimonials={testimonials} />
       </Section>
     </>
   );

@@ -12,7 +12,7 @@ const Footer: React.FC<FooterProps> = ({ classname }) => {
       className={clsx(
         "footer",
         classname,
-        "w-full h-fit bg-background text-gray-500 dark:text-gray-400 text-sm py-4 flex flex-col items-center justify-center"
+        "w-full h-fit bg-background text-primary text-sm py-4 flex flex-row gap-2 items-center justify-center"
       )}
     >
       <span className="mb-1">
