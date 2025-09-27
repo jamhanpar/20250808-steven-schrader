@@ -1,6 +1,10 @@
 import Mosaic from "app/components/mosaic/Mosaic";
 import Section from "app/components/section/Section";
 import Image from "next/image";
+// import { Timeline } from "app/components/timeline/Timeline";
+
+// Data
+// import timelineData from "../data/timelineData.js";
 
 export default function BioPage() {
   return (
@@ -47,7 +51,7 @@ export default function BioPage() {
             </div>
             <div className="rounded-xl overflow-hidden shadow-md">
               <Image
-                src="/images/steve-schrader-author.jpg"
+                src="/images/steve-schrader-profile.jpg"
                 alt="Creative 3"
                 width={80}
                 height={80}
@@ -77,6 +81,7 @@ export default function BioPage() {
           </p>
         </div>
       </Section>
+      {/* <Timeline {...timelineData} /> */}
     </>
   );
 }

@@ -30,7 +30,7 @@ export default function Hero({
         </p>
         <a
           href={ctaHref}
-          className="ml-1 px-10 py-4 rounded-full font-semibold text-lg bg-accent text-primary hover:text-primary-hover hover:ring-4 hover:ring-accent/40 transition-all duration-300 ease-in-out md:text-xl focus:outline-none focus:ring-4 focus:ring-accent/40"
+          className="ml-5 px-10 py-4 rounded-full font-semibold text-lg bg-accent text-primary hover:text-primary-hover hover:ring-4 hover:ring-accent/40 transition-all duration-300 ease-in-out md:text-xl focus:outline-none focus:ring-4 focus:ring-accent/40"
         >
           {ctaText}
         </a>

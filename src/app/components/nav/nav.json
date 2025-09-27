@@ -10,5 +10,6 @@
   },
   { "name": "About", "href": "/about" },
   { "name": "Music", "href": "/music" },
+  { "name": "Links", "href": "/links" },
   { "name": "Contact", "href": "/contact" }
 ]

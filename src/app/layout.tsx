@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
 import "./globals.css";
+import "./app.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

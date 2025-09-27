@@ -13,7 +13,7 @@ interface NavProps {
 
 const Nav: React.FC<NavProps> = ({ classname }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState<boolean | null>(null);
+  // const [dropdownOpen, setDropdownOpen] = useState<boolean | null>(null);
   const pathname = usePathname();
 
   return (
