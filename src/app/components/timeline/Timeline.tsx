@@ -147,9 +147,6 @@ export function Timeline({
       );
       setScrollProgress(progress);
 
-      const stepIndex = Math.floor(progress * steps.length);
-      const clampedIndex = Math.max(0, Math.min(steps.length - 1, stepIndex));
-
       const newVisibleSteps = new Set<number>();
       stepRefs.current.forEach((ref, index) => {
         if (ref) {
@@ -181,19 +178,6 @@ export function Timeline({
         return <CommunityVotingMockup config={config} />;
       default:
         return null;
-    }
-  };
-
-  // Function to smoothly scroll to a specific step
-  const scrollToStep = (stepIndex: number) => {
-    const targetStep = stepRefs.current[stepIndex];
-    if (targetStep) {
-      const offsetTop = targetStep.offsetTop - window.innerHeight * 0.2; // Add some padding from top
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
     }
   };
 
