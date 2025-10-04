@@ -1,87 +1,52 @@
-import Mosaic from "app/components/mosaic/Mosaic";
+import MosaicGallery from "app/components/mosaic/Mosaic";
+import { mosaicData } from "app/data/mosaicData";
 import Section from "app/components/section/Section";
-import Image from "next/image";
+// import Image from "next/image";
 // import { Timeline } from "app/components/timeline/Timeline";
 
 // Data
 // import timelineData from "../data/timelineData.js";
 
 export default function BioPage() {
+  // Example: Custom mosaic data with different featured images
+  // You can uncomment and modify this to easily control which images are featured
+  // const customMosaicData = sampleMosaicData.map((item, index) => ({
+  //   ...item,
+  //   featured: index === 2 || index === 5 // Make 3rd and 6th images featured
+  // }));
+
   return (
     <>
-      <Section>
-        <Mosaic
-          images={["/images/steve-schrader-bio.png"]}
-          columns={1}
-          gap={8}
-        />
-      </Section>
-      <Section>
+      <Section classname="flex flex-col-reverse gap-8 lg:flex-row">
         {/* Left: Profile and creative image grid */}
-        <div className="flex flex-col gap-6 items-center md:w-1/2">
-          {/* Main profile image */}
-          <div className="rounded-full overflow-hidden border-4 border-primary shadow-lg w-40 h-40">
-            <Image
-              src="/images/steve-schrader-author.jpg"
-              alt="Profile"
-              width={160}
-              height={160}
-              className="object-cover w-full h-full"
-            />
-          </div>
-          {/* Creative image grid */}
-          <div className="grid grid-cols-3 grid-rows-2 gap-2 w-64 h-40">
-            <div className="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-md">
-              <Image
-                src="/images/steve-schrader-author.jpg"
-                alt="Creative 1"
-                width={180}
-                height={180}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-md">
-              <Image
-                src="/images/steve-schrader-profile.jpg"
-                alt="Creative 2"
-                width={80}
-                height={80}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-md">
-              <Image
-                src="/images/steve-schrader-profile.jpg"
-                alt="Creative 3"
-                width={80}
-                height={80}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
+        <div className="flex flex-col gap-6 items-center lg:w-1/2">
+          <MosaicGallery items={mosaicData} />
         </div>
         {/* Right: Bio text */}
-        <div className="md:w-1/2 flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-center lg:w-1/2 lg:items-start">
           <h1 className="text-4xl font-bold text-primary mb-2">About Me</h1>
-          <p className="text-lg text-foreground leading-relaxed">
-            Steven Schrader was born in New York in 1935. He has been a dress
-            salesman, a social worker, and a junior high and high school
-            teacher. For ten years he was director of Teachers & Writers
-            Collaborative, an arts organization that sends writers and other
-            artists into schools and he is now the co-chair. He was the
-            publisher of Cane Hill Press, which specialized in fiction. His work
-            has been included in several anthologies and broadcast on National
-            Public Radio’s Selected Shorts. He lives on New York’s Upper West
-            Side, a strong presence in his stories, with his wife, Lucy
-            Kostelanetz, a documentary film maker.
+          <p className="text-lg text-primary leading-relaxed">
+            Steven Schrader was born in New York in 1935 and has spent a
+            lifetime exploring the many dimensions of storytelling — both in
+            life and on the page. Before becoming a writer and publisher, he
+            worked as a dress salesman, social worker, and teacher, experiences
+            that deepened his understanding of people and their stories. For a
+            decade, he served as director of Teachers & Writers Collaborative,
+            bringing poets, novelists, and other artists into classrooms to
+            inspire the next generation of storytellers — a mission he continues
+            today as co-chair.
           </p>
-          <p className="text-md text-muted-foreground">
-            Outside of coding, you&apos;ll find me experimenting with
-            photography, hiking, and learning new things every day.
+          <p className="text-lg text-primary leading-relaxed">
+            As the publisher of Cane Hill Press, Schrader championed original
+            voices in contemporary fiction, and his own stories have appeared in
+            numerous anthologies and on National Public Radio’s Selected Shorts.
+            Much of his work is rooted in New York City’s Upper West Side, where
+            he lives with his wife, documentary filmmaker Lucy Kostelanetz. The
+            city’s streets, rhythms, and characters are more than a backdrop in
+            his fiction — they are a living part of it.
           </p>
         </div>
       </Section>
-      {/* <Timeline {...timelineData} /> */}
     </>
   );
 }

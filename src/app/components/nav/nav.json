@@ -1,5 +1,6 @@
 [
   { "name": "Home", "href": "/" },
+  { "name": "About", "href": "/about" },
   {
     "name": "Books",
     "href": "/books",
@@ -8,7 +9,6 @@
       { "name": "Non-Fiction", "href": "/books/non-fiction" }
     ]
   },
-  { "name": "About", "href": "/about" },
   { "name": "Music", "href": "/music" },
   { "name": "Links", "href": "/links" },
   { "name": "Contact", "href": "/contact" }
