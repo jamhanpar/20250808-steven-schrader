@@ -129,7 +129,6 @@ export function Timeline({
   steps,
   config = defaultConfig,
 }: TimelineProps) {
-  const [activeStep, setActiveStep] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [visibleSteps, setVisibleSteps] = useState<Set<number>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
@@ -137,7 +136,7 @@ export function Timeline({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current || !steps) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
       const viewportCenter = window.innerHeight * config.viewport.center;
@@ -147,11 +146,6 @@ export function Timeline({
         Math.min(1, (viewportCenter - containerRect.top) / containerRect.height)
       );
       setScrollProgress(progress);
-
-      const stepIndex = Math.floor(progress * steps.length);
-      const clampedIndex = Math.max(0, Math.min(steps.length - 1, stepIndex));
-
-      setActiveStep(clampedIndex);
 
       const newVisibleSteps = new Set<number>();
       stepRefs.current.forEach((ref, index) => {
@@ -172,7 +166,7 @@ export function Timeline({
     handleScroll(); // Initial call
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [config.viewport, steps.length]);
+  }, [config.viewport, steps]);
 
   const renderMockup = (mockupType: string) => {
     switch (mockupType) {
@@ -187,21 +181,9 @@ export function Timeline({
     }
   };
 
-  // Function to smoothly scroll to a specific step
-  const scrollToStep = (stepIndex: number) => {
-    const targetStep = stepRefs.current[stepIndex];
-    if (targetStep) {
-      const offsetTop = targetStep.offsetTop - window.innerHeight * 0.2; // Add some padding from top
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
-    }
-  };
-
   // Calculate the height where the last step circle should be
   const calculateProgressBarHeight = () => {
+    if (!steps) return "100%";
     const totalSteps = steps.length;
     if (totalSteps === 0) return "100%";
 
@@ -213,6 +195,19 @@ export function Timeline({
 
   const maxProgressHeight = calculateProgressBarHeight();
 
+  // Early return if no steps provided
+  if (!steps || steps.length === 0) {
+    return (
+      <section className="relative bg-background">
+        <div className="container mx-auto px-4 py-20">
+          <div className="text-center">
+            <p className="text-gray-500">No timeline steps provided</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section ref={containerRef} className="relative bg-background">
       <div className="container mx-auto px-4 py-20">
@@ -221,12 +216,12 @@ export function Timeline({
             <p
               className={`text-sm font-medium text-${config.colors.primary} uppercase tracking-wider`}
             >
-              {headerData.tagline}
+              {headerData?.tagline}
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold text-balance leading-tight">
-              {headerData.title}
+              {headerData?.title}
             </h1>
-            <p className="text-lg text-gray-600">{headerData.subtitle}</p>
+            <p className="text-lg text-gray-600">{headerData?.subtitle}</p>
           </div>
 
           <div className="relative flex flex-col gap-4">
@@ -291,7 +286,9 @@ export function Timeline({
         {steps.map((step, index) => (
           <div
             key={step.number}
-            ref={(el) => (stepRefs.current[index] = el)}
+            ref={(el) => {
+              stepRefs.current[index] = el;
+            }}
             className="min-h-screen flex items-center py-20"
           >
             <div className="container mx-auto px-4">
