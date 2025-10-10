@@ -50,7 +50,6 @@ export const mosaicData: MosaicItem[] = [
     alt: "Hand writing in a notebook with pen",
     captureDate: "2023-01-20",
     location: "Café in Greenwich Village",
-    featured: true,
   },
   {
     id: "5",

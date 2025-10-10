@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import "./Nav.css";
 import Link from "next/link";
-import navLinks from "./nav.json";
+import navLinks from "../../data/nav.json";
 import { usePathname } from "next/navigation";
 
 interface NavProps {
