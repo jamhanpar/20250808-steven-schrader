@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import "./Nav.css";
 import Link from "next/link";
-import navLinks from "./nav.json";
+import navLinks from "../../data/nav.json";
 import { usePathname } from "next/navigation";
 
 interface NavProps {
@@ -28,7 +28,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <span className="text-4xl font-bold text-primary hover:text-primary-hover drop-shadow-lg">
+            <span className="text-3xl font-bold text-primary hover:text-primary-hover drop-shadow-lg">
               Steven Schrader
             </span>
           </Link>

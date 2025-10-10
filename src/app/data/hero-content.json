@@ -1,0 +1,27 @@
+{
+  "featured-book": {
+    "title": "The Other Steve Schrader: New and Selected Writing By Steven Schrader",
+    "subtitle": "These are new and older autobiographical stories about trying to find my own way of being in the world. They are set largely in New York City where I grew up and still live, from my early childhood in Washington Heights to my adolescence, adulthood and older years on the Upper West Side. I hope these stories capture the discoveries I made along the way about who I was, and who I hoped to become.",
+    "ctas": [
+      {
+        "label": "Amazon",
+        "href": "https://www.amazon.com/dp/B0CGLG3X1Y"
+      },
+      {
+        "label": "Hanging Loose Press",
+        "href": "https://www.hangingloosepress.com/book/the-other-steve-schrader-new-and-selected-writing/"
+      }
+    ],
+    "ctaText": "Amazon",
+    "ctaHref": "#works",
+    "imageSrc": "/images/book-new-and-selected-writing.png"
+  },
+  "bio": {
+    "title": "Steven Schrader's Bio",
+    "subtitle": "Steven Schrader is a passionate writer known for his captivating stories and unique voice. With a talent for weaving words into memorable narratives, Steven invites readers to explore new perspectives and discover the power of imagination through his work.",
+    "ctaText": "Read My Works",
+    "ctaHref": "#works",
+    "imageSrc": "/images/steve-schrader-profile.jpg",
+    "imageAlt": "Picture of Steven Schrader"
+  }
+}
