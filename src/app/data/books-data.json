@@ -1,0 +1,40 @@
+{
+  "featured": {
+    "id": 1,
+    "title": "The Other Steve Schrader",
+    "description": "These are new and older autobiographical stories about trying to find my own way of being in the world. They are set largely in New York City where I grew up and still live, from my early childhood in Washington Heights to my adolescence, adulthood and older years on the Upper West Side. I hope these stories capture the discoveries I made along the way about who I was, and who I hoped to become.",
+    "date": "MARCH 15, 2024",
+    "image": "/images/book-new-and-selected-writing-front.png",
+    "link": "/books/art-of-digital-storytelling"
+  },
+  "popular": [
+    {
+      "id": 2,
+      "title": "Threads",
+      "date": "MARCH 12, 2024",
+      "image": "/images/book-threads-front.jpeg",
+      "link": "/books/threads"
+    },
+    {
+      "id": 3,
+      "title": "Arriving at Work",
+      "date": "MARCH 10, 2024",
+      "image": "/images/book-work-front.jpeg",
+      "link": "/books/arriving-at-work"
+    },
+    {
+      "id": 4,
+      "title": "What We Deserved",
+      "date": "MARCH 08, 2024",
+      "image": "/images/book-deserve-front.jpeg",
+      "link": "/books/what-we-deserved"
+    },
+    {
+      "id": 5,
+      "title": "Crime of Passion",
+      "date": "MARCH 05, 2024",
+      "image": "/images/book-crimes-front.jpeg",
+      "link": "/books/crime-of-passion"
+    }
+  ]
+}
