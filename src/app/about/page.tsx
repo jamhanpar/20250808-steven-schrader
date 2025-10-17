@@ -8,7 +8,7 @@ export default function BioPage() {
     <>
       <Section classname="flex flex-col-reverse gap-8 lg:flex-row">
         {/* Left: Profile and creative image grid */}
-        <div className="flex flex-col gap-6 items-center lg:w-1/2">
+        <div className="flex flex-col gap-6 items-center lg:w-1/2 lg:pt-[60px]">
           <MosaicGallery items={mosaicData as MosaicItem[]} maxColumns={3} />
         </div>
         {/* Right: Bio text */}
