@@ -4,7 +4,7 @@ import booksData from "app/data/books-data.json";
 import { clsx } from "clsx";
 
 export function BooksSection() {
-  const { featured, popular } = booksData;
+  const { featured, sidebar } = booksData;
 
   return (
     <div className="flex flex-col gap-20 w-full lg:flex-row lg:justify-between">
@@ -39,13 +39,13 @@ export function BooksSection() {
         </div>
       </div>
 
-      {/* Popular Books */}
+      {/* RELATED CONTENT SECTION */}
       <div className="flex flex-col gap-8 lg:flex-2/5">
-        <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary lg:mb-8">
-          POPULAR BOOKS
+        <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+          {sidebar.title}
         </h3>
         <div className="flex flex-col gap-8 md:gap-6 space-y-6 md:items-center md:grid md:grid-cols-2 lg:grid-cols-1">
-          {popular.map((book, index) => (
+          {sidebar.popular.map((book) => (
             <Link
               key={book.id}
               href={book.link}
