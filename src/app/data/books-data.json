@@ -7,34 +7,37 @@
     "image": "/images/book-new-and-selected-writing-front.png",
     "link": "/books/art-of-digital-storytelling"
   },
-  "popular": [
-    {
-      "id": 2,
-      "title": "Threads",
-      "date": "MARCH 12, 2024",
-      "image": "/images/book-threads-front.jpeg",
-      "link": "/books/threads"
-    },
-    {
-      "id": 3,
-      "title": "Arriving at Work",
-      "date": "MARCH 10, 2024",
-      "image": "/images/book-work-front.jpeg",
-      "link": "/books/arriving-at-work"
-    },
-    {
-      "id": 4,
-      "title": "What We Deserved",
-      "date": "MARCH 08, 2024",
-      "image": "/images/book-deserve-front.jpeg",
-      "link": "/books/what-we-deserved"
-    },
-    {
-      "id": 5,
-      "title": "Crime of Passion",
-      "date": "MARCH 05, 2024",
-      "image": "/images/book-crimes-front.jpeg",
-      "link": "/books/crime-of-passion"
-    }
-  ]
+  "sidebar": {
+    "title": "Other Books You May Like",
+    "popular": [
+      {
+        "id": 2,
+        "title": "Threads",
+        "date": "MARCH 12, 2024",
+        "image": "/images/book-threads-front.jpeg",
+        "link": "/books/threads"
+      },
+      {
+        "id": 3,
+        "title": "Arriving at Work",
+        "date": "MARCH 10, 2024",
+        "image": "/images/book-work-front.jpeg",
+        "link": "/books/arriving-at-work"
+      },
+      {
+        "id": 4,
+        "title": "What We Deserved",
+        "date": "MARCH 08, 2024",
+        "image": "/images/book-deserve-front.jpeg",
+        "link": "/books/what-we-deserved"
+      },
+      {
+        "id": 5,
+        "title": "Crime of Passion",
+        "date": "MARCH 05, 2024",
+        "image": "/images/book-crimes-front.jpeg",
+        "link": "/books/crime-of-passion"
+      }
+    ]
+  }
 }
