@@ -3,10 +3,18 @@
   { "name": "About", "href": "/about" },
   {
     "name": "Books",
-    "href": "/books",
+    "href": "/books?preview=true",
     "children": [
-      { "name": "Fiction", "href": "/books/fiction" },
-      { "name": "Non-Fiction", "href": "/books/non-fiction" }
+      {
+        "id": "the-other-steve-schrader",
+        "title": "The Other Steve Schrader",
+        "href": "/books/the-other-steve-schrader?preview=false"
+      },
+      {
+        "id": "threads",
+        "title": "Threads",
+        "href": "/books/threads?preview=false"
+      }
     ]
   },
   { "name": "Music", "href": "/music" },
