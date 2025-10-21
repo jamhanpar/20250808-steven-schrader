@@ -143,7 +143,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
     <div
       className={clsx(
         "flex flex-col w-full lg:flex-row lg:justify-between",
-        showDetails ? "gap-10" : "gap-20"
+        showDetails ? "gap-10 lg:gap-20" : "gap-20"
       )}
     >
       {/* FEATURED */}
