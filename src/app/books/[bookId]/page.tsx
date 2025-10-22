@@ -3,16 +3,16 @@ import { notFound } from "next/navigation";
 import booksData from "../../data/books-data.json";
 
 interface BookPageProps {
-  params: {
+  params: Promise<{
     bookId: string;
-  };
+  }>;
   searchParams: {
     preview?: string;
   };
 }
 
-export default function BookPage({ params }: BookPageProps) {
-  const { bookId } = params;
+export default async function BookPage({ params }: BookPageProps) {
+  const { bookId } = await params;
 
   // Find the book by ID to verify it exists
   const bookExists = booksData.books.find(
@@ -39,9 +39,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for each book page
 export async function generateMetadata({ params }: BookPageProps) {
-  const book = booksData.books.find(
-    (book) => book.id.toString() === params.bookId
-  );
+  const { bookId } = await params;
+  const book = booksData.books.find((book) => book.id.toString() === bookId);
 
   if (!book) {
     return {
