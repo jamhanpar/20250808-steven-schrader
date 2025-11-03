@@ -34,7 +34,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
   const router = useRouter();
   const params = useParams();
 
-  const { books, sidebar } = booksData; // Assuming books-data.json now has a single "books" array
+  const { books, sidebar } = booksData;
   const featured = books[currentIndex];
   const sidebarBooks = books.filter((_, index) => index !== currentIndex);
 
@@ -105,39 +105,6 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
       scroll: false,
     });
   };
-
-  // Show loading state while determining initial book
-  // if (isLoading) {
-  //   return (
-  //     <div className="flex flex-col gap-20 w-full lg:flex-row lg:justify-between">
-  //       {/* Loading skeleton */}
-  //       <div className="relative min-h-[500px] flex-1 flex flex-col justify-center items-center gap-10">
-  //         <div className="w-full max-w-md h-96 bg-gray-200 rounded-xl animate-pulse" />
-  //         <div className="bg-gray-100 w-4/5 rounded-2xl shadow-2xl p-6 max-w-2xl animate-pulse">
-  //           <div className="space-y-4">
-  //             <div className="h-4 bg-gray-200 rounded w-1/4"></div>
-  //             <div className="h-8 bg-gray-200 rounded w-3/4"></div>
-  //             <div className="h-4 bg-gray-200 rounded w-full"></div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <div className="flex flex-col gap-8 lg:flex-2/5">
-  //         <div className="h-8 bg-gray-200 rounded w-1/2 animate-pulse"></div>
-  //         <div className="space-y-6">
-  //           {[...Array(4)].map((_, index) => (
-  //             <div key={index} className="flex gap-6 animate-pulse">
-  //               <div className="w-1/3 aspect-[2/3] bg-gray-200 rounded-xl"></div>
-  //               <div className="flex-1 space-y-2">
-  //                 <div className="h-3 bg-gray-200 rounded w-1/3"></div>
-  //                 <div className="h-6 bg-gray-200 rounded w-2/3"></div>
-  //               </div>
-  //             </div>
-  //           ))}
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div
