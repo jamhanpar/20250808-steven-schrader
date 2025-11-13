@@ -20,6 +20,13 @@ export interface Book {
     title?: string;
     message: string;
   }[];
+  relatedArticles?: {
+    title?: string;
+    articles: {
+      title: string;
+      link: string;
+    }[];
+  };
 }
 
 interface BooksGroupProps {
@@ -106,6 +113,10 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
     });
   };
 
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <div
       className={clsx(
@@ -151,9 +162,11 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
             onClick={handlePreviewClick}
             className="group flex flex-col gap-6 w-full text-left hover:cursor-pointer"
           >
-            <p className="bg-secondary rounded-lg absolute top-[-10px] py-1 px-2 mb-4 text-xs font-medium tracking-widest text-black/90 transition-colors duration-300 group-hover:text-black">
-              {featured.date}
-            </p>
+            {featured.date && (
+              <p className="bg-secondary rounded-lg absolute top-[-10px] py-1 px-2 mb-4 text-xs font-medium tracking-widest text-black/90 transition-colors duration-300 group-hover:text-black">
+                {featured.date}
+              </p>
+            )}
             <h2 className="mb-4 text-3xl font-bold leading-tight text-black sm:text-2xl text-balance transition-colors duration-300 lg:text-3xl group-hover:text-gray-700">
               {featured.title}
             </h2>
