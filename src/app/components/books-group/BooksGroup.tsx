@@ -261,10 +261,34 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                 <h4 className="text-xl font-bold leading-tight text-primary sm:text-xl lg:text-2xl text-balance">
                   {book.title}
                 </h4>
+                {/* Add description or other details here */}
+                <p className="mt-2 text-sm leading-relaxed text-primary/80 line-clamp-3 lg:line-clamp-4 transition-colors duration-300 group-hover:text-primary/60">
+                  {book.description}
+                </p>
               </div>
             </button>
           ))}
         </div>
+        {featured.relatedArticles?.articles &&
+          featured.relatedArticles.articles.length > 0 && (
+            <div className="flex flex-col gap-8 lg:flex-2/5">
+              <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+                {featured.relatedArticles.title || "Related Articles"}
+              </h3>
+              <ul className="flex flex-col gap-4 mt-4">
+                {featured.relatedArticles.articles.map((article, index) => (
+                  <li key={index}>
+                    <a
+                      href={article.link}
+                      className="text-primary hover:underline"
+                    >
+                      {article.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export default function Home() {
       <Section>
         <Hero {...featuredBook} />
       </Section>
-      <Section>
+      <Section title="Praise for The Other Steve Schrader and other books by the author">
         <TestimonialGroup testimonials={testimonials} />
       </Section>
     </>

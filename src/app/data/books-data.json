@@ -4,7 +4,7 @@
       "id": "the-other-steve-schrader",
       "title": "The Other Steve Schrader",
       "description": "These are new and older autobiographical stories about trying to find my own way of being in the world. They are set largely in New York City where I grew up and still live, from my early childhood in Washington Heights to my adolescence, adulthood and older years on the Upper West Side. I hope these stories capture the discoveries I made along the way about who I was, and who I hoped to become.",
-      "date": "MARCH 15, 2024",
+      "date": null,
       "image": "/images/book-new-and-selected-writing-front.png",
       "link": "/books/the-other-steve-schrader?preview=false",
       "summary": [
@@ -24,7 +24,7 @@
       "id": "threads",
       "title": "Threads",
       "description": "A complex narrative structure with dual timelines exploring the journey from boyhood to becoming a writer.",
-      "date": "MARCH 12, 2024",
+      "date": null,
       "image": "/images/book-threads-front.jpeg",
       "link": "/books/threads",
       "summary": [
@@ -62,13 +62,34 @@
           "name": "Meredith Sue Willis",
           "title": "Books For Readers"
         }
-      ]
+      ],
+      "relatedArticles": {
+        "title": "Related Publications",
+        "articles": [
+          {
+            "title": "Writing Classes, Grad Student and Folk Concert",
+            "link": "https://www.percontra.net/archive/22schrader.htm"
+          },
+          {
+            "title": "Existentialism",
+            "link": "https://www.percontra.net/archive/15schraderexist.htm"
+          },
+          {
+            "title": "Japanese Hotel",
+            "link": "https://www.percontra.net/archive/15schraderhotel.htm"
+          },
+          {
+            "title": "Leaving Home",
+            "link": "https://www.percontra.net/archive/15schraderleaving.htm"
+          }
+        ]
+      }
     },
     {
       "id": "arriving-at-work",
       "title": "Arriving at Work",
       "description": "Stories about work, purpose, and finding meaning in daily life.",
-      "date": "MARCH 10, 2024",
+      "date": null,
       "image": "/images/book-work-front.jpeg",
       "link": "/books/arriving-at-work",
       "summary": [
@@ -91,7 +112,7 @@
       "id": "what-we-deserved",
       "title": "What We Deserved",
       "description": "Reflections on justice, fairness, and what we earn versus what we receive.",
-      "date": "MARCH 08, 2024",
+      "date": null,
       "image": "/images/book-deserve-front.jpeg",
       "link": "/books/what-we-deserved",
       "summary": [
@@ -119,7 +140,7 @@
       "id": "crime-of-passion",
       "title": "Crime of Passion",
       "description": "Exploring the depths of human emotion and the consequences of our actions.",
-      "date": "MARCH 05, 2024",
+      "date": null,
       "image": "/images/book-crimes-front.jpeg",
       "link": "/books/crime-of-passion",
       "summary": [
@@ -142,7 +163,7 @@
       "id": "on-sundays-we-visit-the-in-laws",
       "title": "On Sundays We Visit The In-Laws",
       "description": "Autobiographical sketches exploring family relationships, divorce, and the complexities of modern life.",
-      "date": "MARCH 03, 2024",
+      "date": null,
       "image": "/images/book-on-sundays-front.jpeg",
       "link": "/books/on-sundays-we-visit-the-in-laws",
       "summary": [
