@@ -12,7 +12,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
   // Find the book by ID to verify it exists
   const bookExists = booksData.books.find(
-    (book) => book.id.toString() === bookId
+    (book) => book.id === bookId
   );
 
   if (!bookExists) {
@@ -29,14 +29,14 @@ export default async function BookPage({ params }: BookPageProps) {
 // Generate static params for all books (optional, for better performance)
 export async function generateStaticParams() {
   return booksData.books.map((book) => ({
-    bookId: book.id.toString(),
+    bookId: book.id,
   }));
 }
 
 // Generate metadata for each book page
 export async function generateMetadata({ params }: BookPageProps) {
   const { bookId } = await params;
-  const book = booksData.books.find((book) => book.id.toString() === bookId);
+  const book = booksData.books.find((book) => book.id === bookId);
 
   if (!book) {
     return {
