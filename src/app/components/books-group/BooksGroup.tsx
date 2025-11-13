@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter, useParams } from "next/navigation";
 import Image from "next/image";
-import booksData from "app/data/books-data.json";
+import booksData from "../../data/books-data.json";
 import { clsx } from "clsx";
 
 // Type for a single book
 export interface Book {
-  id: number;
+  id: string; // Changed from number to string to match data
   title: string;
   description: string;
-  date: string;
+  date: string | null; // Allow null since some dates are null in data
   image?: string;
   link: string;
   summary: string[];
@@ -51,18 +51,14 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
 
     // If we have an initialBookId prop (from dynamic route), use that
     if (initialBookId) {
-      const foundIndex = books.findIndex(
-        (book) => book.id.toString() === initialBookId
-      );
+      const foundIndex = books.findIndex((book) => book.id === initialBookId);
       if (foundIndex !== -1) {
         bookIndex = foundIndex;
       }
     }
     // Otherwise, check if we're on a dynamic route
     else if (params?.bookId) {
-      const foundIndex = books.findIndex(
-        (book) => book.id.toString() === params.bookId
-      );
+      const foundIndex = books.findIndex((book) => book.id === params.bookId);
       if (foundIndex !== -1) {
         bookIndex = foundIndex;
       }
