@@ -1,6 +1,7 @@
 import { BooksGroup } from "../../components/books-group/BooksGroup";
 import { notFound } from "next/navigation";
 import booksData from "../../data/books-data.json";
+import { Suspense } from "react";
 
 interface BookPageProps {
   params: Promise<{ bookId: string }>;
@@ -11,9 +12,7 @@ export default async function BookPage({ params }: BookPageProps) {
   const { bookId } = await params;
 
   // Find the book by ID to verify it exists
-  const bookExists = booksData.books.find(
-    (book) => book.id === bookId
-  );
+  const bookExists = booksData.books.find((book) => book.id === bookId);
 
   if (!bookExists) {
     notFound();
@@ -21,7 +20,9 @@ export default async function BookPage({ params }: BookPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <BooksGroup initialBookId={bookId} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <BooksGroup initialBookId={bookId} />
+      </Suspense>
     </div>
   );
 }
