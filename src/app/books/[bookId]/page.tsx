@@ -3,12 +3,8 @@ import { notFound } from "next/navigation";
 import booksData from "../../data/books-data.json";
 
 interface BookPageProps {
-  params: Promise<{
-    bookId: string;
-  }>;
-  searchParams: {
-    preview?: string;
-  };
+  params: Promise<{ bookId: string }>;
+  searchParams: Promise<{ preview?: string }>;
 }
 
 export default async function BookPage({ params }: BookPageProps) {
