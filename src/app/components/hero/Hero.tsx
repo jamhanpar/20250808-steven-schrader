@@ -4,7 +4,7 @@ import Image from "next/image";
 // import ImageWithSkeleton from "../image/ImageWithSkeleton";
 
 interface HeroProps {
-  title: string;
+  title: string[];
   subtitle: string;
   ctas: { label: string; href: string }[];
   ctaText: string;
@@ -25,7 +25,12 @@ export default function Hero({
       {/* Hero Text */}
       <div className="flex flex-col items-center md:items-start justify-center z-10 gap-4 md:flex-2/6">
         <h1 className="text-primary text-2xl md:text-3xl font-extrabold mb-6 tracking-tight">
-          {title}
+          {title.map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              {index < title.length - 1 && <br />}
+            </React.Fragment>
+          ))}
         </h1>
         <div className="w-full text-base md:text-xl mb-10 text-balance text-secondary">
           {subtitle.split("\n\n").map((paragraph, index) => (
@@ -71,7 +76,7 @@ export default function Hero({
             alt={imageAlt || "please provide an alt text for this image"}
             width={1000}
             height={1000}
-            className="rounded object-cover h-96 md:h-full w-full border-4 border-primary/80 transition-transform duration-500"
+            className="rounded-xl object-cover h-96 md:h-full w-full border-primary/80 transition-transform duration-500"
             quality={100}
             priority
           />

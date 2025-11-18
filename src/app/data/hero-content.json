@@ -1,6 +1,10 @@
 {
   "featured-book": {
-    "title": "The Other Steve Schrader: New and Selected Writing By Steven Schrader",
+    "title": [
+      "The Other Steve Schrader: ",
+      "New and Selected Writing",
+      "By Steven Schrader"
+    ],
     "subtitle": "These are new and older autobiographical stories about trying to find my own way of being in the world. They are set largely in New York City where I grew up and still live, from my early childhood in Washington Heights to my adolescence, adulthood and older years on the Upper West Side. I hope these stories capture the discoveries I made along the way about who I was, and who I hoped to become.",
     "ctas": [
       {

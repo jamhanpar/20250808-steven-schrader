@@ -61,7 +61,7 @@ export default function ChatButton({
         transition={{ duration: 0.4 }}
       >
         <motion.path
-          d="M8 10H16M8 14H12M21 12C21 16.9706 16.9706 21 12 21C10.2305 21 8.58073 20.4826 7.2188 19.6045L3 21L4.3955 16.7812C3.51743 15.4193 3 13.7695 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+          d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
@@ -69,6 +69,16 @@ export default function ChatButton({
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
+        />
+        <motion.path
+          d="M22 6L12 13L2 6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1, delay: 1.0 }}
         />
       </motion.svg>
 

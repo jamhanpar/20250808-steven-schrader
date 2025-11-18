@@ -6,15 +6,35 @@ import "./Nav.css";
 import Link from "next/link";
 import navLinks from "../../data/nav.json";
 import { usePathname } from "next/navigation";
+import { useContactModal } from "../contact-modal-provider/ContactModalProvider";
 
 interface NavProps {
   classname?: string;
+}
+
+interface NavLink {
+  name: string;
+  href: string;
+  children?: {
+    id: string;
+    title: string;
+    href: string;
+  }[];
 }
 
 const Nav: React.FC<NavProps> = ({ classname }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   // const [dropdownOpen, setDropdownOpen] = useState<boolean | null>(null);
   const pathname = usePathname();
+  const { openContactModal } = useContactModal();
+
+  const handleNavLinkClick = (link: NavLink, e: React.MouseEvent) => {
+    if (link.name === "Contact") {
+      e.preventDefault();
+      openContactModal();
+      if (menuOpen) setMenuOpen(false); // Close mobile menu if open
+    }
+  };
 
   return (
     <header
@@ -100,6 +120,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             <Link
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavLinkClick(link, e)}
               className={clsx(
                 "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
                 pathname === link.href && "text-accent border-b-2 border-accent"
@@ -165,7 +186,10 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
                 )}
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent closing when clicking a link
-                  setMenuOpen(false);
+                  handleNavLinkClick(link, e);
+                  if (link.name !== "Contact") {
+                    setMenuOpen(false);
+                  }
                 }}
               >
                 {link.name}
