@@ -133,9 +133,19 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+            onClick={() => {
+              console.log("Hamburger clicked, current menuOpen:", menuOpen);
+              setMenuOpen(!menuOpen);
+            }}
+            className={clsx(
+              "text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none",
+              "hover:bg-white/10 active:scale-95",
+              "touch-action-manipulation", // Improve touch responsiveness
+              menuOpen && "bg-white/10"
+            )}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            type="button"
           >
             <svg
               className="h-6 w-6"
@@ -148,7 +158,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   d="M6 18L18 6M6 6l12 12"
                 />
               ) : (
@@ -166,35 +176,43 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          {/* Blurred overlay */}
+          {/* Enhanced dark overlay - this will handle clicks */}
           <div
-            className="absolute inset-0 bg-[var(--jp-color-surface)]/60 backdrop-blur-md transition-all duration-300"
-            onClick={() => setMenuOpen(false)}
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+            onClick={() => {
+              console.log("Overlay clicked - closing menu");
+              setMenuOpen(false);
+            }}
           />
-          {/* Menu links */}
-          <div
-            className="relative flex flex-col items-center justify-center h-full w-full gap-8"
-            onClick={() => setMenuOpen(false)}
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={clsx(
-                  "text-accent text-2xl font-semibold px-6 py-4 rounded-md transition-colors text-center w-full z-10 hover:text-accent-hover",
-                  pathname === link.href && "nav-active-mobile"
-                )}
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent closing when clicking a link
-                  handleNavLinkClick(link, e);
-                  if (link.name !== "Contact") {
-                    setMenuOpen(false);
-                  }
-                }}
-              >
-                {link.name}
-              </Link>
-            ))}
+
+          {/* Menu links container - positioned absolutely to not interfere with overlay clicks */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-8 py-16 pointer-events-none">
+            <div className="flex flex-col gap-4 w-full max-w-sm pointer-events-auto">
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={clsx(
+                      "w-full text-white text-xl font-semibold px-6 py-4 rounded-xl transition-all duration-200 text-center min-h-[56px] flex items-center justify-center",
+                      "bg-white/10 backdrop-blur-sm border border-white/20",
+                      "hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95",
+                      "focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent",
+                      pathname === link.href &&
+                        "bg-[var(--jp-color-accent)]/90 border-[var(--jp-color-accent)] text-white ring-2 ring-[var(--jp-color-accent)]/50"
+                    )}
+                    onClick={(e) => {
+                      console.log("Menu item clicked:", link.name);
+                      handleNavLinkClick(link, e);
+                      if (link.name !== "Contact") {
+                        setMenuOpen(false);
+                      }
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
