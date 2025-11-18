@@ -42,25 +42,31 @@
 /* Root Variables - All Primitives */
 :root {
   /* Custom Fonts */
-  --jp-font-montserrat: "Montserrat", Arial, sans-serif;
-  --jp-font-mukta: "Mukta", Arial, sans-serif;
+  --jp-font-geist-sans: var(--font-geist-sans, Arial, sans-serif);
+  --jp-font-geist-mono: var(--font-geist-mono, Courier, monospace);
 
   /* Colors */
   --jp-color-black: #303331;
   --jp-color-white: #fafbfc;
+  --jp-color-primary: #7a9ebd;
+  --jp-color-primary-hover: #567a99;
+  --jp-color-secondary: #d3e3f1;
+  --jp-color-secondary-hover: #a7c4db;
+  --jp-color-accent: #e37044;
+  --jp-color-accent-hover: #f7a77e;
+
+  /* Shades of Primary Color */
   --jp-color-lightest: #d3e3f1;
   --jp-color-light: #a7c4db;
   --jp-color-base: #7a9ebd;
   --jp-color-dark: #567a99;
   --jp-color-darkest: #35516a;
-  --jp-color-accent: #e37044;
 
   --jp-color-background: var(--jp-color-base);
   --jp-color-primary: var(--jp-color-white);
   --jp-color-primary-hover: var(--jp-color-black);
   --jp-color-secondary: var(--jp-color-lightest);
   --jp-color-secondary-hover: var(--jp-color-base);
-  --jp-color-accent-hover: #f7a77e;
 
   /* Typography */
   --jp-font-family-base: "Inter", Arial, sans-serif;
@@ -109,6 +115,7 @@
   }
 }
 
+/* SEMANTIC TOKENS (CSS custom properties only) */
 @theme inline {
   /* Colors */
   --color-white: var(--jp-color-white);
@@ -123,10 +130,11 @@
   --color-accent-hover: var(--jp-color-accent-hover);
 
   /* Typography */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--jp-font-geist-sans);
+  --font-mono: var(--jp-font-geist-mono);
 }
 
+/* TAILWIND UTILITY TOKENS (generates utility classes) */
 @theme {
   /* Semantic font primitives - portable across projects */
   /* --font-heading: var(--font-montserrat);
