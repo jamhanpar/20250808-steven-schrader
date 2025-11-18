@@ -1,7 +1,50 @@
 @import "./reset.css";
 @import "tailwindcss";
 
+/*
+ * DESIGN SYSTEM ARCHITECTURE
+ * ==========================
+ *
+ * Three-layer token system:
+ *
+ * 1. :root - PRIMITIVES (raw values)
+ *    • Font families, colors, spacing, typography, radius
+ *    • Light theme variants
+ *    • Foundation for all other tokens
+ *
+ * 2. [dark-theme='dark'] - THEME VARIANTS (raw values)
+ *    • Font families, colors, spacing, typography, radius
+ *    • dark theme variants
+ *    • Foundation for all other tokens
+ *
+ * 3. @theme inline - SEMANTIC TOKENS (CSS custom properties only)
+ *    • Creates CSS variables but NO Tailwind utility classes
+ *    • Used in custom CSS: color: var(--color-primary)
+ *    • Maps primitives to contextual names for component styling
+ *    • Example: --color-primary: var(--primary) → use in CSS, not HTML
+ *
+ * 4. @theme - TAILWIND UTILITY TOKENS (generates utility classes)
+ *    • Creates both CSS variables AND Tailwind utility classes
+ *    • Used in HTML/JSX: className="font-montserrat leading-body"
+ *    • References primitives for design system consistency
+ *    • Example: --font-montserrat → generates .font-montserrat class
+ *
+ * 5. Generic Global Styles: html, body, h1-h6, p, span, a, li, button
+ *    • Font families, line-heights
+ *
+ * Usage:
+ * • @theme inline → Custom CSS: .my-component { color: var(--color-primary); }
+ * • @theme → HTML classes: <p className="font-montserrat text-body leading-body">
+ *
+ * Global styles apply fonts and line-heights to semantic HTML elements.
+ */
+
+/* Root Variables - All Primitives */
 :root {
+  /* Custom Fonts */
+  --jp-font-montserrat: "Montserrat", Arial, sans-serif;
+  --jp-font-mukta: "Mukta", Arial, sans-serif;
+
   /* Colors */
   --jp-color-black: #303331;
   --jp-color-white: #fafbfc;
@@ -82,6 +125,34 @@
   /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@theme {
+  /* Semantic font primitives - portable across projects */
+  /* --font-heading: var(--font-montserrat);
+  --font-body: var(--font-mukta);
+  --font-ui: var(--font-montserrat);
+  --font-accent: var(--font-mukta); */
+
+  /* Semantic line-height tokens referencing base tokens */
+  /* --line-height-heading: var(--line-height-tight);
+  --line-height-body: var(--line-height-base);
+  --line-height-relaxed: var(--line-height-comfortable); */
+
+  /* Semantic spacing tokens */
+  /* --spacing-component: var(--spacing-md);
+  --spacing-section: var(--spacing-xl);
+  --spacing-page: calc(var(--spacing-xl) * 2); */
+
+  /* Semantic font sizes */
+  /* --font-size-caption: var(--font-size-xs);
+  --font-size-body: var(--font-size-base);
+  --font-size-heading: var(--font-size-lg);
+  --font-size-display: var(--font-size-xl); */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

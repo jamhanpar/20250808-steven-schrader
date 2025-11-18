@@ -1,6 +1,5 @@
 import React from "react";
 
-// Type for a single testimonial
 export interface Testimonial {
   name: string;
   title?: string;
@@ -8,7 +7,6 @@ export interface Testimonial {
   avatarUrl?: string;
 }
 
-// Props for the group component
 export interface TestimonialGroupProps {
   testimonials: Testimonial[];
   heading?: string;

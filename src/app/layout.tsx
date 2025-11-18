@@ -7,6 +7,7 @@ import ContactModalProvider from "./components/contact-modal-provider/ContactMod
 import "./globals.css";
 import "./app.css";
 
+//--- Font Imports and Setup ---//
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,15 +24,16 @@ export const metadata: Metadata = {
     "Steven Schrader is a talented writer recognized for his engaging storytelling and insightful perspectives. With a passion for crafting compelling narratives, Steven brings creativity and depth to every project. His work spans various genres, reflecting a keen understanding of language and a dedication to connecting with readers.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={clsx(geistSans.variable, geistMono.variable, "antialiased")}
+        suppressHydrationWarning
       >
         <ContactModalProvider>
           <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
