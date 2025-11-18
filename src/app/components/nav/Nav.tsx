@@ -137,18 +137,13 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
               console.log("Hamburger clicked, current menuOpen:", menuOpen);
               setMenuOpen(!menuOpen);
             }}
-            className={clsx(
-              "text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none",
-              "hover:bg-white/10 active:scale-95",
-              "touch-action-manipulation", // Improve touch responsiveness
-              menuOpen && "bg-white/10"
-            )}
+            className="text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none hover:bg-white/10 active:scale-95 touch-action-manipulation"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             type="button"
           >
             <svg
-              className="h-6 w-6"
+              className="h-6 w-6 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
