@@ -30,10 +30,18 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        {/* Preconnect to Google Fonts CDN to eliminate connection overhead
+            when loading font files, reducing FOUT/FOIT and improving performance */}
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={clsx(geistSans.variable, geistMono.variable, "antialiased")}
-        suppressHydrationWarning
       >
         <ContactModalProvider>
           <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
