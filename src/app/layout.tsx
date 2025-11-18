@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import clsx from "clsx";
 import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
+import ContactModalProvider from "./components/contact-modal-provider/ContactModalProvider";
 import "./globals.css";
 import "./app.css";
 
@@ -32,18 +33,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
-          <Nav classname="bg-accent" />
-          <main
-            className={clsx(
-              "main-layout",
-              "flex-1 flex flex-col items-center w-full"
-            )}
-          >
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <ContactModalProvider>
+          <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
+            <Nav classname="bg-accent" />
+            <main
+              className={clsx(
+                "main-layout",
+                "flex-1 flex flex-col items-center w-full"
+              )}
+            >
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </ContactModalProvider>
       </body>
     </html>
   );

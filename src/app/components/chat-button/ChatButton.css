@@ -1,0 +1,171 @@
+/* Chat Button Container */
+.chat-button {
+  position: fixed;
+  bottom: var(--jp-spacing-lg);
+  right: var(--jp-spacing-lg);
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--jp-color-accent),
+    var(--jp-color-accent-hover)
+  );
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--jp-shadow-lg);
+  z-index: 999;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-button:focus {
+  outline: 2px solid var(--jp-color-accent);
+  outline-offset: 3px;
+}
+
+/* Pulse animation ring */
+.chat-button__pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: var(--jp-color-accent);
+  pointer-events: none;
+}
+
+/* Icon styles */
+.chat-button__icon {
+  z-index: 2;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* Tooltip */
+.chat-button__tooltip {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(48, 51, 49, 0.95);
+  color: var(--jp-color-black);
+  padding: var(--jp-spacing-sm) var(--jp-spacing-md);
+  border-radius: var(--jp-radius-md);
+  font-size: 0.875rem;
+  font-weight: var(--jp-font-weight-bold);
+  white-space: nowrap;
+  margin-right: var(--jp-spacing-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--jp-shadow-md);
+}
+
+.chat-button__tooltip::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: rgba(48, 51, 49, 0.95);
+}
+
+.chat-button:hover .chat-button__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(-8px);
+}
+
+/* Glass morphism effect */
+.chat-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chat-button:hover::before {
+  opacity: 1;
+}
+
+/* Light mode adjustments */
+@media (prefers-color-scheme: light) {
+  .chat-button__tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--jp-color-black);
+    border: 1px solid rgba(3, 2, 2, 0.1);
+  }
+
+  .chat-button__tooltip::after {
+    border-left-color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-button {
+    bottom: var(--jp-spacing-md);
+    right: var(--jp-spacing-md);
+    width: 56px;
+    height: 56px;
+  }
+
+  .chat-button__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .chat-button__tooltip {
+    font-size: 0.8rem;
+    padding: calc(var(--jp-spacing-sm) / 2) var(--jp-spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-button {
+    bottom: var(--jp-spacing-sm);
+    right: var(--jp-spacing-sm);
+  }
+
+  /* Hide tooltip on very small screens */
+  .chat-button__tooltip {
+    display: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .chat-button {
+    border: 2px solid var(--jp-color-black);
+  }
+
+  .chat-button__tooltip {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .chat-button__pulse {
+    animation: none;
+  }
+
+  .chat-button {
+    transition: transform 0.1s ease;
+  }
+}
