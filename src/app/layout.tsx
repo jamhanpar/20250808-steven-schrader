@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
 import ContactModalProvider from "./components/contact-modal-provider/ContactModalProvider";
+import { ModalUrlHandlerWrapper } from "./components/modal-url-handler/ModalUrlHandlerWrapper";
 import "./globals.css";
 import "./app.css";
 
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         suppressHydrationWarning
       >
         <ContactModalProvider>
+          <ModalUrlHandlerWrapper />
           <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
             <Nav classname="bg-accent" />
             <main

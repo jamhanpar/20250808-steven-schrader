@@ -6,7 +6,7 @@ import "./Loading.css";
 interface LoadingProps {
   size?: "sm" | "md" | "lg";
   className?: string;
-  text?: string;
+  text?: string | null;
   showText?: boolean;
 }
 
