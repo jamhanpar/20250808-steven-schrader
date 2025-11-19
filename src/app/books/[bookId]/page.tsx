@@ -1,7 +1,6 @@
 import { BooksGroup } from "../../components/books-group/BooksGroup";
 import { notFound } from "next/navigation";
 import booksData from "../../data/books-data.json";
-import { Suspense } from "react";
 
 interface BookPageProps {
   params: Promise<{ bookId: string }>;
@@ -20,9 +19,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Suspense fallback={<div>Loading...</div>}>
-        <BooksGroup initialBookId={bookId} />
-      </Suspense>
+      <BooksGroup initialBookId={bookId} />
     </div>
   );
 }

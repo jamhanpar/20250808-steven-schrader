@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import "./Mosaic.css";
+import clsx from "clsx";
 
 export interface MosaicItem {
   id: string;
@@ -84,7 +85,9 @@ const LoadingImage: React.FC<LoadingImageProps> = ({
           alt={alt}
           fill
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className={`mosaic-image ${isLoading ? "mosaic-image-loading" : ""}`}
+          className={clsx("mosaic-image", {
+            "mosaic-image-loading": isLoading,
+          })}
           onLoad={handleLoad}
           onError={handleError}
         />

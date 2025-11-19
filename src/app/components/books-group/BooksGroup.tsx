@@ -208,8 +208,8 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
         {/* FEATURED TESTIMONIAL */}
         {featured.testimonials.length > 0 && (
           <div className="w-full flex flex-col justify-between gap-4">
-            <h4 className="text-lg font-semibold mb-4 text-primary">
-              What Readers Say
+            <h4 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+              Praise for {featured.title}
             </h4>
             <div className="flex flex-col gap-6">
               {featured.testimonials.map((testimonial, index) => (
@@ -222,7 +222,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                       {testimonial.name}
                     </span>
                     {testimonial.title && (
-                      <span className="block text-sm text-secondary">
+                      <span className="block text-sm text-primary">
                         {testimonial.title}
                       </span>
                     )}
@@ -253,7 +253,14 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
               )}
             >
               {/* Book Image */}
-              <div className="relative aspect-[2/3] overflow-hidden rounded-xl w-1/3 lg:w-full lg:max-w-[150px]">
+              <div
+                className={clsx(
+                  "relative aspect-[2/3] overflow-hidden rounded-xl w-1/3 lg:w-full lg:max-w-[150px]",
+                  {
+                    "border border-white": book.id === "threads",
+                  }
+                )}
+              >
                 <Image
                   src={book.image || "/placeholder.svg"}
                   alt={book.title}

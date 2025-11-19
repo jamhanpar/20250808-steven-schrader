@@ -1,6 +1,5 @@
 import React from "react";
 
-// Type for a single testimonial
 export interface Testimonial {
   name: string;
   title?: string;
@@ -8,7 +7,6 @@ export interface Testimonial {
   avatarUrl?: string;
 }
 
-// Props for the group component
 export interface TestimonialGroupProps {
   testimonials: Testimonial[];
   heading?: string;
@@ -23,9 +21,9 @@ const TestimonialGroup: React.FC<TestimonialGroupProps> = ({
         {testimonials.map((t, idx) => (
           <div
             key={idx}
-            className="flex flex-col justify-between gap-4 bg-white p-6 rounded shadow hover:shadow-lg transition"
+            className="flex flex-col justify-between gap-4 bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
           >
-            <p className="text-gray-700 italic mb-4">“{t.message}”</p>
+            <p className="text-black italic mb-4">“{t.message}”</p>
             <div className="flex flex-col gap-2 text-center">
               <span className="font-semibold">{t.name}</span>
               {t.title && (

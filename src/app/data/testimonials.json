@@ -1,37 +1,40 @@
-[
-  {
-    "name": "Wesley Brown",
-    "title": "Author of Dance of the Infidels and Blue in Green",
-    "message": "The Other Steve Schrader, New and Selected Writing delivers a tour of, seemingly, unremarkable life experiences that include the inescapable blunders of youth to the more consequential misadventures of an adult world. In these deft, understated and interrelated vignettes, Steven Schrader invests each narrative with a kind of deadpan craftiness that makes us flinch just when we least expect to.",
-    "avatarUrl": ""
-  },
-  {
-    "name": "Stephen Dixon",
-    "title": "Former Professor of MFA Writing Program, Johns Hopkins and two-time nominee for the National Book Award in fiction",
-    "message": "Steven Schrader is the funniest writer I know. His fiction can also be quite touching, but his funny stories and vignettes and hilarious characters and situations are what really get to me. I've used his fiction in my classes when I was teaching and they have always cracked the students up. It's great to have the opportunity to laugh with your students and this invariably happened when I read a story of Schrader aloud.",
-    "avatarUrl": "/images/stephen-dixon.jpg"
-  },
-  {
-    "name": "Publisher's Weekly",
-    "message": "Schrader's laconic fables of the world gone mad are written in a casual shorthand style. His ordinary people do extraordinary things but never flick an eyelash while they do them.",
-    "avatarUrl": "/images/publishers-weekly.jpg"
-  },
-  {
-    "name": "Phyllis Raphael",
-    "title": "Author of 'Off The King's Road, Lost and Found in London'",
-    "message": "I can think of no other contemporary writer who portrays New York life with the honesty and humor of Steve Schrader... Drawing on the trove of his own experiences he magically translates the absurdities of life into prose. To read Schrader is sheer pleasure intermingles with a hint of sadness, a vivid journey with a writer of dead-on vision and a generous but unsentimental heart.",
-    "avatarUrl": "/images/phyllis-raphael.jpg"
-  },
-  {
-    "name": "Meredith Sue Willis",
-    "title": "Novelist, children's book author, and nonfiction writer on the writing process",
-    "message": "What Schrader offers is pages where every word lights up, every sentence has a mission, every scene explodes with an epiphany. In spite of its brevity, it feels as large and rich as New York City.",
-    "avatarUrl": ""
-  },
-  {
-    "name": "Allan Appel",
-    "title": "Author of The Rabbi of Casino Boulevard",
-    "message": "By my calculation, a Schrader story takes exactly the amount of time it takes to get through two subway stops, say, from 96th to 79th. It is as if another human being has rapidly told you everything he possibly could, over such a subway ride or cup of tea – a life so particular, so Manhattan, so Jewish, so garment district, so privileged and yet so impoverished and so full of longing, it belongs to all of us.",
-    "avatarUrl": ""
-  }
-]
+{
+  "title": "Praise for Steven Schrader's Work",
+  "testimonials": [
+    {
+      "name": "Wesley Brown",
+      "title": "Author of Dance of the Infidels and Blue in Green",
+      "message": "The Other Steve Schrader, New and Selected Writing delivers a tour of, seemingly, unremarkable life experiences that include the inescapable blunders of youth to the more consequential misadventures of an adult world. In these deft, understated and interrelated vignettes, Steven Schrader invests each narrative with a kind of deadpan craftiness that makes us flinch just when we least expect to.",
+      "avatarUrl": ""
+    },
+    {
+      "name": "Stephen Dixon",
+      "title": "Former Professor of MFA Writing Program, Johns Hopkins and two-time nominee for the National Book Award in fiction",
+      "message": "Steven Schrader is the funniest writer I know. His fiction can also be quite touching, but his funny stories and vignettes and hilarious characters and situations are what really get to me. I've used his fiction in my classes when I was teaching and they have always cracked the students up. It's great to have the opportunity to laugh with your students and this invariably happened when I read a story of Schrader aloud.",
+      "avatarUrl": "/images/stephen-dixon.jpg"
+    },
+    {
+      "name": "Publisher's Weekly",
+      "message": "Schrader's laconic fables of the world gone mad are written in a casual shorthand style. His ordinary people do extraordinary things but never flick an eyelash while they do them.",
+      "avatarUrl": "/images/publishers-weekly.jpg"
+    },
+    {
+      "name": "Phyllis Raphael",
+      "title": "Author of 'Off The King's Road, Lost and Found in London'",
+      "message": "I can think of no other contemporary writer who portrays New York life with the honesty and humor of Steve Schrader... Drawing on the trove of his own experiences he magically translates the absurdities of life into prose. To read Schrader is sheer pleasure intermingles with a hint of sadness, a vivid journey with a writer of dead-on vision and a generous but unsentimental heart.",
+      "avatarUrl": "/images/phyllis-raphael.jpg"
+    },
+    {
+      "name": "Meredith Sue Willis",
+      "title": "Novelist, children's book author, and nonfiction writer on the writing process",
+      "message": "What Schrader offers is pages where every word lights up, every sentence has a mission, every scene explodes with an epiphany. In spite of its brevity, it feels as large and rich as New York City.",
+      "avatarUrl": ""
+    },
+    {
+      "name": "Allan Appel",
+      "title": "Author of The Rabbi of Casino Boulevard",
+      "message": "By my calculation, a Schrader story takes exactly the amount of time it takes to get through two subway stops, say, from 96th to 79th. It is as if another human being has rapidly told you everything he possibly could, over such a subway ride or cup of tea – a life so particular, so Manhattan, so Jewish, so garment district, so privileged and yet so impoverished and so full of longing, it belongs to all of us.",
+      "avatarUrl": ""
+    }
+  ]
+}

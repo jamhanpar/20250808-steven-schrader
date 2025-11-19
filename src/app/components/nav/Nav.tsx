@@ -6,15 +6,43 @@ import "./Nav.css";
 import Link from "next/link";
 import navLinks from "../../data/nav.json";
 import { usePathname } from "next/navigation";
+import { useContactModal } from "../contact-modal-provider/ContactModalProvider";
 
 interface NavProps {
   classname?: string;
+}
+
+interface NavLink {
+  name: string;
+  href: string;
+  params?: string;
+  children?: {
+    id: string;
+    title: string;
+    href: string;
+    params?: string;
+  }[];
 }
 
 const Nav: React.FC<NavProps> = ({ classname }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   // const [dropdownOpen, setDropdownOpen] = useState<boolean | null>(null);
   const pathname = usePathname();
+  const { openContactModal } = useContactModal();
+
+  // Helper function to build URL with params
+  const buildUrl = (href: string, params?: string) => {
+    if (!params) return href;
+    return `${href}?${params}`;
+  };
+
+  const handleNavLinkClick = (link: NavLink, e: React.MouseEvent) => {
+    if (link.name === "Contact") {
+      e.preventDefault();
+      openContactModal();
+      if (menuOpen) setMenuOpen(false); // Close mobile menu if open
+    }
+  };
 
   return (
     <header
@@ -28,7 +56,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <span className="text-3xl font-bold text-primary hover:text-primary-hover drop-shadow-lg">
+            <span className="text-3xl font-bold text-primary transition-colors duration-300 drop-shadow-lg hover:text-primary-hover">
               Steven Schrader
             </span>
           </Link>
@@ -70,7 +98,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
                     {link.children.map((child: any) => (
                       <Link
                         key={child.name}
-                        href={child.href}
+                        href={buildUrl(child.href, child.params)}
                         className="block px-4 py-2 text-primary hover:bg-white hover:text-accent"
                       >
                         {child.name}
@@ -82,7 +110,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             ) : (
               <Link
                 key={link.name}
-                href={link.href}
+                href={buildUrl(link.href, link.params)}
                 className={clsx(
                   "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
                   pathname === link.href &&
@@ -99,7 +127,8 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.href}
+              href={buildUrl(link.href, link.params)}
+              onClick={(e) => handleNavLinkClick(link, e)}
               className={clsx(
                 "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
                 pathname === link.href && "text-accent border-b-2 border-accent"
@@ -112,12 +141,17 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+            onClick={() => {
+              console.log("Hamburger clicked, current menuOpen:", menuOpen);
+              setMenuOpen(!menuOpen);
+            }}
+            className="text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none hover:bg-white/10 active:scale-95 touch-action-manipulation"
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            type="button"
           >
             <svg
-              className="h-6 w-6"
+              className="h-6 w-6 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -127,7 +161,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   d="M6 18L18 6M6 6l12 12"
                 />
               ) : (
@@ -145,32 +179,43 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          {/* Blurred overlay */}
+          {/* Enhanced dark overlay - this will handle clicks */}
           <div
-            className="absolute inset-0 bg-[var(--jp-color-surface)]/60 backdrop-blur-md transition-all duration-300"
-            onClick={() => setMenuOpen(false)}
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+            onClick={() => {
+              console.log("Overlay clicked - closing menu");
+              setMenuOpen(false);
+            }}
           />
-          {/* Menu links */}
-          <div
-            className="relative flex flex-col items-center justify-center h-full w-full gap-8"
-            onClick={() => setMenuOpen(false)}
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={clsx(
-                  "text-accent text-2xl font-semibold px-6 py-4 rounded-md transition-colors text-center w-full z-10 hover:text-accent-hover",
-                  pathname === link.href && "nav-active-mobile"
-                )}
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent closing when clicking a link
-                  setMenuOpen(false);
-                }}
-              >
-                {link.name}
-              </Link>
-            ))}
+
+          {/* Menu links container - positioned absolutely to not interfere with overlay clicks */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-8 py-16 pointer-events-none">
+            <div className="flex flex-col gap-4 w-full max-w-sm pointer-events-auto">
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  <Link
+                    href={buildUrl(link.href, link.params)}
+                    className={clsx(
+                      "w-full text-white text-xl font-semibold px-6 py-4 rounded-xl transition-all duration-200 text-center min-h-[56px] flex items-center justify-center",
+                      "bg-white/10 backdrop-blur-sm border border-white/20",
+                      "hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95",
+                      "focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent",
+                      pathname === link.href &&
+                        "bg-[var(--jp-color-accent)]/90 border-[var(--jp-color-accent)] text-white ring-2 ring-[var(--jp-color-accent)]/50"
+                    )}
+                    onClick={(e) => {
+                      console.log("Menu item clicked:", link.name);
+                      handleNavLinkClick(link, e);
+                      if (link.name !== "Contact") {
+                        setMenuOpen(false);
+                      }
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

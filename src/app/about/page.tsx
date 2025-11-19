@@ -5,27 +5,25 @@ import mosaicDataJson from "app/data/about-mosaic-data.json";
 
 export default function BioPage() {
   return (
-    <>
-      <Section classname="flex flex-col-reverse gap-8 lg:flex-row">
-        {/* Left: Profile and creative image grid */}
-        <div className="flex flex-col gap-6 items-center lg:w-1/2 lg:pt-[60px]">
-          <MosaicGallery
-            items={mosaicDataJson.mosaicData as MosaicItem[]}
-            maxColumns={3}
-          />
-        </div>
-        {/* Right: Bio text */}
-        <div className="flex flex-col gap-4 items-center lg:w-1/2 lg:items-start">
-          <h1 className="text-4xl font-bold text-primary mb-2">
-            {authorData.pageTitle}
-          </h1>
-          {authorData.biography.map((paragraph, index) => (
-            <p key={index} className="text-lg text-primary leading-relaxed">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </Section>
-    </>
+    <Section classname="flex flex-col-reverse gap-8 lg:flex-row">
+      {/*--- Left: Profile and creative image grid ---*/}
+      <div className="flex flex-col gap-6 items-center lg:w-1/2 lg:pt-[60px]">
+        <MosaicGallery
+          items={mosaicDataJson.mosaicData as MosaicItem[]}
+          maxColumns={3}
+        />
+      </div>
+      {/*--- Right: Bio text ---*/}
+      <div className="flex flex-col gap-4 items-center lg:w-1/2 lg:items-start">
+        <h1 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+          {authorData.pageTitle}
+        </h1>
+        {authorData.biography.map((paragraph, index) => (
+          <p key={index} className="text-primary text-lg leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </Section>
   );
 }
