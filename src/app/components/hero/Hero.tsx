@@ -23,14 +23,23 @@ export default function Hero({
     <div className="w-full flex flex-col-reverse md:flex-row items-center justify-center text-center md:text-left overflow-hidden bg-background gap-10 md:gap-12">
       {/*--- Hero Text ---*/}
       <div className="flex flex-col items-center md:items-start justify-center z-10 gap-4 md:flex-2/6">
-        <h1 className="text-primary text-2xl md:text-3xl font-extrabold mb-6 tracking-tight">
+        <div>
           {title.map((line, index) => (
-            <React.Fragment key={index}>
+            <h1
+              className={clsx(
+                "text-primary text-2xl font-extrabold mb-6 tracking-tight md:leading-none",
+                {
+                  "md:text-4xl": index !== title.length - 1,
+                  "font-thin italic": index === title.length - 1,
+                }
+              )}
+              key={index}
+            >
               {line}
               {index < title.length - 1 && <br />}
-            </React.Fragment>
+            </h1>
           ))}
-        </h1>
+        </div>
         <div className="w-full text-base md:text-xl mb-10 text-balance text-primary">
           {subtitle.split("\n\n").map((paragraph, index) => (
             <p key={index} className={index > 0 ? "mt-4" : ""}>
