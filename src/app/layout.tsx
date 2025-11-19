@@ -42,6 +42,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body
         className={clsx(geistSans.variable, geistMono.variable, "antialiased")}
+        suppressHydrationWarning
       >
         <ContactModalProvider>
           <div className={clsx("root-layout", "flex flex-col min-h-screen")}>

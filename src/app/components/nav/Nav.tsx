@@ -48,7 +48,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <span className="text-3xl font-bold text-primary hover:text-primary-hover drop-shadow-lg">
+            <span className="text-3xl font-bold text-primary transition-colors duration-300 drop-shadow-lg hover:text-primary-hover">
               Steven Schrader
             </span>
           </Link>

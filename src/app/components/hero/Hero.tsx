@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
 import Image from "next/image";
-// import ImageWithSkeleton from "../image/ImageWithSkeleton";
 
 interface HeroProps {
   title: string[];
@@ -22,7 +21,7 @@ export default function Hero({
 }: HeroProps) {
   return (
     <div className="w-full flex flex-col-reverse md:flex-row items-center justify-center text-center md:text-left overflow-hidden bg-background gap-10 md:gap-12">
-      {/* Hero Text */}
+      {/*--- Hero Text ---*/}
       <div className="flex flex-col items-center md:items-start justify-center z-10 gap-4 md:flex-2/6">
         <h1 className="text-primary text-2xl md:text-3xl font-extrabold mb-6 tracking-tight">
           {title.map((line, index) => (
@@ -32,7 +31,7 @@ export default function Hero({
             </React.Fragment>
           ))}
         </h1>
-        <div className="w-full text-base md:text-xl mb-10 text-balance text-secondary">
+        <div className="w-full text-base md:text-xl mb-10 text-balance text-primary">
           {subtitle.split("\n\n").map((paragraph, index) => (
             <p key={index} className={index > 0 ? "mt-4" : ""}>
               {paragraph}
@@ -46,11 +45,11 @@ export default function Hero({
                 key={index}
                 href={cta.href}
                 className={clsx(
-                  "px-6 py-3 rounded-full font-semibold text-lg hover:ring-4 transition-all duration-300 ease-in-out md:text-xl focus:outline-none focus:ring-4",
+                  "px-6 py-3 rounded-full font-semibold text-lg hover:bg-accent-hover transition-all duration-300 ease-in-out md:text-xl focus:outline-none focus:ring-4",
                   {
                     "bg-accent text-primary hover:ring-accent/40 focus:ring-accent/40":
                       index === 0,
-                    "bg-primary text-background hover:text-background-hover hover:ring-primary/40 focus:ring-primary/40":
+                    "bg-primary text-background hover:bg-primary-hover hover:text-background-hover hover:ring-primary/40 focus:ring-primary/40":
                       index !== 0,
                   }
                 )}
