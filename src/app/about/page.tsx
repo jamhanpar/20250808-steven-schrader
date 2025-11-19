@@ -15,7 +15,7 @@ export default function BioPage() {
       </div>
       {/*--- Right: Bio text ---*/}
       <div className="flex flex-col gap-4 items-center lg:w-1/2 lg:items-start">
-        <h1 className="text-primary text-4xl font-bold mb-2">
+        <h1 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
           {authorData.pageTitle}
         </h1>
         {authorData.biography.map((paragraph, index) => (

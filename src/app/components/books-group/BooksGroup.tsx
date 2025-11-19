@@ -208,7 +208,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
         {/* FEATURED TESTIMONIAL */}
         {featured.testimonials.length > 0 && (
           <div className="w-full flex flex-col justify-between gap-4">
-            <h4 className="text-lg font-semibold mb-4 text-primary">
+            <h4 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
               Praise for {featured.title}
             </h4>
             <div className="flex flex-col gap-6">
@@ -222,7 +222,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                       {testimonial.name}
                     </span>
                     {testimonial.title && (
-                      <span className="block text-sm text-secondary">
+                      <span className="block text-sm text-primary">
                         {testimonial.title}
                       </span>
                     )}

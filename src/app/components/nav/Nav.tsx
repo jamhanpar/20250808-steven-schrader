@@ -15,10 +15,12 @@ interface NavProps {
 interface NavLink {
   name: string;
   href: string;
+  params?: string;
   children?: {
     id: string;
     title: string;
     href: string;
+    params?: string;
   }[];
 }
 
@@ -27,6 +29,12 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
   // const [dropdownOpen, setDropdownOpen] = useState<boolean | null>(null);
   const pathname = usePathname();
   const { openContactModal } = useContactModal();
+
+  // Helper function to build URL with params
+  const buildUrl = (href: string, params?: string) => {
+    if (!params) return href;
+    return `${href}?${params}`;
+  };
 
   const handleNavLinkClick = (link: NavLink, e: React.MouseEvent) => {
     if (link.name === "Contact") {
@@ -90,7 +98,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
                     {link.children.map((child: any) => (
                       <Link
                         key={child.name}
-                        href={child.href}
+                        href={buildUrl(child.href, child.params)}
                         className="block px-4 py-2 text-primary hover:bg-white hover:text-accent"
                       >
                         {child.name}
@@ -102,7 +110,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
             ) : (
               <Link
                 key={link.name}
-                href={link.href}
+                href={buildUrl(link.href, link.params)}
                 className={clsx(
                   "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
                   pathname === link.href &&
@@ -119,7 +127,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.href}
+              href={buildUrl(link.href, link.params)}
               onClick={(e) => handleNavLinkClick(link, e)}
               className={clsx(
                 "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
@@ -186,7 +194,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
               {navLinks.map((link) => (
                 <div key={link.name}>
                   <Link
-                    href={link.href}
+                    href={buildUrl(link.href, link.params)}
                     className={clsx(
                       "w-full text-white text-xl font-semibold px-6 py-4 rounded-xl transition-all duration-200 text-center min-h-[56px] flex items-center justify-center",
                       "bg-white/10 backdrop-blur-sm border border-white/20",
