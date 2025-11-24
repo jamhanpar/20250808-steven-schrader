@@ -172,11 +172,35 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     if (!emailResult.success) {
       console.error(`❌ Email sending failed: ${emailResult.error}`);
+      
+      // Provide more specific error messages based on the error type
+      let userMessage = "Failed to send message. Please try again later.";
+      const errorCode: ContactApiError['code'] = "EMAIL_FAILED";
+      
+      if (emailResult.error) {
+        if (emailResult.error.includes('authentication')) {
+          userMessage = "Email service configuration error. Please contact support.";
+          console.error('🚨 SMTP Authentication failed - check SMTP_USER and SMTP_PASS');
+        } else if (emailResult.error.includes('ENOTFOUND') || emailResult.error.includes('EHOSTUNREACH')) {
+          userMessage = "Email service temporarily unavailable. Please try again later.";
+          console.error('🚨 SMTP Host unreachable - check SMTP_HOST and network connectivity');
+        } else if (emailResult.error.includes('timeout')) {
+          userMessage = "Email service timeout. Please try again.";
+          console.error('🚨 SMTP Connection timeout - possible network issue');
+        } else if (emailResult.error.includes('Missing required environment variables')) {
+          userMessage = "Service configuration error. Please contact support.";
+          console.error('🚨 Missing environment variables for email service');
+        }
+      }
+      
       return createErrorResponse(
         {
           success: false,
-          message: "Failed to send message. Please try again later.",
-          code: "EMAIL_FAILED",
+          message: userMessage,
+          code: errorCode,
+          ...(process.env.NODE_ENV === 'development' && { 
+            details: { originalError: emailResult.error } 
+          })
         },
         500
       );
