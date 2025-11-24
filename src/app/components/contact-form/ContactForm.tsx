@@ -34,6 +34,7 @@ export default function ContactForm({
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -43,12 +44,19 @@ export default function ContactForm({
       ...prev,
       [name]: value,
     }));
+
+    // Clear error message when user starts typing again
+    if (submitStatus === "error" && errorMessage) {
+      setErrorMessage("");
+      setSubmitStatus("idle");
+    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setErrorMessage("");
 
     try {
       if (onSubmit) {
@@ -69,6 +77,7 @@ export default function ContactForm({
           message: "",
         });
         setSubmitStatus("idle");
+        setErrorMessage("");
         if (onClose) {
           onClose();
         }
@@ -76,6 +85,17 @@ export default function ContactForm({
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
+
+      // Extract error message from the error object
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else if (typeof error === "string") {
+        setErrorMessage(error);
+      } else {
+        setErrorMessage(
+          "Something went wrong. Please try again or email me directly."
+        );
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -166,6 +186,19 @@ export default function ContactForm({
           />
         </div>
 
+        {/* Error Message */}
+        {submitStatus === "error" && (
+          <motion.div
+            className="contact-form__error"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {errorMessage ||
+              "Something went wrong. Please try again or email me directly."}
+          </motion.div>
+        )}
+
         <div className="contact-form__actions">
           <button
             type="submit"
@@ -222,17 +255,6 @@ export default function ContactForm({
             transition={{ duration: 0.3 }}
           >
             Thank you! I&apos;ll get back to you as soon as possible.
-          </motion.div>
-        )}
-
-        {submitStatus === "error" && (
-          <motion.div
-            className="contact-form__error"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            Something went wrong. Please try again or email me directly.
           </motion.div>
         )}
       </form>

@@ -5,6 +5,11 @@ import { useModal } from "../../hooks/useModal";
 import Modal from "../modal/Modal";
 import ContactForm from "../contact-form/ContactForm";
 import ChatButton from "../chat-button/ChatButton";
+import type {
+  ContactFormData,
+  ContactApiResponse,
+  ContactApiError,
+} from "../../../types/api";
 
 interface ContactModalContextType {
   openContactModal: () => void;
@@ -31,16 +36,69 @@ export default function ContactModalProvider({
 }: ContactModalProviderProps) {
   const [modalState, modalControls] = useModal();
 
+  /**
+   * Submit contact form data to API
+   */
+  const submitContactForm = async (data: ContactFormData): Promise<void> => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        // Try to parse error response
+        let errorMessage = "Failed to send message. Please try again.";
+
+        try {
+          const errorData: ContactApiError = await response.json();
+          errorMessage = errorData.message || errorMessage;
+
+          // Handle specific error cases
+          if (errorData.code === "RATE_LIMIT_EXCEEDED") {
+            errorMessage = errorData.message;
+          } else if (errorData.code === "VALIDATION_ERROR") {
+            errorMessage = "Please check your form data and try again.";
+          }
+        } catch {
+          // If we can't parse the error, use a generic message
+          if (response.status === 429) {
+            errorMessage =
+              "Too many requests. Please wait a moment and try again.";
+          } else if (response.status === 500) {
+            errorMessage = "Server error. Please try again later.";
+          }
+        }
+
+        throw new Error(errorMessage);
+      }
+
+      // Success - parse response
+      const result: ContactApiResponse = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || "Unknown error occurred");
+      }
+
+      // Success case - the ContactForm component will handle success UI
+      console.log("✅ Contact form submitted successfully");
+    } catch (error) {
+      console.error("❌ Contact form submission error:", error);
+
+      // Re-throw the error so ContactForm can handle it
+      throw error;
+    }
+  };
+
   const openContactModal = () => {
     modalControls.openModal({
       title: "",
       content: (
         <ContactForm
-          onSubmit={async (data) => {
-            console.log("Contact form submitted:", data);
-            // Here you would typically send the data to your backend
-            // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-          }}
+          onSubmit={submitContactForm}
           onClose={modalControls.closeModal}
         />
       ),
