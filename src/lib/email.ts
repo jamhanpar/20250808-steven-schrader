@@ -76,10 +76,10 @@ class EmailService {
         greetingTimeout: 30000,
         socketTimeout: 60000,
         // Security options for production
-        requireTLS: process.env.NODE_ENV === 'production',
+        requireTLS: process.env.NODE_ENV === "production",
         tls: {
-          rejectUnauthorized: process.env.NODE_ENV === 'production'
-        }
+          rejectUnauthorized: process.env.NODE_ENV === "production",
+        },
       };
 
       // Create transporter
@@ -87,28 +87,44 @@ class EmailService {
 
       // Verify connection (with timeout for production)
       const verifyPromise = this.transporter.verify();
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('SMTP verification timeout')), 15000)
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("SMTP verification timeout")), 15000)
       );
 
       await Promise.race([verifyPromise, timeoutPromise]);
       this.isConfigured = true;
 
-      console.log(`📧 Email service initialized successfully (${process.env.NODE_ENV || 'development'} mode)`);
+      console.log(
+        `📧 Email service initialized successfully (${
+          process.env.NODE_ENV || "development"
+        } mode)`
+      );
     } catch (error) {
       console.error("❌ Email service initialization failed:", error);
-      
+
       // In production, provide more specific error messages
-      if (process.env.NODE_ENV === 'production') {
-        if (error instanceof Error && error.message.includes('ENOTFOUND')) {
-          throw new Error('SMTP server not reachable. Check your SMTP_HOST setting.');
-        } else if (error instanceof Error && error.message.includes('authentication')) {
-          throw new Error('SMTP authentication failed. Check your SMTP_USER and SMTP_PASS.');
-        } else if (error instanceof Error && error.message.includes('timeout')) {
-          throw new Error('SMTP connection timeout. This may be a network issue on Render.com.');
+      if (process.env.NODE_ENV === "production") {
+        if (error instanceof Error && error.message.includes("ENOTFOUND")) {
+          throw new Error(
+            "SMTP server not reachable. Check your SMTP_HOST setting."
+          );
+        } else if (
+          error instanceof Error &&
+          error.message.includes("authentication")
+        ) {
+          throw new Error(
+            "SMTP authentication failed. Check your SMTP_USER and SMTP_PASS."
+          );
+        } else if (
+          error instanceof Error &&
+          error.message.includes("timeout")
+        ) {
+          throw new Error(
+            "SMTP connection timeout. This may be a network issue on Render.com."
+          );
         }
       }
-      
+
       throw new Error("Failed to initialize email service");
     }
   }
@@ -332,7 +348,7 @@ Quick Actions:
 
       const mailOptions = {
         from: {
-          name: "Contact Form",
+          name: `${formData.name} (via Contact Form)`,
           address: process.env.SMTP_USER!,
         },
         to: {
@@ -343,13 +359,14 @@ Quick Actions:
           name: formData.name,
           address: formData.email,
         },
-        subject: `📧 Contact Form: ${formData.subject}`,
+        subject: `📧 ${formData.subject} (from ${formData.name} <${formData.email}>)`,
         html: this.generateEmailTemplate(templateData),
         text: this.generatePlainTextEmail(templateData),
         headers: {
           "X-Contact-Form": "true",
           "X-Contact-IP": metadata.userIP || "unknown",
           "X-Contact-Time": new Date().toISOString(),
+          "X-Original-Sender": formData.email,
         },
       };
 
