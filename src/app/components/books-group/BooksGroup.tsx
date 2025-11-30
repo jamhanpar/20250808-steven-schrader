@@ -21,6 +21,10 @@ export interface Book {
     title?: string;
     message: string;
   }[];
+  purchaseLinks?: {
+    label: string;
+    url: string;
+  }[];
   relatedArticles?: {
     title?: string;
     articles: {
@@ -241,6 +245,39 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
 
       {/* SIDEBAR */}
       <div className="flex flex-col gap-8 lg:flex-2/5">
+        {/* Purchase Links Section */}
+        {featured.purchaseLinks && featured.purchaseLinks.length > 0 && (
+          <div className="flex flex-col gap-4">
+            <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+              Get your copy
+            </h3>
+            {featured.purchaseLinks.length === 1 ? (
+              <a
+                href={featured.purchaseLinks[0].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-br from-accent to-accent-hover text-white font-semibold rounded-lg transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-0.5 w-full text-center"
+              >
+                {featured.purchaseLinks[0].label}
+              </a>
+            ) : (
+              <div className="flex flex-col gap-2">
+                {featured.purchaseLinks.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-br from-accent to-accent-hover text-white font-medium rounded-lg transition-all duration-300 ease-in-out hover:shadow-md hover:-translate-y-0.5 w-full text-center text-sm"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        
         <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
           {sidebar.title}
         </h3>
