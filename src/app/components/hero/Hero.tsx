@@ -62,6 +62,8 @@ export default function Hero({
                       index !== 0,
                   }
                 )}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {cta.label}
               </a>

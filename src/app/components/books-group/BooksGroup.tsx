@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import booksData from "../../data/books-data.json";
 import { clsx } from "clsx";
+import { formatDate } from "../../../lib/date-utils";
 
 // Type for a single book
 export interface Book {
@@ -158,17 +159,20 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
             onClick={handlePreviewClick}
             className="group flex flex-col gap-6 w-full text-left hover:cursor-pointer"
           >
-            {featured.date && (
-              <p className="bg-secondary rounded-lg absolute top-[-10px] py-1 px-2 mb-4 text-xs font-medium tracking-widest text-black/90 transition-colors duration-300 group-hover:text-black">
-                {featured.date}
-              </p>
-            )}
-            <h2 className="mb-4 text-3xl font-bold leading-tight text-black sm:text-2xl text-balance transition-colors duration-300 lg:text-3xl group-hover:text-gray-700">
-              {featured.title}
-            </h2>
-            <p className="mb-6 text-sm leading-relaxed text-black/80 sm:text-base lg:text-lg line-clamp-4 transition-colors duration-300 lg:line-clamp-5 group-hover:text-black/60">
-              {featured.summary[0]}
-            </p>
+            <div>
+              {featured.date && (
+                <p className="bg-secondary rounded-lg py-1 mb-4 text-xs font-medium tracking-widest text-black/90 transition-colors duration-300 group-hover:text-black">
+                  {formatDate(featured.date)}
+                </p>
+              )}
+              <h2 className="mb-4 text-3xl font-bold leading-tight text-black sm:text-2xl text-balance transition-colors duration-300 lg:text-3xl group-hover:text-gray-700">
+                {featured.title}
+              </h2>
+            </div>
+            <p
+              className="mb-6 text-sm leading-relaxed text-black/80 sm:text-base lg:text-lg line-clamp-4 transition-colors duration-300 lg:line-clamp-5 group-hover:text-black/60"
+              dangerouslySetInnerHTML={{ __html: featured.summary[0] }}
+            />
           </button>
           {/* </Link> */}
         </div>
@@ -195,9 +199,10 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
             <div className="text-sm font-medium text-gray-700 md:top-8 md:left-8 lg:top-12 lg:left-12">
               {featured.summary.map((item, index) => (
                 <div key={index} className="mb-2 last:mb-0">
-                  <p className="text-base leading-relaxed text-white lg:text-lg transition-colors duration-300 group-hover:text-black/60">
-                    {item}
-                  </p>
+                  <p
+                    className="text-base leading-relaxed text-white lg:text-lg transition-colors duration-300 group-hover:text-black/60"
+                    dangerouslySetInnerHTML={{ __html: item }}
+                  />
                   {index !== featured.summary.length - 1 && <br />}
                 </div>
               ))}
@@ -272,7 +277,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
               {/* Book Simple Details */}
               <div className="flex-1 flex flex-col justify-center gap-2">
                 <p className="mb-2 text-xs font-medium tracking-widest text-primary">
-                  {book.date}
+                  {formatDate(book.date)}
                 </p>
                 <h4 className="text-xl font-bold leading-tight text-primary sm:text-xl lg:text-2xl text-balance">
                   {book.title}
@@ -297,6 +302,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                     <a
                       href={article.link}
                       className="text-primary hover:underline"
+                      target="_blank"
                     >
                       {article.title}
                     </a>
