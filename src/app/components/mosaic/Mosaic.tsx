@@ -10,14 +10,14 @@ export interface MosaicItem {
   id: string;
   url: string;
   type: "image" | "video";
-  title: string;
+  title?: string | null;
   description: string;
   tags: string[];
   alt: string;
   aspectRatio?: string;
   featured?: boolean;
-  captureDate?: string;
-  location?: string;
+  captureDate?: string | null;
+  location?: string | null;
 }
 
 export interface MosaicGalleryProps {
@@ -247,7 +247,7 @@ const Modal: React.FC<{
         {showInfo && (
           <div className="mosaic-modal-info-overlay">
             <div className="mosaic-modal-info">
-              <h3 className="mosaic-modal-title">{item.title}</h3>
+              {item.title && <h3 className="mosaic-modal-title">{item.title}</h3>}
               <p className="mosaic-modal-description">{item.description}</p>
               {item.location && (
                 <p className="mosaic-modal-location">
@@ -326,7 +326,7 @@ const LazyImage: React.FC<{
       }}
       tabIndex={0}
       role="button"
-      aria-label={`View ${item.title} in full screen`}
+      aria-label={`View ${item.title || item.description} in full screen`}
     >
       {isInView ? (
         <LoadingImage src={item.url} alt={item.alt || item.description} />
@@ -354,7 +354,7 @@ const MosaicGallery: React.FC<MosaicGalleryProps> = ({
 
   const handleItemClick = useCallback(
     (item: MosaicItem, index: number) => {
-      console.log("Modal opening for item:", item.title, "URL:", item.url);
+      console.log("Modal opening for item:", item.title || item.description, "URL:", item.url);
       setSelectedItem(item);
       setIsModalOpen(true);
       onItemClick?.(item, index);
@@ -404,7 +404,7 @@ const MosaicGallery: React.FC<MosaicGalleryProps> = ({
                 }}
                 tabIndex={0}
                 role="button"
-                aria-label={`View ${item.title} in full screen`}
+                aria-label={`View ${item.title || item.description} in full screen`}
               >
                 <LoadingImage
                   src={item.url}

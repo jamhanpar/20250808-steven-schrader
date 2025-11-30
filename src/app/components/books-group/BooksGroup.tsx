@@ -277,7 +277,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
             )}
           </div>
         )}
-        
+
         <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
           {sidebar.title}
         </h3>
