@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import "./Mosaic.css";
 import clsx from "clsx";
+import { formatDate } from "../../../lib/date-utils";
 
 export interface MosaicItem {
   id: string;
@@ -216,7 +217,7 @@ const Modal: React.FC<{
           ) : (
             <Image
               src={item.url}
-              alt={item.alt}
+              alt={item.alt || item.description}
               width={1200}
               height={800}
               className={`mosaic-modal-img ${
@@ -264,7 +265,7 @@ const Modal: React.FC<{
               )}
               {item.captureDate && (
                 <p className="mosaic-modal-date">
-                  {new Date(item.captureDate).toLocaleDateString()}
+                  {formatDate(item.captureDate)}
                 </p>
               )}
               {item.tags.length > 0 && (
@@ -328,7 +329,7 @@ const LazyImage: React.FC<{
       aria-label={`View ${item.title} in full screen`}
     >
       {isInView ? (
-        <LoadingImage src={item.url} alt={item.alt} />
+        <LoadingImage src={item.url} alt={item.alt || item.description} />
       ) : (
         <div className="mosaic-skeleton">
           <div className="mosaic-skeleton-pulse"></div>
@@ -405,7 +406,10 @@ const MosaicGallery: React.FC<MosaicGalleryProps> = ({
                 role="button"
                 aria-label={`View ${item.title} in full screen`}
               >
-                <LoadingImage src={item.url} alt={item.alt} />
+                <LoadingImage
+                  src={item.url}
+                  alt={item.alt || item.description}
+                />
               </div>
             );
 

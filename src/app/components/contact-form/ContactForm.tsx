@@ -26,7 +26,7 @@ export default function ContactForm({
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
-    subject: "",
+    subject: "Message from my website",
     message: "",
   });
 
@@ -73,7 +73,7 @@ export default function ContactForm({
         setFormData({
           name: "",
           email: "",
-          subject: "",
+          subject: "Message from my website",
           message: "",
         });
         setSubmitStatus("idle");
@@ -112,10 +112,9 @@ export default function ContactForm({
       transition={{ duration: 0.3 }}
     >
       <div className="contact-form__header">
-        <h2 className="contact-form__title">Get in Touch</h2>
+        <h2 className="contact-form__title">Get in touch</h2>
         <p className="contact-form__description">
-          Have a question or want to work together? I&apos;d love to hear from
-          you.
+          Have a question? I&apos;d love to hear from you.
         </p>
       </div>
 
@@ -148,13 +147,13 @@ export default function ContactForm({
               value={formData.email}
               onChange={handleInputChange}
               className="contact-form__input"
-              placeholder="your@email.com"
+              placeholder=""
               required
             />
           </div>
         </div>
 
-        <div className="contact-form__field">
+        {/* <div className="contact-form__field">
           <label htmlFor="subject" className="contact-form__label">
             Subject
           </label>
@@ -168,7 +167,7 @@ export default function ContactForm({
             placeholder="What's this about?"
             required
           />
-        </div>
+        </div> */}
 
         <div className="contact-form__field">
           <label htmlFor="message" className="contact-form__label">
@@ -180,7 +179,7 @@ export default function ContactForm({
             value={formData.message}
             onChange={handleInputChange}
             className="contact-form__textarea"
-            placeholder="Tell me more about your project or question..."
+            placeholder="Tell me more..."
             rows={6}
             required
           />

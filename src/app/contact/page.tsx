@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Loading from "../components/loading/Loading";
-import { redirectToContact } from "../lib/redirect-utils";
+import { redirectToContact } from "../../lib/redirect-utils";
 
 export default function ContactPage() {
   useEffect(() => {

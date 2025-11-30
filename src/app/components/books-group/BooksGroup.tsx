@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import booksData from "../../data/books-data.json";
 import { clsx } from "clsx";
+import { formatDate } from "../../../lib/date-utils";
 
 // Type for a single book
 export interface Book {
@@ -19,6 +20,10 @@ export interface Book {
     name: string;
     title?: string;
     message: string;
+  }[];
+  purchaseLinks?: {
+    label: string;
+    url: string;
   }[];
   relatedArticles?: {
     title?: string;
@@ -158,17 +163,20 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
             onClick={handlePreviewClick}
             className="group flex flex-col gap-6 w-full text-left hover:cursor-pointer"
           >
-            {featured.date && (
-              <p className="bg-secondary rounded-lg absolute top-[-10px] py-1 px-2 mb-4 text-xs font-medium tracking-widest text-black/90 transition-colors duration-300 group-hover:text-black">
-                {featured.date}
-              </p>
-            )}
-            <h2 className="mb-4 text-3xl font-bold leading-tight text-black sm:text-2xl text-balance transition-colors duration-300 lg:text-3xl group-hover:text-gray-700">
-              {featured.title}
-            </h2>
-            <p className="mb-6 text-sm leading-relaxed text-black/80 sm:text-base lg:text-lg line-clamp-4 transition-colors duration-300 lg:line-clamp-5 group-hover:text-black/60">
-              {featured.summary[0]}
-            </p>
+            <div>
+              {featured.date && (
+                <p className="bg-secondary rounded-lg py-1 mb-4 text-xs font-medium tracking-widest text-black/90 transition-colors duration-300 group-hover:text-black">
+                  {formatDate(featured.date)}
+                </p>
+              )}
+              <h2 className="mb-4 text-3xl font-bold leading-tight text-black sm:text-2xl text-balance transition-colors duration-300 lg:text-3xl group-hover:text-gray-700">
+                {featured.title}
+              </h2>
+            </div>
+            <p
+              className="mb-6 text-sm leading-relaxed text-black/80 sm:text-base lg:text-lg line-clamp-4 transition-colors duration-300 lg:line-clamp-5 group-hover:text-black/60"
+              dangerouslySetInnerHTML={{ __html: featured.summary[0] }}
+            />
           </button>
           {/* </Link> */}
         </div>
@@ -195,9 +203,10 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
             <div className="text-sm font-medium text-gray-700 md:top-8 md:left-8 lg:top-12 lg:left-12">
               {featured.summary.map((item, index) => (
                 <div key={index} className="mb-2 last:mb-0">
-                  <p className="text-base leading-relaxed text-white lg:text-lg transition-colors duration-300 group-hover:text-black/60">
-                    {item}
-                  </p>
+                  <p
+                    className="text-base leading-relaxed text-white lg:text-lg transition-colors duration-300 group-hover:text-black/60"
+                    dangerouslySetInnerHTML={{ __html: item }}
+                  />
                   {index !== featured.summary.length - 1 && <br />}
                 </div>
               ))}
@@ -236,6 +245,39 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
 
       {/* SIDEBAR */}
       <div className="flex flex-col gap-8 lg:flex-2/5">
+        {/* Purchase Links Section */}
+        {featured.purchaseLinks && featured.purchaseLinks.length > 0 && (
+          <div className="flex flex-col gap-4">
+            <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+              Get your copy
+            </h3>
+            {featured.purchaseLinks.length === 1 ? (
+              <a
+                href={featured.purchaseLinks[0].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-br from-accent to-accent-hover text-white font-semibold rounded-lg transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-0.5 w-full text-center"
+              >
+                {featured.purchaseLinks[0].label}
+              </a>
+            ) : (
+              <div className="flex flex-col gap-2">
+                {featured.purchaseLinks.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-br from-accent to-accent-hover text-white font-medium rounded-lg transition-all duration-300 ease-in-out hover:shadow-md hover:-translate-y-0.5 w-full text-center text-sm"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        
         <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
           {sidebar.title}
         </h3>
@@ -272,7 +314,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
               {/* Book Simple Details */}
               <div className="flex-1 flex flex-col justify-center gap-2">
                 <p className="mb-2 text-xs font-medium tracking-widest text-primary">
-                  {book.date}
+                  {formatDate(book.date)}
                 </p>
                 <h4 className="text-xl font-bold leading-tight text-primary sm:text-xl lg:text-2xl text-balance">
                   {book.title}
@@ -297,6 +339,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                     <a
                       href={article.link}
                       className="text-primary hover:underline"
+                      target="_blank"
                     >
                       {article.title}
                     </a>
