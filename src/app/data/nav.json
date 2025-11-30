@@ -1,0 +1,24 @@
+[
+  { "name": "Home", "href": "/" },
+  { "name": "About", "href": "/about" },
+  {
+    "name": "Books",
+    "href": "/books",
+    "params": "preview=true",
+    "children": [
+      {
+        "id": "the-other-steve-schrader",
+        "title": "The Other Steve Schrader",
+        "href": "/books/the-other-steve-schrader",
+        "params": "preview=false"
+      },
+      {
+        "id": "threads",
+        "title": "Threads",
+        "href": "/books/threads",
+        "params": "preview=false"
+      }
+    ]
+  },
+  { "name": "Contact", "href": "/contact" }
+]

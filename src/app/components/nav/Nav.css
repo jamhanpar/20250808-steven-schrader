@@ -1,0 +1,105 @@
+.nav {
+  grid-area: nav;
+}
+
+/* Mobile menu animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Ensure backdrop blur is properly supported */
+.mobile-menu-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Improved mobile menu items */
+.mobile-menu-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-menu-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.mobile-menu-item:hover::before {
+  left: 100%;
+}
+
+/* Enhanced focus states for accessibility */
+.mobile-menu-item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* Active menu item enhancement */
+.nav-active-mobile {
+  position: relative;
+}
+
+.nav-active-mobile::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+/* Smooth mobile menu transitions */
+.mobile-menu-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Better touch targets */
+@media (max-width: 768px) {
+  .mobile-menu-item {
+    min-height: 56px; /* Ensure 56px minimum touch target */
+    touch-action: manipulation; /* Optimize for touch */
+  }
+}

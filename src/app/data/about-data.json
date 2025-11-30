@@ -1,0 +1,43 @@
+{
+  "pageTitle": "About Me",
+  "author": {
+    "name": "Steven Schrader",
+    "birthYear": 1935,
+    "birthPlace": "New York",
+    "currentResidence": "New York City's Upper West Side",
+    "spouse": {
+      "name": "Lucy Kostelanetz",
+      "profession": "documentary filmmaker"
+    }
+  },
+  "career": {
+    "currentRoles": ["writer", "publisher"],
+    "previousJobs": ["dress salesman", "social worker", "teacher"],
+    "organizations": [
+      {
+        "name": "Teachers & Writers Collaborative",
+        "role": "director",
+        "duration": "a decade",
+        "currentRole": "co-chair",
+        "mission": "bringing poets, novelists, and other artists into classrooms to inspire the next generation of storytellers"
+      },
+      {
+        "name": "Cane Hill Press",
+        "role": "publisher",
+        "focus": "championed original voices in contemporary fiction"
+      }
+    ]
+  },
+  "publications": {
+    "appearances": [
+      "numerous anthologies",
+      "National Public Radio's Selected Shorts"
+    ],
+    "settingFocus": "New York City's Upper West Side",
+    "literaryStyle": "The city's streets, rhythms, and characters are more than a backdrop in his fiction — they are a living part of it"
+  },
+  "biography": [
+    "Steven Schrader was born in New York in 1935. He has been a dress salesman, a social worker, and a junior high and high school teacher. For ten years he was director of Teachers & Writers Collaborative, an arts organization that sends writers and other artists into schools. He has served on their board for over 50 years. He was the publisher of Cane Hill Press, which specialized in fiction. His work has been included in several anthologies and broadcast on National Public Radio’s Selected Shorts. He lives on New York’s Upper West Side, a strong presence in his stories, with his wife, Lucy Kostelanetz, a documentary film maker. As he approaches his nineties, Steve has this to say:",
+    "I still have a writer’s outlook—I like to recollect the past, notice details around me, and try to make meaning of it all. I feel I’m a more thoughtful and sympathetic person in old age than when I was younger and took things for granted. Now I experience an intensity about everyday things that wasn’t there before--this might be the last time I do something or see someone. I don’t think I have anything new to say about old age and I’m not trying to--I don’t think people read autobiographical writing like mine to learn facts about a subject. They read to learn how another person gets through life, struggles to get by and searches for meaning and understanding along the way. I’m still searching, which I take as hope that I’ll write some more."
+  ]
+}

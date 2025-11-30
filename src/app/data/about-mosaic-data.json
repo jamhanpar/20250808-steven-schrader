@@ -1,0 +1,71 @@
+{
+  "mosaicData": [
+    {
+      "id": "1",
+      "url": "/images/steve-schrader-author.jpg",
+      "type": "image",
+      "title": null,
+      "description": "Steve Schrader at the West Side Community Garden, April 2023 (Photo by Pamela Casey)",
+      "tags": [],
+      "alt": "Steve Schrader at the West Side Community Garden",
+      "captureDate": null,
+      "location": null,
+      "featured": true
+    },
+    {
+      "id": "2",
+      "url": "/images/threads-history-1-childhood.jpeg",
+      "type": "image",
+      "title": null,
+      "description": "Steve at 3 years old in Washington Heights.",
+      "tags": [],
+      "alt": "Steve Schrader at 3 years old in Washington Heights",
+      "captureDate": null,
+      "location": null
+    },
+    {
+      "id": "3",
+      "url": "/images/threads-history-2-boyhood.jpeg",
+      "type": "image",
+      "title": null,
+      "description": "Steve at 9 years old in Miami Beach, Florida.",
+      "tags": [],
+      "alt": "Steve Schrader at 9 years old in Miami Beach, Florida",
+      "captureDate": null,
+      "location": null
+    },
+    {
+      "id": "4",
+      "url": "/images/threads-history-3-group.jpg",
+      "type": "image",
+      "title": null,
+      "description": "Steve's senior class photo at Franklin School in 1952.",
+      "tags": [],
+      "alt": "Steve Schrader's senior class photo at Franklin School in 1952",
+      "captureDate": null,
+      "location": null
+    },
+    {
+      "id": "5",
+      "url": "/images/threads-history-4-guitar.jpeg",
+      "type": "image",
+      "title": null,
+      "description": "Steve on Block Island in the early 1960s.",
+      "tags": [],
+      "alt": "Steve Schrader on Block Island in the early 1960s",
+      "captureDate": null,
+      "location": null
+    },
+    {
+      "id": "6",
+      "url": "/images/threads-history-5-working.jpeg",
+      "type": "image",
+      "title": null,
+      "description": "Steve as a company clerk in 1959, in Fort Dix, New Jersey.",
+      "tags": [],
+      "alt": "Steve Schrader as a company clerk in 1959 at Fort Dix, New Jersey",
+      "captureDate": null,
+      "location": null
+    }
+  ]
+}
