@@ -10,12 +10,10 @@ interface PurchaseLink {
 
 interface PurchaseButtonProps {
   purchaseLinks: PurchaseLink[];
-  bookTitle: string;
 }
 
 export function PurchaseButton({
   purchaseLinks,
-  bookTitle,
 }: PurchaseButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
