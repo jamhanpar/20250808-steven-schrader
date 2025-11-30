@@ -10,13 +10,19 @@
       "summary": [
         "Publishing the book just two weeks after his ninetieth birthday, Schrader–a lifelong New Yorker– offers a vivid memoir in vignettes that captures both the arc of his own life and the portrait of a shifting 20th century New York. Schrader’s autobiographical sketches reveal a writer processing the evolution and moments of resonance in his life, and the changing of a city and world around him.",
         "Schrader traces his journey from a daydreaming child of the 1930s Upper West Side to the anxieties and desires of a postwar adolescence, to the tensions of a creative impulse and a drive to prove himself to his father and brother amid the family clothing business. Schrader crafts an intimate portrait of his tangled relationship with the creative impulse, the making of money, and his family.",
-        "Drawing upon moments across his nine decades of experience, Schrader quilts a memoir of resonance, tenderness, and wit. The Other Steve Schrader is a remarkable testament to memory and connection."
+        "Drawing upon moments across his nine decades of experience, Schrader quilts a memoir of resonance, tenderness, and wit. <em>The Other Steve Schrader</em> is a remarkable testament to memory and connection."
       ],
       "testimonials": [
         {
           "message": "Schrader delivers a tour of, seemingly, unremarkable life experiences that include the inescapable blunders of youth to the more consequential misadventures of an adult world. In these deft, understated and interrelated vignettes, Steven Schrader invests each narrative with a kind of deadpan craftiness that makes us flinch just when we least expect to.",
           "name": "Wesley Brown",
-          "title": "Author of Dance of the Infidels and Blue in Green"
+          "title": "author of Dance of the Infidels and Blue in Green"
+        }
+      ],
+      "purchaseLinks": [
+        {
+          "label": "Amazon",
+          "url": "https://www.amazon.com/dp/[ASIN]"
         }
       ]
     },
@@ -51,6 +57,12 @@
           "message": "Schrader has a wonderful clean, dry and jaundiced humor that colors the most embarrassing and painful moments and also moments of compassion and love. Repeatedly and hilariously Schrader seems to be at once in the center of the world and yet somehow missing the main thing: he goes to a club in the Village for the early show and doesn't stay for the second show when young Bob Dylan gets up and jams with Ramblin' Jack Elliot. Malcolm X waves at the narrator, but he doesn't respond. His dad shows him a picture of a movie star-sexy woman and offers a double date, but our narrator turns him down… what Schrader offers is pages where every word lights up, every sentence has a mission, every scene explodes with an epiphany. In spite of its brevity, it feels as large and rich as New York City.",
           "name": "Meredith Sue Willis",
           "title": "Books For Readers"
+        }
+      ],
+      "purchaseLinks": [
+        {
+          "label": "Amazon",
+          "url": "https://www.amazon.com/dp/[ASIN]"
         }
       ],
       "relatedArticles": {
@@ -107,6 +119,12 @@
           "name": "Isaiah Sheffer",
           "title": "Director, NPR's Selected Shorts"
         }
+      ],
+      "purchaseLinks": [
+        {
+          "label": "Amazon",
+          "url": "https://www.amazon.com/dp/[ASIN]"
+        }
       ]
     },
     {
@@ -130,6 +148,12 @@
           "name": "Kliatt",
           "title": ""
         }
+      ],
+      "purchaseLinks": [
+        {
+          "label": "Amazon",
+          "url": "https://www.amazon.com/dp/[ASIN]"
+        }
       ]
     },
     {
@@ -148,6 +172,12 @@
           "message": "Truth, a felt, wry, warm, lonely truth left as the painful imprint of living, marks these stories. There are few pains greater than the love for a child lost, or half-lost through the split-up of a marriage, and Schrader has caught it all with the candor, wit … and a little rage to keep the colors pure.",
           "name": "J.R. Humphreys",
           "title": "founder of the writing program at Columbia University"
+        }
+      ],
+      "purchaseLinks": [
+        {
+          "label": "Amazon",
+          "url": "https://www.amazon.com/dp/[ASIN]"
         }
       ]
     },
@@ -171,6 +201,12 @@
           "message": "Steven Schrader's stories have the quality of folktales. They strip away elaboration and detail to reveal with wit and humor the oddness and the wonder of everyday life.",
           "name": "David Black",
           "title": "author of Like Father and Murder at the Met"
+        }
+      ],
+      "purchaseLinks": [
+        {
+          "label": "Amazon",
+          "url": "https://www.amazon.com/dp/[ASIN]"
         }
       ]
     }
