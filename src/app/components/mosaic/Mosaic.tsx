@@ -105,14 +105,14 @@ const Modal: React.FC<{
   const modalRef = useRef<HTMLDivElement>(null);
   const [imageLoading, setImageLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
+  const [showInfo, setShowInfo] = useState(true);
 
   useEffect(() => {
     // Reset loading states when modal opens
     if (isOpen) {
       setImageLoading(true);
       setImageError(false);
-      setShowInfo(false);
+      setShowInfo(true);
     }
   }, [isOpen, item.url]);
 
@@ -247,7 +247,9 @@ const Modal: React.FC<{
         {showInfo && (
           <div className="mosaic-modal-info-overlay">
             <div className="mosaic-modal-info">
-              {item.title && <h3 className="mosaic-modal-title">{item.title}</h3>}
+              {item.title && (
+                <h3 className="mosaic-modal-title">{item.title}</h3>
+              )}
               <p className="mosaic-modal-description">{item.description}</p>
               {item.location && (
                 <p className="mosaic-modal-location">
@@ -354,7 +356,12 @@ const MosaicGallery: React.FC<MosaicGalleryProps> = ({
 
   const handleItemClick = useCallback(
     (item: MosaicItem, index: number) => {
-      console.log("Modal opening for item:", item.title || item.description, "URL:", item.url);
+      console.log(
+        "Modal opening for item:",
+        item.title || item.description,
+        "URL:",
+        item.url
+      );
       setSelectedItem(item);
       setIsModalOpen(true);
       onItemClick?.(item, index);
@@ -404,7 +411,9 @@ const MosaicGallery: React.FC<MosaicGalleryProps> = ({
                 }}
                 tabIndex={0}
                 role="button"
-                aria-label={`View ${item.title || item.description} in full screen`}
+                aria-label={`View ${
+                  item.title || item.description
+                } in full screen`}
               >
                 <LoadingImage
                   src={item.url}
