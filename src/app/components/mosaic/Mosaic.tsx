@@ -218,18 +218,18 @@ const Modal: React.FC<{
             <Image
               src={item.url}
               alt={item.alt || item.description}
-              width={1200}
+              width={800}
               height={800}
               className={`mosaic-modal-img ${
                 imageLoading ? "opacity-0" : "opacity-100"
               }`}
-              style={{
-                objectFit: "contain",
-                maxWidth: "100%",
-                maxHeight: "100%",
-                width: "auto",
-                height: "auto",
-              }}
+              // style={{
+              //   objectFit: "contain",
+              //   maxWidth: "100%",
+              //   maxHeight: "100%",
+              //   width: "100%",
+              //   height: "100%",
+              // }}
               onLoad={() => {
                 console.log("Image loaded successfully:", item.url);
                 setImageLoading(false);
