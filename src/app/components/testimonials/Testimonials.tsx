@@ -23,11 +23,17 @@ const TestimonialGroup: React.FC<TestimonialGroupProps> = ({
             key={idx}
             className="flex flex-col justify-between gap-4 bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
           >
-            <p className="text-black italic mb-4">“{t.message}”</p>
+            <p
+              className="text-black italic mb-4"
+              dangerouslySetInnerHTML={{ __html: `"${t.message}"` }}
+            />
             <div className="flex flex-col gap-2 text-center">
               <span className="font-semibold">{t.name}</span>
               {t.title && (
-                <span className="block text-sm text-gray-500">{t.title}</span>
+                <span
+                  className="block text-sm text-gray-500"
+                  dangerouslySetInnerHTML={{ __html: t.title }}
+                />
               )}
             </div>
           </div>

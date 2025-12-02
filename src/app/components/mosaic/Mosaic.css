@@ -228,6 +228,7 @@
 .mosaic-modal-content {
   position: relative;
   background: var(--mosaic-modal-bg);
+  border: 1px transparent;
   border-radius: var(--mosaic-border-radius);
   max-width: 90vw;
   max-height: 90vh;
