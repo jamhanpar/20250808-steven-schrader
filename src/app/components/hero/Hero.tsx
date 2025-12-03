@@ -5,7 +5,7 @@ import Image from "next/image";
 interface HeroProps {
   title: string[];
   subtitle: string;
-  ctas: { label: string; href: string }[];
+  ctas: { label: string; url: string }[];
   ctaText: string;
   ctaHref: string;
   imageSrc?: string;
@@ -48,34 +48,20 @@ export default function Hero({
           ))}
         </div>
         {ctas.length > 0 && (
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 pl-1">
+          <div className="w-full flex flex-col md:flex-row md:justify-start gap-3 pl-1">
             {ctas.map((cta, index) => (
               <a
                 key={index}
-                href={cta.href}
-                className={clsx(
-                  "px-6 py-3 rounded-full font-semibold text-lg hover:bg-accent-hover transition-all duration-300 ease-in-out md:text-xl focus:outline-none focus:ring-4",
-                  {
-                    "bg-accent text-primary hover:ring-accent/40 focus:ring-accent/40":
-                      index === 0,
-                    "bg-primary text-background hover:bg-primary-hover hover:text-background-hover hover:ring-primary/40 focus:ring-primary/40":
-                      index !== 0,
-                  }
-                )}
+                href={cta.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-full md:w-fit text-center text-base flex items-center justify-center p-4 md:px-6 md:py-2 bg-gradient-to-br from-accent to-accent-hover text-white font-medium rounded-full transition-all duration-300 ease-in-out hover:shadow-md hover:-translate-y-0.5 hover:cursor-pointer"
               >
                 {cta.label}
               </a>
             ))}
           </div>
         )}
-        {/* <a
-          href={ctaHref}
-          className="ml-5 px-10 py-4 rounded-full font-semibold text-lg bg-accent text-primary hover:text-primary-hover hover:ring-4 hover:ring-accent/40 transition-all duration-300 ease-in-out md:text-xl focus:outline-none focus:ring-4 focus:ring-accent/40"
-        >
-          {ctaText}
-        </a> */}
       </div>
 
       {/* Hero Image with framer-motion animation */}
@@ -90,11 +76,6 @@ export default function Hero({
             quality={100}
             priority
           />
-          {/* <ImageWithSkeleton
-            classname="rounded object-cover border-4 border-primary/80 transition-transform duration-500"
-            src={imageSrc}
-            alt={imageAlt || "please provide an alt text for this image"}
-          /> */}
         </div>
       )}
     </div>

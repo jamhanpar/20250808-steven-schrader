@@ -147,7 +147,7 @@ export default function ContactForm({
               value={formData.email}
               onChange={handleInputChange}
               className="contact-form__input"
-              placeholder=""
+              placeholder="Your email address"
               required
             />
           </div>

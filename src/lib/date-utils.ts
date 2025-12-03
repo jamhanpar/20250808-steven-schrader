@@ -96,3 +96,31 @@ export function formatDateCustom(
     return dateString;
   }
 }
+
+/**
+ * Extract year from date string
+ * @param dateString - ISO date string (YYYY-MM-DD) or Date object
+ * @returns Year as string
+ */
+export function getYearFromDate(dateString: string | null): string {
+  if (!dateString) return "";
+
+  try {
+    // For ISO dates like "2025-12-01", we can extract year directly
+    const parts = dateString.split("-");
+    if (parts.length === 3) {
+      return parts[0];
+    } else {
+      // Fallback for non-ISO date strings
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        console.warn(`Invalid date string: ${dateString}`);
+        return dateString;
+      }
+      return date.getFullYear().toString();
+    }
+  } catch (error) {
+    console.warn(`Error extracting year from date: ${dateString}`, error);
+    return dateString;
+  }
+}
