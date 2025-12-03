@@ -3,7 +3,7 @@
   { "name": "About", "href": "/about" },
   {
     "name": "Books",
-    "href": "/books",
+    "href": "/books/the-other-steve-schrader",
     "params": "preview=true",
     "children": [
       {
