@@ -140,8 +140,7 @@ class EmailService {
    * Generate HTML email template
    */
   private generateEmailTemplate(data: EmailTemplateData): string {
-    const { name, email, subject, message, timestamp, userIP, userAgent } =
-      data;
+    const { name, email, message, timestamp } = data;
 
     return `
 <!DOCTYPE html>
@@ -221,7 +220,7 @@ class EmailService {
 <body>
   <div class="container">
     <div class="header">
-      <h1 style="margin: 0; font-size: 24px;">💌 New Contact Form Submission</h1>
+      <h1 style="margin: 0; font-size: 24px;">New Contact Form Submission</h1>
       <p style="margin: 10px 0 0 0; opacity: 0.9;">Received: ${timestamp}</p>
     </div>
 
@@ -238,26 +237,9 @@ class EmailService {
     </div>
 
     <div class="field">
-      <div class="label">📝 Subject</div>
-      <div class="value">${subject}</div>
-    </div>
-
-    <div class="field">
       <div class="label">💬 Message</div>
       <div class="message">${message}</div>
     </div>
-
-    ${
-      userIP || userAgent
-        ? `
-    <div class="security-info">
-      <strong>🔒 Security Information:</strong><br>
-      ${userIP ? `IP Address: ${userIP}<br>` : ""}
-      ${userAgent ? `User Agent: ${userAgent}` : ""}
-    </div>
-    `
-        : ""
-    }
 
     <div class="footer">
       <p>
@@ -348,18 +330,18 @@ Quick Actions:
 
       const mailOptions = {
         from: {
-          name: `${formData.name} (via Contact Form)`,
-          address: process.env.SMTP_USER!,
+          name: formData.name,
+          address: formData.email,
         },
         to: {
-          name: process.env.RECIPIENT_NAME || "James Park",
+          name: process.env.RECIPIENT_NAME,
           address: process.env.RECIPIENT_EMAIL!,
         },
         replyTo: {
           name: formData.name,
           address: formData.email,
         },
-        subject: `📧 ${formData.subject} (from ${formData.name} <${formData.email}>)`,
+        subject: `📧 ${formData.subject} via Contact Form`,
         html: this.generateEmailTemplate(templateData),
         text: this.generatePlainTextEmail(templateData),
         headers: {
