@@ -334,7 +334,7 @@ Quick Actions:
           address: formData.email,
         },
         to: {
-          name: process.env.RECIPIENT_NAME,
+          name: process.env.RECIPIENT_NAME || "Steven Schrader",
           address: process.env.RECIPIENT_EMAIL!,
         },
         replyTo: {
