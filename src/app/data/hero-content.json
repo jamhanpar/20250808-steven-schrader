@@ -9,11 +9,15 @@
     "ctas": [
       {
         "label": "Amazon",
-        "href": "https://www.amazon.com/dp/B0CGLG3X1Y"
+        "url": "https://www.amazon.com/Other-Steve-Schrader-Selected-Writing/dp/B0FR7G3FDR"
+      },
+      {
+        "label": "Bookshop",
+        "url": "https://bookshop.org/p/books/the-other-steve-schrader-new-and-selected-writing-steven-schrader/b6aa967976bb17d4?ean=9798991337731&next=t"
       },
       {
         "label": "Hanging Loose Press",
-        "href": "https://www.hangingloosepress.com/book/the-other-steve-schrader-new-and-selected-writing/"
+        "url": "https://www.hangingloosepress.com/book/the-other-steve-schrader-new-and-selected-writing/"
       }
     ],
     "ctaText": "Amazon",

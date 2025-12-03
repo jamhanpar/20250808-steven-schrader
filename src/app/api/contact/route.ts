@@ -8,7 +8,8 @@ import {
   checkContactFormRateLimit,
   getClientIP,
 } from "../../../lib/rate-limiter";
-import { sendContactFormEmail } from "../../../lib/email-mailgun";
+// import { sendContactFormEmail } from "../../../lib/email-mailgun";
+import { sendContactFormEmail } from "../../../lib/email-smtp";
 import type { ContactApiResponse, ContactApiError } from "../../../types/api";
 
 /**

@@ -144,7 +144,7 @@ export function validateContactForm(data: unknown): ValidationResult {
   const errors: ValidationError[] = [];
 
   // Check required fields exist
-  const requiredFields = ["name", "email", "subject", "message"];
+  const requiredFields = ["name", "email", "message"];
   for (const field of requiredFields) {
     if (!(field in formData)) {
       errors.push({ field, message: `${field} is required` });
@@ -160,12 +160,16 @@ export function validateContactForm(data: unknown): ValidationResult {
   const fields = {
     name: String(formData.name || ""),
     email: String(formData.email || ""),
-    subject: String(formData.subject || ""),
+    subject: String(formData.subject || "").trim() || "Message from my website", // Use default if empty
     message: String(formData.message || ""),
   };
 
-  Object.entries(fields).forEach(([field, value]) => {
-    const fieldErrors = validateField(field, value);
+  // Only validate required fields and message (skip subject validation since it has a default)
+  ["name", "email", "message"].forEach((field) => {
+    const fieldErrors = validateField(
+      field,
+      fields[field as keyof typeof fields]
+    );
     errors.push(...fieldErrors);
   });
 
