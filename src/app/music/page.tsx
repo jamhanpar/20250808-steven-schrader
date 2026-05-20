@@ -26,9 +26,20 @@ export default function MusicPage() {
             />
           </div>
           <div className="text-center">
-            <p className="text-primary font-semibold">{musicData.artist}</p>
-            <p className="text-primary/60 text-sm mt-1">
+            <p className="text-primary font-semibold text-base leading-snug">
+              {musicData.albumTitle}
+            </p>
+            <p className="text-primary/70 text-sm mt-1">
+              Album by {musicData.artist}
+            </p>
+            <p className="text-primary/60 text-sm mt-0.5">
               {musicData.tracks.length} tracks
+            </p>
+            <p className="text-primary/50 text-xs mt-3">
+              Produced by {musicData.producer}
+            </p>
+            <p className="text-primary/50 text-xs mt-0.5">
+              {musicData.copyright}
             </p>
           </div>
         </div>
