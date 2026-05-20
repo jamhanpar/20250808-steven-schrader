@@ -1,0 +1,114 @@
+{
+  "artist": "Steve Schrader & Friends",
+  "coverImage": "/images/album/steve-schrader-and-friends-album-cover.jpg",
+  "tracks": [
+    {
+      "id": "i-like-everything-you-do",
+      "title": "I Like Everything You Do",
+      "src": "/audio/i-like-everything-you-do.mp3",
+      "duration": 128
+    },
+    {
+      "id": "more-pretty-girls",
+      "title": "More Pretty Girls",
+      "src": "/audio/more-pretty-girls.mp3",
+      "duration": 117
+    },
+    {
+      "id": "you-can-never-find-a-lover-like-me",
+      "title": "You Can Never Find A Lover Like Me",
+      "src": "/audio/you-can-never-find-a-lover-like-me.mp3",
+      "duration": 164
+    },
+    {
+      "id": "rich-man-poor-man",
+      "title": "Rich Man Poor Man",
+      "src": "/audio/rich-man-poor-man.mp3",
+      "duration": 122
+    },
+    {
+      "id": "six-string-guitar",
+      "title": "Six String Guitar",
+      "src": "/audio/six-string-guitar.mp3",
+      "duration": 112
+    },
+    {
+      "id": "sailing-round-in-circles",
+      "title": "Sailing Round In Circles",
+      "src": "/audio/sailing-round-in-circles.mp3",
+      "duration": 106
+    },
+    {
+      "id": "my-baby-dont-let-me-ramble",
+      "title": "My Baby Dont Let Me Ramble",
+      "src": "/audio/my-baby-dont-let-me-ramble.mp3",
+      "duration": 189
+    },
+    {
+      "id": "love-alone",
+      "title": "Love Love Alone",
+      "src": "/audio/love-alone.mp3",
+      "duration": 158
+    },
+    {
+      "id": "i-love-my-baby",
+      "title": "I Love My Baby",
+      "src": "/audio/i-love-my-baby.mp3",
+      "duration": 131
+    },
+    {
+      "id": "we-dont-need-no-radio",
+      "title": "We Don't Need No Radio",
+      "src": "/audio/we-dont-need-no-radio.mp3",
+      "duration": 214
+    },
+    {
+      "id": "sitting-on-the-back-porch",
+      "title": "Sitting On The Back Porch",
+      "src": "/audio/sitting-on-the-back-porch.mp3",
+      "duration": 193
+    },
+    {
+      "id": "cinematography-blues",
+      "title": "Cinematography Blues",
+      "src": "/audio/cinematography-blues.mp3",
+      "duration": 171
+    },
+    {
+      "id": "hey-hey-ho-ho",
+      "title": "Hey Hey Ho Ho",
+      "src": "/audio/hey-hey-ho-ho.mp3",
+      "duration": 144
+    },
+    {
+      "id": "i-miss-eliza",
+      "title": "I Miss Eliza",
+      "src": "/audio/i-miss-eliza.mp3",
+      "duration": 123
+    },
+    {
+      "id": "mrs-mcgrath",
+      "title": "Mrs McGrath",
+      "src": "/audio/mrs-mcgrath.mp3",
+      "duration": 210
+    },
+    {
+      "id": "steve-schrader-friends",
+      "title": "Serves Em Fine",
+      "src": "/audio/steve-schrader-friends.mp3",
+      "duration": 116
+    },
+    {
+      "id": "the-stars-shine-down-on-the-mountain",
+      "title": "The Stars Shine Down On The Mountain",
+      "src": "/audio/the-stars-shine-down-on-the-mountain.mp3",
+      "duration": 144
+    },
+    {
+      "id": "im-going-away",
+      "title": "I'm Going Away",
+      "src": "/audio/im-going-away.mp3",
+      "duration": 88
+    }
+  ]
+}

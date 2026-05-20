@@ -5,6 +5,8 @@ import Nav from "./components/nav/Nav";
 import Footer from "./components/footer/Footer";
 import ContactModalProvider from "./components/contact-modal-provider/ContactModalProvider";
 import { ModalUrlHandlerWrapper } from "./components/modal-url-handler/ModalUrlHandlerWrapper";
+import { AudioPlayerProvider } from "./components/audio-player-provider/AudioPlayerProvider";
+import AudioPlayer from "./components/audio-player/AudioPlayer";
 import "./globals.css";
 import "./app.css";
 
@@ -45,21 +47,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={clsx(geistSans.variable, geistMono.variable, "antialiased")}
         suppressHydrationWarning
       >
-        <ContactModalProvider>
-          <ModalUrlHandlerWrapper />
-          <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
-            <Nav classname="bg-accent" />
-            <main
-              className={clsx(
-                "main-layout",
-                "flex-1 flex flex-col items-center w-full"
-              )}
-            >
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </ContactModalProvider>
+        <AudioPlayerProvider>
+          <ContactModalProvider>
+            <ModalUrlHandlerWrapper />
+            <div className={clsx("root-layout", "flex flex-col min-h-screen")}>
+              <Nav classname="bg-accent" />
+              <main
+                className={clsx(
+                  "main-layout",
+                  "flex-1 flex flex-col items-center w-full"
+                )}
+              >
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </ContactModalProvider>
+          <AudioPlayer />
+        </AudioPlayerProvider>
       </body>
     </html>
   );

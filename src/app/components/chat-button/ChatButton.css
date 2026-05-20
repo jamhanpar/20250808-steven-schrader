@@ -1,8 +1,6 @@
-/* Chat Button Container */
+/* Chat Button — position/bottom/right/z-index are owned by the
+   motion.div wrapper in ChatButton.tsx */
 .chat-button {
-  position: fixed;
-  bottom: var(--jp-spacing-lg);
-  right: var(--jp-spacing-lg);
   width: 64px;
   height: 64px;
   border: none;
@@ -18,7 +16,6 @@
   align-items: center;
   justify-content: center;
   box-shadow: var(--jp-shadow-lg);
-  z-index: 999;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -119,8 +116,6 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .chat-button {
-    bottom: var(--jp-spacing-md);
-    right: var(--jp-spacing-md);
     width: 56px;
     height: 56px;
   }
@@ -137,11 +132,6 @@
 }
 
 @media (max-width: 480px) {
-  .chat-button {
-    bottom: var(--jp-spacing-sm);
-    right: var(--jp-spacing-sm);
-  }
-
   /* Hide tooltip on very small screens */
   .chat-button__tooltip {
     display: none;

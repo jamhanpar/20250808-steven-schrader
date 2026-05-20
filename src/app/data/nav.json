@@ -20,5 +20,6 @@
       }
     ]
   },
+  { "name": "Music", "href": "/music" },
   { "name": "Contact", "href": "/contact" }
 ]
