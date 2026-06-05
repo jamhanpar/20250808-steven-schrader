@@ -1,0 +1,134 @@
+/* ── Track list ────────────────────────────────────────────────────── */
+.music-track-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── Row ── */
+.music-track-list__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 8px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s ease, padding-left 0.15s ease;
+}
+
+.music-track-list__item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.music-track-list__item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 14px;
+}
+
+.music-track-list__item--active .music-track-list__title {
+  color: var(--jp-color-orange);
+}
+
+.music-track-list__item--active .music-track-list__number {
+  color: var(--jp-color-orange);
+}
+
+/* ── Index column (number or animated bars) ── */
+.music-track-list__index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.music-track-list__number {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Now-playing animated bars ── */
+.music-track-list__playing-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.music-track-list__playing-bars span {
+  display: block;
+  width: 3px;
+  border-radius: 1px;
+  background: var(--jp-color-orange);
+  animation: playing-bar 0.9s ease-in-out infinite;
+}
+
+.music-track-list__playing-bars span:nth-child(1) {
+  animation-duration: 0.8s;
+  animation-delay: 0s;
+}
+.music-track-list__playing-bars span:nth-child(2) {
+  animation-duration: 1.1s;
+  animation-delay: 0.15s;
+}
+.music-track-list__playing-bars span:nth-child(3) {
+  animation-duration: 0.9s;
+  animation-delay: 0.3s;
+}
+
+@keyframes playing-bar {
+  0%,
+  100% {
+    height: 3px;
+  }
+  50% {
+    height: 14px;
+  }
+}
+
+/* ── Title ── */
+.music-track-list__title {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--jp-color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+
+.music-track-list__item:hover:not(.music-track-list__item--active)
+  .music-track-list__title {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Duration ── */
+.music-track-list__duration {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* Pause indicator when track is active but paused */
+.music-track-list__paused-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--jp-color-orange);
+  font-size: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-track-list__playing-bars span {
+    animation: none;
+    height: 8px;
+  }
+}

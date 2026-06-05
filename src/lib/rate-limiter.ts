@@ -5,6 +5,10 @@ import type {
   RateLimitStore,
 } from "../types/rate-limit";
 
+// Must match RATE_LIMITS.*.windowMs — entries are only useful within the rate
+// limit window, so we clean them up as soon as they age out of it.
+const ENTRY_MAX_AGE_MS = parseInt(process.env.RATE_LIMIT_WINDOW_MS || "3600000"); // 1 hour
+
 class RateLimiter {
   private store: RateLimitStore;
   private readonly cleanupInterval = 5 * 60 * 1000; // 5 minutes
@@ -80,26 +84,27 @@ class RateLimiter {
    */
   private cleanup(): void {
     const now = Date.now();
-    const maxAge = 24 * 60 * 60 * 1000; // 24 hours
+    const windowStart = now - ENTRY_MAX_AGE_MS;
 
     // Clean IP entries
     for (const [key, entry] of this.store.byIP) {
-      if (now - entry.firstRequest > maxAge && entry.requests.length === 0) {
+      entry.requests = entry.requests.filter((ts) => ts > windowStart);
+      if (entry.requests.length === 0) {
         this.store.byIP.delete(key);
       }
     }
 
     // Clean email entries
     for (const [key, entry] of this.store.byEmail) {
-      if (now - entry.firstRequest > maxAge && entry.requests.length === 0) {
+      entry.requests = entry.requests.filter((ts) => ts > windowStart);
+      if (entry.requests.length === 0) {
         this.store.byEmail.delete(key);
       }
     }
 
     // Clean global entries
-    const windowStart = now - maxAge;
     this.store.global.requests = this.store.global.requests.filter(
-      (timestamp) => timestamp > windowStart
+      (ts) => ts > windowStart
     );
 
     this.store.lastCleanup = now;
