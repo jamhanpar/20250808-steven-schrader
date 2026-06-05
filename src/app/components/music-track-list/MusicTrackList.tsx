@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useAudioPlayer } from "../audio-player-provider/AudioPlayerProvider";
 import { formatDuration } from "../../../lib/audio-utils";
 import type { Track } from "../../../types/audio";
@@ -11,8 +12,15 @@ interface MusicTrackListProps {
 }
 
 export function MusicTrackList({ tracks, coverImage }: MusicTrackListProps) {
-  const { currentIndex, isPlaying, isPlayerVisible, loadPlaylist, toggle } =
+  const { currentIndex, isPlaying, isPlayerVisible, loadPlaylist, toggle, dismiss } =
     useAudioPlayer();
+
+  // Stop playback when the user navigates away from the music page
+  useEffect(() => {
+    return () => {
+      dismiss();
+    };
+  }, [dismiss]);
 
   const handleTrackClick = (index: number) => {
     if (isPlayerVisible && currentIndex === index) {
