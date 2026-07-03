@@ -69,7 +69,7 @@ export function MusicVideos({
         {/* Right column: description at top, companion video pushed to bottom */}
         <div className="flex flex-col h-full justify-between gap-4">
           <div>
-            <p className="text-primary/70 text-base leading-relaxed w-1/2">
+            <p className="text-primary/70 text-base leading-relaxed md:w-1/2">
               {description}
             </p>
             {/* <a
@@ -82,7 +82,10 @@ export function MusicVideos({
 
           <div className="flex flex-col mt-10 lg:mt-0 gap-4">
             <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-              <YouTubeEmbed videoId={companion.youtubeId} title={companion.title} />
+              <YouTubeEmbed
+                videoId={companion.youtubeId}
+                title={companion.title}
+              />
             </div>
             <VideoCaption title={companion.title} caption={companion.caption} />
           </div>
