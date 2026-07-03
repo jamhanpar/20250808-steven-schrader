@@ -24,6 +24,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
+    "baseline-browser-mapping": "^2.10.41",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
     "music-metadata": "^11.12.3",
