@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Steven Schrader",
   description:
-    "Steven Schrader is a talented writer recognized for his engaging storytelling and insightful perspectives. With a passion for crafting compelling narratives, Steven brings creativity and depth to every project. His work spans various genres, reflecting a keen understanding of language and a dedication to connecting with readers.",
+    "Steven Schrader was born in New York in 1935 and lives on the Upper West Side. A writer of short autobiographical stories, he was previously the director of Teachers & Writers Collaborative, an arts organization that sends writers into public schools.",
 };
 
 interface RootLayoutProps {
