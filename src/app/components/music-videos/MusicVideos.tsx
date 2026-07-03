@@ -1,3 +1,5 @@
+import { YouTubeEmbed } from "../youtube-embed/YouTubeEmbed";
+
 interface Video {
   id: string;
   youtubeId: string;
@@ -27,7 +29,6 @@ function VideoCaption({ title, caption }: { title: string; caption: string }) {
 export function MusicVideos({
   headline,
   description,
-  watchMoreUrl,
   videos,
 }: MusicVideosProps) {
   if (!videos || videos.length < 2) return null;
@@ -60,14 +61,7 @@ export function MusicVideos({
           </h2>
 
           <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-            <iframe
-              src={`https://www.youtube.com/embed/${featured.youtubeId}`}
-              title={featured.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-              className="w-full h-full"
-            />
+            <YouTubeEmbed videoId={featured.youtubeId} title={featured.title} />
           </div>
           <VideoCaption title={featured.title} caption={featured.caption} />
         </div>
@@ -88,14 +82,7 @@ export function MusicVideos({
 
           <div className="flex flex-col mt-10 lg:mt-0 gap-4">
             <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                src={`https://www.youtube.com/embed/${companion.youtubeId}`}
-                title={companion.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full"
-              />
+              <YouTubeEmbed videoId={companion.youtubeId} title={companion.title} />
             </div>
             <VideoCaption title={companion.title} caption={companion.caption} />
           </div>
