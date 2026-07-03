@@ -2,7 +2,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Section from "app/components/section/Section";
 import { MusicTrackList } from "../components/music-track-list/MusicTrackList";
+import { MusicVideos } from "../components/music-videos/MusicVideos";
 import musicData from "app/data/music-data.json";
+import videoData from "app/data/video-data.json";
 import type { Track } from "../../types/audio";
 
 export const metadata: Metadata = {
@@ -55,6 +57,13 @@ export default function MusicPage() {
           />
         </div>
       </div>
+
+      <MusicVideos
+        headline={videoData.headline}
+        description={videoData.description}
+        watchMoreUrl={videoData.watchMoreUrl}
+        videos={videoData.videos}
+      />
     </Section>
   );
 }

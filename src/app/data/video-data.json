@@ -1,0 +1,19 @@
+{
+  "headline": "Live sessions.\nMusic in motion.",
+  "description": "A collection of live performances, sessions, and behind-the-scenes moments.",
+  "watchMoreUrl": "#",
+  "videos": [
+    {
+      "id": "featured-video",
+      "youtubeId": "UXaiEkLZ6ws",
+      "title": "The Olson Pond",
+      "caption": "Steve Schrader & Friends"
+    },
+    {
+      "id": "companion-video",
+      "youtubeId": "DbLUXR_Ioa0",
+      "title": "Songs That Say I Love You",
+      "caption": "Steve Schrader & Friends"
+    }
+  ]
+}
