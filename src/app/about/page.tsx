@@ -35,6 +35,19 @@ export default function BioPage() {
           </a>{" "}
           by Margie Smith Holt (January 5, 2026)
         </p>
+        <p className="text-primary text-lg leading-relaxed">
+          Listen to Steve reading a story from his book,{" "}
+          <em>Threads</em>, on the{" "}
+          <a
+            href="https://www.youtube.com/watch?v=GrzN1Mu80bI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            Fordham University Radio station
+          </a>{" "}
+          (2012)
+        </p>
       </div>
     </Section>
   );
