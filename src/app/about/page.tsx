@@ -23,6 +23,18 @@ export default function BioPage() {
             {paragraph}
           </p>
         ))}
+        <p className="text-primary text-lg leading-relaxed">
+          Read an interview with Steven Schrader in the{" "}
+          <a
+            href="https://www.westsiderag.com/2026/01/05/a-lifetime-on-the-uws-a-90-year-old-authors-new-memoir-reflects-on-a-changing-new-york"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:opacity-70"
+          >
+            West Side Rag
+          </a>{" "}
+          by Margie Smith Holt (January 5, 2026)
+        </p>
       </div>
     </Section>
   );
