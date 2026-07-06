@@ -70,7 +70,11 @@ export function MusicVideos({
         <div className="flex flex-col h-full justify-between gap-4">
           <div>
             <p className="text-primary/70 text-base leading-relaxed md:w-1/2">
-              {description}
+              {description.split("\n").map((line, i) => (
+                <span key={i} className="block">
+                  {line}
+                </span>
+              ))}
             </p>
             {/* <a
               href={watchMoreUrl}
