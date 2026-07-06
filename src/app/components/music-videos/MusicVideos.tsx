@@ -105,7 +105,11 @@ export function MusicVideos({
 
         {/* Description */}
         <p className="text-primary/70 text-base leading-relaxed max-w-md">
-          {description}
+          {description.split("\n").map((line, i) => (
+            <span key={i} className="block">
+              {line}
+            </span>
+          ))}
         </p>
       </div>
 
