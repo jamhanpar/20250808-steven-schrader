@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
         pathname: "/vi/**",
       },
     ],
+    qualities: [100],
     minimumCacheTTL: 3600, // evict optimized images after 1 hour
     deviceSizes: [640, 1080, 1920], // 3 variants instead of the default 7
   },
