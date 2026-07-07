@@ -1,3 +1,7 @@
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { YouTubeEmbed } from "../youtube-embed/YouTubeEmbed";
 
 interface Video {
@@ -15,33 +19,76 @@ interface MusicVideosProps {
   videos: Video[];
 }
 
+const BAR_ANIMATIONS = [
+  { heights: [13, 6, 13, 10, 13], duration: 1.1 },
+  { heights: [18, 8, 18, 14, 18], duration: 0.9 },
+  { heights: [15, 7, 15, 11, 15], duration: 1.3 },
+];
+
 function EqualizerIcon() {
+  const bars = [
+    { x: 0, baseHeight: 13, baseY: 5 },
+    { x: 9, baseHeight: 18, baseY: 0 },
+    { x: 18, baseHeight: 15, baseY: 3 },
+  ];
+
   return (
     <svg width="22" height="18" viewBox="0 0 22 18" fill="none" aria-hidden>
-      <rect x="0" y="5" width="4" height="13" rx="2" fill="currentColor" />
-      <rect x="9" y="0" width="4" height="18" rx="2" fill="currentColor" />
-      <rect x="18" y="3" width="4" height="15" rx="2" fill="currentColor" />
+      {bars.map((bar, i) => {
+        const anim = BAR_ANIMATIONS[i];
+        return (
+          <motion.rect
+            key={i}
+            x={bar.x}
+            width="4"
+            rx="2"
+            fill="currentColor"
+            animate={{
+              height: anim.heights,
+              y: anim.heights.map((h) => 18 - h),
+            }}
+            transition={{
+              duration: anim.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        );
+      })}
     </svg>
   );
 }
 
-function YouTubeIconButton() {
+function PlayIcon() {
   return (
-    <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-accent">
-      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden>
-        <polygon points="4,1 12,5 4,9" fill="white" />
-      </svg>
-    </span>
+    <svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden>
+      <path
+        d="M1 1.5L9 6L1 10.5V1.5Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
-function VideoCard({ video }: { video: Video }) {
+function VideoCard({ video, index }: { video: Video; index: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
   return (
-    <div className="rounded-2xl overflow-hidden shadow-lg bg-black/20">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+      className="rounded-2xl overflow-hidden shadow-lg bg-black/20"
+    >
       <div className="aspect-video">
         <YouTubeEmbed videoId={video.youtubeId} title={video.title} />
       </div>
-      <div className="px-5 py-4 flex items-center justify-between gap-4 bg-black/20">
+      <div className="px-6 py-5 flex items-center justify-between gap-6 bg-black/20">
         <div className="flex-1 min-w-0">
           <p className="text-primary font-semibold text-base leading-snug">
             {video.title}
@@ -49,9 +96,7 @@ function VideoCard({ video }: { video: Video }) {
           <div className="flex items-center gap-1.5 mt-1">
             {video.duration && (
               <>
-                <span className="text-primary/60 text-sm">
-                  {video.duration}
-                </span>
+                <span className="text-primary/60 text-sm">{video.duration}</span>
                 <span className="text-primary/40 text-sm">•</span>
               </>
             )}
@@ -62,14 +107,16 @@ function VideoCard({ video }: { video: Video }) {
           href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest shrink-0 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2.5 text-accent text-xs font-semibold uppercase tracking-widest shrink-0 hover:opacity-70 transition-opacity"
           aria-label={`Watch ${video.title} on YouTube`}
         >
-          Watch on
-          <YouTubeIconButton />
+          Watch on YouTube
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-accent/60">
+            <PlayIcon />
+          </span>
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -82,11 +129,23 @@ export function MusicVideos({
 
   const hasWatchMore = watchMoreUrl && watchMoreUrl !== "#";
 
+  const headerRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+
   return (
     <div className="flex flex-col items-center gap-6 mt-16 pt-16">
-      {/* Centered section header */}
-      <div className="flex flex-col items-center text-center gap-4 mb-12">
-        {/* Equalizer icon flanked by rules */}
+      {/* Gradient fade-in transition from track list above */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent mb-4" />
+
+      {/* Section header */}
+      <motion.div
+        ref={headerRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={headerInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col items-center text-center gap-4 mb-12"
+      >
+        {/* Animated equalizer flanked by rules */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px w-10 bg-accent/50" />
           <span className="text-accent">
@@ -95,15 +154,12 @@ export function MusicVideos({
           <div className="h-px w-10 bg-accent/50" />
         </div>
 
-        {/* WATCH title */}
         <h2 className="text-primary text-5xl lg:text-6xl font-medium tracking-[0.35em] uppercase mb-5">
           Watch
         </h2>
 
-        {/* Orange underline */}
         <div className="h-px w-14 bg-accent mb-8" />
 
-        {/* Description */}
         <p className="text-primary/70 text-base leading-relaxed max-w-md">
           {description.split("\n").map((line, i) => (
             <span key={i} className="block">
@@ -111,16 +167,16 @@ export function MusicVideos({
             </span>
           ))}
         </p>
-      </div>
+      </motion.div>
 
-      {/* Video cards — vertical stack */}
+      {/* Video cards */}
       <div className="flex flex-col gap-10 w-full max-w-2xl mx-auto">
-        {videos.map((video) => (
-          <VideoCard key={video.id} video={video} />
+        {videos.map((video, i) => (
+          <VideoCard key={video.id} video={video} index={i} />
         ))}
       </div>
 
-      {/* VIEW MORE VIDEOS button */}
+      {/* View more button */}
       {hasWatchMore && (
         <div className="flex justify-center mt-10">
           <a

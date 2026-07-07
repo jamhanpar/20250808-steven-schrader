@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MosaicGallery, { MosaicItem } from "app/components/mosaic/Mosaic";
 import Section from "app/components/section/Section";
 import authorData from "app/data/about-data.json";
@@ -29,11 +30,27 @@ export default function BioPage() {
             href="https://www.westsiderag.com/2026/01/05/a-lifetime-on-the-uws-a-90-year-old-authors-new-memoir-reflects-on-a-changing-new-york"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:opacity-70"
+            className="text-accent hover:opacity-80 transition-opacity"
           >
             West Side Rag
           </a>{" "}
           by Margie Smith Holt (January 5, 2026)
+        </p>
+        <p className="text-primary text-lg leading-relaxed">
+          Listen to Steve reading a story from his book,{" "}
+          <Link href="/books/threads" className="text-accent hover:opacity-80 transition-opacity">
+            <em>Threads</em>
+          </Link>
+          , on the{" "}
+          <a
+            href="https://www.youtube.com/watch?v=GrzN1Mu80bI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:opacity-80 transition-opacity"
+          >
+            Fordham University Radio station
+          </a>{" "}
+          (2012)
         </p>
       </div>
     </Section>
