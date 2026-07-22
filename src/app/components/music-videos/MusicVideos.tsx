@@ -125,12 +125,12 @@ export function MusicVideos({
   watchMoreUrl,
   videos,
 }: MusicVideosProps) {
+  const headerRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+
   if (!videos || videos.length === 0) return null;
 
   const hasWatchMore = watchMoreUrl && watchMoreUrl !== "#";
-
-  const headerRef = useRef(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
     <div className="flex flex-col items-center gap-6 mt-16 pt-16">
