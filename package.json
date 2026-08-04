@@ -12,10 +12,13 @@
     "@types/nodemailer": "^7.0.4",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
-    "next": "15.4.6",
-    "nodemailer": "^7.0.10",
+    "next": "^15.5.20",
+    "nodemailer": "^9.0.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -24,10 +27,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
+    "baseline-browser-mapping": "^2.10.41",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
     "music-metadata": "^11.12.3",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.10",
     "tailwindcss": "^4.1.11",
     "typescript": "^5"
   }

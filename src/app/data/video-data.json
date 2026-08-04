@@ -1,0 +1,19 @@
+{
+  "headline": "Watch\nSongs by Steve Schrader",
+  "description": "Performed in West Brattleboro, Vermont\nFilmed by Lucy Kostelanetz",
+  "watchMoreUrl": "#",
+  "videos": [
+    {
+      "id": "featured-video",
+      "youtubeId": "UXaiEkLZ6ws",
+      "title": "The Olson Pond",
+      "caption": "Steve Schrader & Friends"
+    },
+    {
+      "id": "companion-video",
+      "youtubeId": "DbLUXR_Ioa0",
+      "title": "Songs That Say I Love You",
+      "caption": "Steve Schrader & Friends"
+    }
+  ]
+}
