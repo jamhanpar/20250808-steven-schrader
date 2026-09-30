@@ -28,7 +28,7 @@ const TestimonialGroup: React.FC<TestimonialGroupProps> = ({
               dangerouslySetInnerHTML={{ __html: `"${t.message}"` }}
             />
             <div className="flex flex-col gap-2 text-center">
-              <span className="font-semibold">{t.name}</span>
+              <h3 className="font-semibold">{t.name}</h3>
               {t.title && (
                 <span
                   className="block text-sm text-gray-500"
