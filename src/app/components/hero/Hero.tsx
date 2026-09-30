@@ -69,7 +69,7 @@ export default function Hero({
         <div className="flex-1 flex items-center justify-center group">
           <Image
             src={imageSrc}
-            alt={imageAlt || "please provide an alt text for this image"}
+            alt={imageAlt || ""}
             width={1000}
             height={1000}
             className="rounded-xl object-cover h-96 md:h-full w-full border-primary/80 transition-transform duration-500"

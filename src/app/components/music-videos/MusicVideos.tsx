@@ -108,7 +108,7 @@ function VideoCard({ video, index }: { video: Video; index: number }) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2.5 text-accent text-xs font-semibold uppercase tracking-widest shrink-0 hover:opacity-70 transition-opacity"
-          aria-label={`Watch ${video.title} on YouTube`}
+          aria-label={`Watch ${video.title} on YouTube (opens in a new tab)`}
         >
           Watch on YouTube
           <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-accent/60">
@@ -183,6 +183,7 @@ export function MusicVideos({
             href={watchMoreUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Watch more videos on YouTube (opens in a new tab)"
             className="flex items-center gap-3 px-8 py-3.5 rounded-full border border-accent text-accent text-xs font-semibold uppercase tracking-[0.2em] hover:bg-accent/10 transition-colors"
           >
             <span className="flex items-center justify-center w-6 h-6 rounded-full border border-accent shrink-0">
