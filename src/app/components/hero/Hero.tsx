@@ -23,11 +23,11 @@ export default function Hero({
     <div className="w-full flex flex-col-reverse md:flex-row items-center justify-center text-center md:text-left overflow-hidden bg-background gap-10 md:gap-12">
       {/*--- Hero Text ---*/}
       <div className="flex flex-col items-center md:items-start justify-center z-10 gap-4 md:flex-2/6">
-        <div>
+        <h1 className="mb-6 tracking-tight md:leading-none">
           {title.map((line, index) => (
-            <h1
+            <span
               className={clsx(
-                "text-primary text-2xl font-extrabold mb-6 tracking-tight md:leading-none",
+                "text-primary text-2xl font-extrabold block",
                 {
                   "md:text-4xl": index !== title.length - 1,
                   "font-thin italic": index === title.length - 1,
@@ -36,10 +36,9 @@ export default function Hero({
               key={index}
             >
               {line}
-              {index < title.length - 1 && <br />}
-            </h1>
+            </span>
           ))}
-        </div>
+        </h1>
         <div className="w-full text-base md:text-xl mb-10 text-balance text-primary">
           {subtitle.split("\n\n").map((paragraph, index) => (
             <p key={index} className={index > 0 ? "mt-4" : ""}>
