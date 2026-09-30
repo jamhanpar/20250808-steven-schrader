@@ -55,7 +55,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
       <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Link href="/">
+          <Link href="/" className="inline-flex items-center min-h-[44px]">
             <span className="text-3xl font-bold text-primary transition-colors duration-300 drop-shadow-lg hover:text-primary-hover">
               Steven Schrader
             </span>
@@ -130,7 +130,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
               href={buildUrl(link.href, link.params)}
               onClick={(e) => handleNavLinkClick(link, e)}
               className={clsx(
-                "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover",
+                "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover inline-flex items-center min-h-[44px] px-2",
                 pathname === link.href && "text-accent border-b-2 border-accent"
               )}
             >
@@ -145,7 +145,7 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
               console.log("Hamburger clicked, current menuOpen:", menuOpen);
               setMenuOpen(!menuOpen);
             }}
-            className="text-primary inline-flex items-center justify-center p-2 rounded-md focus:outline-none hover:bg-white/10 active:scale-95 touch-action-manipulation"
+            className="text-primary inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-md focus:outline-none hover:bg-white/10 active:scale-95 touch-action-manipulation"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             type="button"

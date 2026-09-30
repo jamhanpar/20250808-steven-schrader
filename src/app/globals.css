@@ -206,3 +206,13 @@ button {
   font-family: var(--font-ui);
   line-height: var(--line-height-body);
 }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #d4622a;
+  outline-offset: 3px;
+}
