@@ -139,7 +139,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
           <div className="flex items-start justify-center md:justify-start group">
             <Image
               src={featured.image || "/placeholder.svg"}
-              alt={featured.title}
+              alt={`Book cover of ${featured.title} by Steven Schrader`}
               width={350}
               height={350}
               className={clsx(
@@ -230,6 +230,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                 href={featured.purchaseLinks[0].url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Purchase ${featured.title} on ${featured.purchaseLinks[0].label} (opens in a new tab)`}
                 className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-br from-accent to-accent-hover text-white font-semibold rounded-full transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-0.5 w-full text-center text-base"
               >
                 {featured.purchaseLinks[0].label}
@@ -242,6 +243,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Purchase ${featured.title} on ${link.label} (opens in a new tab)`}
                     className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-br from-accent to-accent-hover text-white font-medium rounded-full transition-all duration-300 ease-in-out hover:shadow-md hover:-translate-y-0.5 w-full text-center text-base"
                   >
                     {link.label}
@@ -312,7 +314,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
               >
                 <Image
                   src={book.image || "/placeholder.svg"}
-                  alt={book.title}
+                  alt={`Book cover of ${book.title} by Steven Schrader`}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -353,6 +355,8 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                       href={article.link}
                       className="text-primary hover:underline"
                       target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Read "${article.title}" (opens in a new tab)`}
                     >
                       {article.title}
                     </a>

@@ -30,6 +30,7 @@ export default function BioPage() {
             href="https://www.westsiderag.com/2026/01/05/a-lifetime-on-the-uws-a-90-year-old-authors-new-memoir-reflects-on-a-changing-new-york"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Read the West Side Rag interview with Steven Schrader (opens in a new tab)"
             className="text-accent hover:opacity-80 transition-opacity"
           >
             West Side Rag
@@ -46,6 +47,7 @@ export default function BioPage() {
             href="https://www.youtube.com/watch?v=GrzN1Mu80bI"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Listen to Steve Schrader reading from Threads on Fordham University Radio (opens in a new tab)"
             className="text-accent hover:opacity-80 transition-opacity"
           >
             Fordham University Radio station
