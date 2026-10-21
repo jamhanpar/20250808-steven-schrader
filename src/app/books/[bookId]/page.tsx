@@ -1,7 +1,5 @@
 import { BooksGroup } from "../../components/books-group/BooksGroup";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import Loading from "../../components/loading/Loading";
 import booksData from "../../data/books-data.json";
 
 interface BookPageProps {
@@ -42,8 +40,12 @@ function getBookSchema(book: (typeof booksData.books)[number]) {
   };
 }
 
-export default async function BookPage({ params }: BookPageProps) {
+export default async function BookPage({
+  params,
+  searchParams,
+}: BookPageProps) {
   const { bookId } = await params;
+  const { preview } = await searchParams;
 
   // Find the book by ID to verify it exists
   const book = booksData.books.find((book) => book.id === bookId);
@@ -58,9 +60,10 @@ export default async function BookPage({ params }: BookPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBookSchema(book)) }}
       />
-      <Suspense fallback={<Loading size="lg" text="Loading book details..." />}>
-        <BooksGroup initialBookId={bookId} />
-      </Suspense>
+      <BooksGroup
+        initialBookId={bookId}
+        initialShowDetails={preview === "false" || preview === "0"}
+      />
     </div>
   );
 }

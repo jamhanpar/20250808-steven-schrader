@@ -1,14 +1,16 @@
 import Section from "app/components/section/Section";
 import { BooksGroup } from "../components/books-group/BooksGroup";
-import { Suspense } from "react";
-import Loading from "../components/loading/Loading";
 
-export default function BooksPage() {
+interface BooksPageProps {
+  searchParams: Promise<{ preview?: string }>;
+}
+
+export default async function BooksPage({ searchParams }: BooksPageProps) {
+  const { preview } = await searchParams;
+
   return (
     <Section classname="flex flex-col-reverse gap-8 lg:flex-row">
-      <Suspense fallback={<Loading size="lg" text="Loading books..." />}>
-        <BooksGroup />
-      </Suspense>
+      <BooksGroup initialShowDetails={preview === "false" || preview === "0"} />
     </Section>
   );
 }
