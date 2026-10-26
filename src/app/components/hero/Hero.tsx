@@ -68,7 +68,7 @@ export default function Hero({
         <div className="flex-1 flex items-center justify-center group">
           <Image
             src={imageSrc}
-            alt={imageAlt || "please provide an alt text for this image"}
+            alt={imageAlt || ""}
             width={1000}
             height={1000}
             sizes="(max-width: 768px) 100vw, 60vw"
