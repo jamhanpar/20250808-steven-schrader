@@ -76,7 +76,7 @@ export default function AudioPlayer() {
               <Image
                 src={
                   currentTrack.coverImage ??
-                  "/images/album/steve-schrader-and-friends-album-cover.jpg"
+                  "/images/album/steve-schrader-and-friends-album-cover.webp"
                 }
                 alt={`Album cover for ${currentTrack.title}`}
                 width={40}

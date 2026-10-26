@@ -72,9 +72,10 @@ export default function Hero({
             alt={imageAlt || ""}
             width={1000}
             height={1000}
+            sizes="(max-width: 768px) 100vw, 60vw"
             className="rounded-xl object-cover h-96 md:h-full w-full border-primary/80 transition-transform duration-500"
-            quality={100}
             priority
+            fetchPriority="high"
           />
         </div>
       )}
