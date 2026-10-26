@@ -152,9 +152,9 @@ export function BooksGroup({
               className="group flex flex-col gap-6 w-full text-left hover:cursor-pointer"
             >
               <div>
-                <h2 className="mb-4 text-3xl font-bold leading-tight text-black sm:text-2xl text-balance transition-colors duration-300 lg:text-3xl group-hover:text-gray-700">
+                <h1 className="mb-4 text-3xl font-bold leading-tight text-black sm:text-2xl text-balance transition-colors duration-300 lg:text-3xl group-hover:text-gray-700">
                   {featured.title}
-                </h2>
+                </h1>
                 {featured.date && (
                   <p className="bg-secondary rounded-lg py-1 mb-4 text-xs font-medium tracking-widest text-black/90 transition-colors duration-300 group-hover:text-black">
                     {getYearFromDate(featured.date)}
@@ -206,9 +206,9 @@ export function BooksGroup({
         {/* Purchase Links Section */}
         {featured.purchaseLinks && featured.purchaseLinks.length > 0 && (
           <div className="w-full flex flex-col justify-start gap-4">
-            <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+            <h2 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
               Get your copy
-            </h3>
+            </h2>
             {featured.purchaseLinks.length === 1 ? (
               <a
                 href={featured.purchaseLinks[0].url}
@@ -239,9 +239,9 @@ export function BooksGroup({
         {/* FEATURED TESTIMONIAL */}
         {featured.testimonials.length > 0 && (
           <div className="w-full flex flex-col justify-between gap-4">
-            <h4 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+            <h2 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
               Praise & Reviews
-            </h4>
+            </h2>
             <div className="flex flex-col gap-6">
               {featured.testimonials.map((testimonial, index) => (
                 <div key={index}>
@@ -250,9 +250,9 @@ export function BooksGroup({
                     dangerouslySetInnerHTML={{ __html: testimonial.message }}
                   />
                   <div className="flex flex-col gap-1 text-end">
-                    <span className="font-semibold test-base text-primary">
+                    <h3 className="font-semibold test-base text-primary">
                       {testimonial.name}
-                    </span>
+                    </h3>
                     {testimonial.title && (
                       <span
                         className="block text-base text-primary"
@@ -269,9 +269,9 @@ export function BooksGroup({
 
       {/* SIDEBAR */}
       <div className="flex flex-col gap-8 lg:flex-2/5">
-        <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+        <h2 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
           {sidebar.title}
-        </h3>
+        </h2>
         <div className="flex flex-col gap-8 md:gap-6 space-y-6 md:items-center md:grid md:grid-cols-2 lg:grid-cols-1">
           {sidebarBooks.map((book) => (
             <button
@@ -305,9 +305,9 @@ export function BooksGroup({
 
               {/* Book Simple Details */}
               <div className="flex-1 flex flex-col justify-center gap-2">
-                <h4 className="text-xl font-bold leading-tight text-primary sm:text-xl lg:text-2xl text-balance">
+                <h3 className="text-xl font-bold leading-tight text-primary sm:text-xl lg:text-2xl text-balance">
                   {book.title}
-                </h4>
+                </h3>
                 <span className="mb-2 text-xs font-medium tracking-widest text-primary">
                   {[
                     book.date && getYearFromDate(book.date),
@@ -328,9 +328,9 @@ export function BooksGroup({
         {featured.relatedArticles?.articles &&
           featured.relatedArticles.articles.length > 0 && (
             <div className="flex flex-col gap-8 lg:flex-2/5">
-              <h3 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
+              <h2 className="mb-6 text-2xl font-medium tracking-widest text-primary uppercase lg:mb-8">
                 {featured.relatedArticles.title || "Related Articles"}
-              </h3>
+              </h2>
               <ul className="flex flex-col gap-4 mt-4">
                 {featured.relatedArticles.articles.map((article, index) => (
                   <li key={index}>
