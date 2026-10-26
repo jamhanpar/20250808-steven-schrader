@@ -2,7 +2,7 @@
   "mosaicData": [
     {
       "id": "1",
-      "url": "/images/steve-schrader-author.jpg",
+      "url": "/images/steve-schrader-author.webp",
       "type": "image",
       "title": null,
       "description": "Steve Schrader at the West Side Community Garden, April 2023 (Photo by Pamela Casey)",
@@ -14,18 +14,19 @@
     },
     {
       "id": "2",
-      "url": "/images/threads-history-1-childhood.jpeg",
+      "url": "/images/threads-history-1-childhood.webp",
       "type": "image",
       "title": null,
       "description": "Steve at 3 years old in Washington Heights.",
       "tags": [],
       "alt": "Steve Schrader at 3 years old in Washington Heights",
+      "objectPosition": "center top",
       "captureDate": null,
       "location": null
     },
     {
       "id": "3",
-      "url": "/images/threads-history-2-boyhood.jpeg",
+      "url": "/images/threads-history-2-boyhood.webp",
       "type": "image",
       "title": null,
       "description": "Steve at 9 years old in Miami Beach, Florida.",
@@ -36,7 +37,7 @@
     },
     {
       "id": "4",
-      "url": "/images/threads-history-3-group.jpg",
+      "url": "/images/threads-history-3-group.webp",
       "type": "image",
       "title": null,
       "description": "Steve's senior class photo at Franklin School in 1952.",
@@ -47,7 +48,7 @@
     },
     {
       "id": "5",
-      "url": "/images/threads-history-4-guitar.jpeg",
+      "url": "/images/threads-history-4-guitar.webp",
       "type": "image",
       "title": null,
       "description": "Steve on Block Island in the early 1960s.",
@@ -58,7 +59,7 @@
     },
     {
       "id": "6",
-      "url": "/images/threads-history-5-working.jpeg",
+      "url": "/images/threads-history-5-working.webp",
       "type": "image",
       "title": null,
       "description": "Steve as a company clerk in 1959, in Fort Dix, New Jersey.",

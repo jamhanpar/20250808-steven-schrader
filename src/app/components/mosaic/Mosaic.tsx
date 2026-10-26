@@ -15,6 +15,7 @@ export interface MosaicItem {
   tags: string[];
   alt: string;
   aspectRatio?: string;
+  objectPosition?: string;
   featured?: boolean;
   captureDate?: string | null;
   location?: string | null;
@@ -35,6 +36,7 @@ interface LoadingImageProps {
   src: string;
   alt: string;
   className?: string;
+  objectPosition?: string;
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -43,6 +45,7 @@ const LoadingImage: React.FC<LoadingImageProps> = ({
   src,
   alt,
   className = "",
+  objectPosition,
   onLoad,
   onError,
 }) => {
@@ -89,6 +92,7 @@ const LoadingImage: React.FC<LoadingImageProps> = ({
           className={clsx("mosaic-image", {
             "mosaic-image-loading": isLoading,
           })}
+          style={objectPosition ? { objectPosition } : undefined}
           onLoad={handleLoad}
           onError={handleError}
         />
@@ -331,7 +335,11 @@ const LazyImage: React.FC<{
       aria-label={`View ${item.title || item.description} in full screen`}
     >
       {isInView ? (
-        <LoadingImage src={item.url} alt={item.alt || item.description} />
+        <LoadingImage
+          src={item.url}
+          alt={item.alt || item.description}
+          objectPosition={item.objectPosition}
+        />
       ) : (
         <div className="mosaic-skeleton">
           <div className="mosaic-skeleton-pulse"></div>
@@ -418,6 +426,7 @@ const MosaicGallery: React.FC<MosaicGalleryProps> = ({
                 <LoadingImage
                   src={item.url}
                   alt={item.alt || item.description}
+                  objectPosition={item.objectPosition}
                 />
               </div>
             );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams, useRouter, useParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import booksData from "../../data/books-data.json";
 import { clsx } from "clsx";
@@ -36,52 +36,40 @@ export interface Book {
 
 interface BooksGroupProps {
   initialBookId?: string;
+  initialShowDetails?: boolean;
 }
 
-export function BooksGroup({ initialBookId }: BooksGroupProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showDetails, setShowDetails] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+function getBookIndex(books: Book[], bookId?: string) {
+  const foundIndex = books.findIndex((book) => book.id === bookId);
+  return foundIndex === -1 ? 0 : foundIndex;
+}
+
+function isDetailsParam(previewParam: string | null) {
+  return previewParam === "false" || previewParam === "0";
+}
+
+export function BooksGroup({
+  initialBookId,
+  initialShowDetails = false,
+}: BooksGroupProps) {
+  const { books, sidebar } = booksData;
+
+  // Initial state comes from props so the server-rendered HTML already
+  // contains the featured book (and its cover image, the LCP element)
+  const [currentIndex, setCurrentIndex] = useState(() =>
+    getBookIndex(books, initialBookId)
+  );
+  const [showDetails, setShowDetails] = useState(initialShowDetails);
   const searchParams = useSearchParams();
   const router = useRouter();
-  const params = useParams();
-
-  const { books, sidebar } = booksData;
   const featured = books[currentIndex];
   const sidebarBooks = books.filter((_, index) => index !== currentIndex);
 
-  // Check URL params and set initial book on component mount
+  // Keep state in sync with the URL on client navigation (e.g. back/forward)
   useEffect(() => {
-    let bookIndex = 0;
-
-    // If we have an initialBookId prop (from dynamic route), use that
-    if (initialBookId) {
-      const foundIndex = books.findIndex((book) => book.id === initialBookId);
-      if (foundIndex !== -1) {
-        bookIndex = foundIndex;
-      }
-    }
-    // Otherwise, check if we're on a dynamic route
-    else if (params?.bookId) {
-      const foundIndex = books.findIndex((book) => book.id === params.bookId);
-      if (foundIndex !== -1) {
-        bookIndex = foundIndex;
-      }
-    }
-
-    setCurrentIndex(bookIndex);
-
-    // Check preview parameter
-    const previewParam = searchParams.get("preview");
-    if (previewParam === "false" || previewParam === "0") {
-      setShowDetails(true);
-    } else {
-      setShowDetails(false);
-    }
-
-    // Set loading to false after checking params
-    setIsLoading(false);
-  }, [searchParams, initialBookId, params?.bookId, books]);
+    setCurrentIndex(getBookIndex(books, initialBookId));
+    setShowDetails(isDetailsParam(searchParams.get("preview")));
+  }, [searchParams, initialBookId, books]);
 
   const handlePreviewClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -114,10 +102,6 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
     });
   };
 
-  if (isLoading) {
-    return null;
-  }
-
   return (
     <div
       className={clsx(
@@ -148,8 +132,8 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                   "border border-white": featured.id === "threads",
                 }
               )}
-              quality={100}
               priority
+              fetchPriority="high"
             />
           </div>
 
@@ -314,6 +298,7 @@ export function BooksGroup({ initialBookId }: BooksGroupProps) {
                   src={book.image || "/placeholder.svg"}
                   alt={book.title}
                   fill
+                  sizes="(max-width: 1024px) 33vw, 150px"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>

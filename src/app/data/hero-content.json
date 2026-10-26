@@ -22,7 +22,8 @@
     ],
     "ctaText": "Amazon",
     "ctaHref": "#works",
-    "imageSrc": "/images/book-new-and-selected-writing-front.png"
+    "imageSrc": "/images/book-new-and-selected-writing-front.webp",
+    "imageAlt": "Cover of The Other Steve Schrader: New and Selected Writing"
   },
   "bio": {
     "title": "Steven Schrader's Bio",
