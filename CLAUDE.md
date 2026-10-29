@@ -61,3 +61,16 @@ A Mailgun alternative exists at `src/lib/email-mailgun.ts` but is currently comm
 | `/api/contact` | Contact form POST endpoint |
 | `/api/dev` | Development utilities |
 | `/api/diagnostic` | SMTP/service diagnostic endpoint |
+
+<!-- handoff-stanza-v1 -->
+## Agent Continuity Protocol
+
+FIRST ACTION every session: read `HANDOFF.md` at the repo root. If its frontmatter links a Paperclip issue (`issue:` is not `none`), fetch that issue's status from http://localhost:3100 before starting; if Paperclip is unreachable, proceed on the file alone — it is authoritative for ongoing context.
+
+- After each completed unit of work AND before stopping: rewrite `HANDOFF.md` (all four sections), set frontmatter `updated` to the current ISO8601 time and `agent` to `<tool>:<session-short-id>` (e.g. `claude-code:a3f2`).
+- Respect **Decisions Made** — do not re-litigate settled choices. If you must reverse one, record the reversal and rationale in the brief.
+- One ongoing issue per repo: if the brief shows another agent's work with `updated` within `lease_hours`, continue that work or stop and flag the collision — never start a parallel task here.
+- Takeover: if the brief is older than `lease_hours`, you may take over. Note the takeover in the brief, append a line to `.handoff/log/`, and (if Paperclip is up) re-claim the issue with the force flag.
+- Record durable state, not transient status the next action will change. If a commit is pending (e.g. you can't commit yourself), describe the post-commit state and mark it "commit pending: <command>" — a brief that ships inside the commit must not claim the tree is dirty.
+- Before overwriting a brief that belongs to a different issue or session, archive the old brief to `.handoff/log/<YYYY-MM-DD>-<session>.md`.
+<!-- /handoff-stanza-v1 -->
