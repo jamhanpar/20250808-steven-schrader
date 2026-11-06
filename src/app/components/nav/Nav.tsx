@@ -26,6 +26,7 @@ interface NavLink {
 
 const Nav: React.FC<NavProps> = ({ classname }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [booksOpen, setBooksOpen] = useState(false);
   // const [dropdownOpen, setDropdownOpen] = useState<boolean | null>(null);
   const pathname = usePathname();
   const { openContactModal } = useContactModal();
@@ -124,19 +125,85 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
         </div> */}
         {/* Desktop Nav */}
         <div className="hidden md:flex md:gap-8 space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={buildUrl(link.href, link.params)}
-              onClick={(e) => handleNavLinkClick(link, e)}
-              className={clsx(
-                "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover inline-flex items-center min-h-[44px] px-2",
-                pathname === link.href && "text-accent border-b-2 border-accent"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link: NavLink) =>
+            link.children ? (
+              <div
+                key={link.name}
+                className="relative"
+                onMouseEnter={() => setBooksOpen(true)}
+                onMouseLeave={() => setBooksOpen(false)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                    setBooksOpen(false);
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") setBooksOpen(false);
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setBooksOpen(!booksOpen)}
+                  aria-haspopup="true"
+                  aria-expanded={booksOpen}
+                  className={clsx(
+                    "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover inline-flex items-center min-h-[44px] px-2",
+                    pathname.startsWith(link.href) &&
+                      "text-accent border-b-2 border-accent"
+                  )}
+                >
+                  {link.name}
+                  <svg
+                    className={clsx(
+                      "ml-1 w-4 h-4 transition-transform duration-200",
+                      booksOpen && "rotate-180"
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                {booksOpen && (
+                  <ul className="absolute left-0 top-full z-50 w-72 py-2 bg-accent rounded-md shadow-lg border border-white/20">
+                    {link.children.map((child) => (
+                      <li key={child.id}>
+                        <Link
+                          href={buildUrl(child.href, child.params)}
+                          onClick={() => setBooksOpen(false)}
+                          className={clsx(
+                            "flex items-center min-h-[44px] px-4 py-2 text-base text-primary transition-colors duration-200 hover:bg-white/10 hover:text-primary-hover focus:outline-none focus-visible:bg-white/10",
+                            pathname === child.href && "font-semibold"
+                          )}
+                        >
+                          {child.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.name}
+                href={buildUrl(link.href, link.params)}
+                onClick={(e) => handleNavLinkClick(link, e)}
+                className={clsx(
+                  "text-lg font-medium transition-colors duration-300 text-primary drop-shadow-lg hover:text-primary-hover inline-flex items-center min-h-[44px] px-2",
+                  pathname === link.href && "text-accent border-b-2 border-accent"
+                )}
+              >
+                {link.name}
+              </Link>
+            )
+          )}
         </div>
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
@@ -189,9 +256,9 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
           />
 
           {/* Menu links container - positioned absolutely to not interfere with overlay clicks */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-8 py-16 pointer-events-none">
-            <div className="flex flex-col gap-4 w-full max-w-sm pointer-events-auto">
-              {navLinks.map((link) => (
+          <div className="absolute inset-0 flex flex-col items-center overflow-y-auto px-8 py-16 pointer-events-none">
+            <div className="my-auto flex flex-col gap-4 w-full max-w-sm pointer-events-auto">
+              {navLinks.map((link: NavLink) => (
                 <div key={link.name}>
                   <Link
                     href={buildUrl(link.href, link.params)}
@@ -213,6 +280,28 @@ const Nav: React.FC<NavProps> = ({ classname }) => {
                   >
                     {link.name}
                   </Link>
+                  {link.children && (
+                    <ul className="mt-2 flex flex-col gap-2">
+                      {link.children.map((child) => (
+                        <li key={child.id}>
+                          <Link
+                            href={buildUrl(child.href, child.params)}
+                            onClick={() => setMenuOpen(false)}
+                            className={clsx(
+                              "w-full text-white text-base font-medium px-6 py-2 rounded-lg transition-all duration-200 text-center min-h-[44px] flex items-center justify-center",
+                              "bg-white/5 border border-white/10",
+                              "hover:bg-white/20 hover:border-white/30 active:scale-95",
+                              "focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent",
+                              pathname === child.href &&
+                                "bg-[var(--jp-color-accent)]/90 border-[var(--jp-color-accent)]"
+                            )}
+                          >
+                            {child.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
