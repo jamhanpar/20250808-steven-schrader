@@ -46,7 +46,7 @@ A Mailgun alternative exists at `src/lib/email-mailgun.ts` but is currently comm
 
 **Static audio** (`/public/audio/`): Contains 18 MP3s for the music page. All files use kebab-case song-title-only naming — no artist suffix, no numeric prefix (e.g., `i-love-my-baby.mp3`, not `I Love My Baby - Steve Schrader.mp3`). Source files live in Google Drive at the `Music` folder (ID: `1_Qjt8Qjki9FRKZRTPU9rSANs3x2RuI0H`) inside the `Steven Schrader` Drive folder. When adding new tracks, pull from Drive, apply the same kebab-case convention, and drop them in `/public/audio/`.
 
-**Remote images**: Only `images.unsplash.com` is allowlisted in `next.config.ts`. Add new domains there if needed.
+**Remote images**: `next.config.ts` allowlists `images.unsplash.com` and `img.youtube.com`. Add new domains there if needed.
 
 ### Route structure
 
