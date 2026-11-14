@@ -1,0 +1,60 @@
+# handoff-check-v1 — installed by ~/.handoff/bin/project-init; edit the template, not this copy.
+# Keeps PRs on the Agent Continuity Protocol v3 so parallel branches don't conflict:
+#   - fails if a PR edits CHANGELOG.md directly (write changelog.d/<branch>.md instead)
+#   - fails if a repo with CHANGELOG.md gets a PR with no changelog fragment
+#   - warns if the PR has no branch brief, or edits HANDOFF.md (fine for repo-wide facts only)
+# Exempt: chore/changelog-* and release/* branches (they fold fragments into CHANGELOG.md) and bot PRs.
+# Label a PR `skip-changelog` when it has nothing worth a changelog line.
+name: Handoff check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: read
+
+jobs:
+  handoff:
+    runs-on: ubuntu-latest
+    if: ${{ !endsWith(github.event.pull_request.user.login, '[bot]') }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Branch brief and changelog fragment
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          SKIP_CHANGELOG: ${{ contains(github.event.pull_request.labels.*.name, 'skip-changelog') }}
+        run: |
+          set -euo pipefail
+          slug="${HEAD_REF//\//-}"
+          case "$HEAD_REF" in
+            chore/changelog-*|release/*) echo "Fold/release branch: CHANGELOG.md edits allowed, check skipped."; exit 0 ;;
+          esac
+
+          changed=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" HEAD)
+          fail=0
+
+          if grep -qx 'CHANGELOG.md' <<<"$changed"; then
+            echo "::error file=CHANGELOG.md::Don't edit CHANGELOG.md on a feature branch. Put the lines in changelog.d/$slug.md; they're folded in later on a chore/changelog-<date> PR."
+            fail=1
+          fi
+
+          if [ -f CHANGELOG.md ] && [ "$SKIP_CHANGELOG" != "true" ]; then
+            if ! grep -E '^changelog\.d/[^/]+\.md$' <<<"$changed" | grep -q .; then
+              echo "::error::No changelog fragment. Add changelog.d/$slug.md with ### Added / ### Changed / ### Fixed / ### Removed bullets, or label the PR skip-changelog."
+              fail=1
+            fi
+          fi
+
+          if [ -d .handoff/briefs ] && ! grep -E '^\.handoff/briefs/[^/]+\.md$' <<<"$changed" | grep -q .; then
+            echo "::warning::No branch brief in this PR. Agents write .handoff/briefs/$slug.md (see the Agent Continuity Protocol stanza)."
+          fi
+
+          if grep -qx 'HANDOFF.md' <<<"$changed"; then
+            echo "::warning file=HANDOFF.md::HANDOFF.md changed. That's right for a repo-wide fact or decision; branch state belongs in .handoff/briefs/$slug.md."
+          fi
+
+          exit $fail

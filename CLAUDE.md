@@ -61,3 +61,21 @@ A Mailgun alternative exists at `src/lib/email-mailgun.ts` but is currently comm
 | `/api/contact` | Contact form POST endpoint |
 | `/api/dev` | Development utilities |
 | `/api/diagnostic` | SMTP/service diagnostic endpoint |
+<!-- handoff-stanza-v3 -->
+## Agent Continuity Protocol
+
+Two kinds of brief, so parallel branches never conflict:
+- `HANDOFF.md` (repo brief): Critical Context and Decisions Made that hold on every branch. Edit it only when a repo-wide fact or decision changes.
+- `.handoff/briefs/<branch>.md` (branch brief): current state, branch decisions, next steps and the lease for one branch. `<branch>` is the branch name with `/` replaced by `-` (`feat/trello-reader` → `feat-trello-reader.md`).
+
+FIRST ACTION every session: read `HANDOFF.md`, then your branch's brief. If none exists, create it from `~/.handoff/template/brief.md` if available, else copy another brief's frontmatter and headings. Skim the other briefs in `.handoff/briefs/` to see what else is in flight. If a brief links a Paperclip issue (`issue:` is not `none`), fetch its status from http://localhost:3100; if Paperclip is unreachable, the files are authoritative. If `card:` is set, read that card for scope. Check live status yourself (`git status`, `git log`, `gh pr list`): briefs are not the source of truth for branch, commit or PR state.
+
+- Work on a branch, not the default branch. The default branch has no branch brief.
+- After each completed unit of work AND before stopping: rewrite your branch brief, setting frontmatter `updated` to the current ISO8601 time and `agent` to `<tool>:<session-short-id>` (e.g. `claude-code:a3f2`).
+- Record context, not status. Don't write what git, gh or the tracker already answer (PR open/merged, pushed, CI result). Write what they can't: what's verified and how, gotchas, rationale, what's half-done in the working tree.
+- Write briefs to be true where they land. A branch brief ships with its PR, so describe the post-merge state, never "not yet pushed" or "PR open".
+- Respect **Decisions Made** in both briefs; don't re-litigate settled choices. If you must reverse one, record the reversal and rationale. If the repo keeps a canonical decisions log (e.g. `DESIGN.md`, ADRs), record decisions there and link them.
+- Leases are per branch. Parallel branches are fine. If your branch's brief (or another brief with the same `card:`) was updated within `lease_hours` by a different agent, continue that work or stop and flag the collision. Older than `lease_hours`: you may take over; note the takeover in the brief and (if Paperclip is up) re-claim the issue with the force flag.
+- Archive on sight: if a brief in `.handoff/briefs/` belongs to a branch already merged into the default branch, `git mv` it to `.handoff/log/<branch>.md` in your next commit.
+- Changelog (repos with `CHANGELOG.md`): never edit `CHANGELOG.md` directly. Add or extend `changelog.d/<branch>.md` in the same commit as the change, using `### Added` / `### Changed` / `### Fixed` / `### Removed` headings and one bullet per change. Fragments are folded into `CHANGELOG.md` by `~/.handoff/bin/handoff-changelog` on a separate `chore/changelog-<date>` PR.
+<!-- /handoff-stanza-v3 -->
