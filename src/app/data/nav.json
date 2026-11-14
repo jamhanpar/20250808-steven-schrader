@@ -1,25 +1,42 @@
 [
-  { "name": "Home", "href": "/" },
-  { "name": "About", "href": "/about" },
   {
     "name": "Books",
-    "href": "/books/the-other-steve-schrader",
-    "params": "preview=true",
+    "href": "/books",
     "children": [
-      {
-        "id": "the-other-steve-schrader",
-        "title": "The Other Steve Schrader",
-        "href": "/books/the-other-steve-schrader",
-        "params": "preview=false"
-      },
       {
         "id": "threads",
         "title": "Threads",
         "href": "/books/threads",
         "params": "preview=false"
+      },
+      {
+        "id": "what-we-deserved",
+        "title": "What We Deserved",
+        "href": "/books/what-we-deserved",
+        "params": "preview=false"
+      },
+      {
+        "id": "arriving-at-work",
+        "title": "Arriving at Work",
+        "href": "/books/arriving-at-work",
+        "params": "preview=false"
+      },
+      {
+        "id": "on-sundays-we-visit-the-in-laws",
+        "title": "On Sundays We Visit the In-Laws",
+        "href": "/books/on-sundays-we-visit-the-in-laws",
+        "params": "preview=false"
+      },
+      {
+        "id": "crime-of-passion",
+        "title": "Crime of Passion",
+        "href": "/books/crime-of-passion",
+        "params": "preview=false"
       }
     ]
   },
+  { "name": "Home", "href": "/" },
+  { "name": "About", "href": "/about" },
   { "name": "Music", "href": "/music" },
   { "name": "Contact", "href": "/contact" }
 ]
